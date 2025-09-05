@@ -8,13 +8,14 @@
 <style>
 /* RESET BASE */
 * {margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', sans-serif;}
-body {background:#f0f0f0; color:#333;}
+body {background:#e0e0e0; color:#333;}
 
 /* CONTENITORE CENTRALE */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    background:#fff; /* sfondo bianco per contenuto */
 }
 
 /* HEADER */
@@ -37,7 +38,7 @@ header .search {padding:5px 10px; border-radius:5px; border:none;}
 .featured {padding:50px 0; text-align:center;}
 .featured h2 {margin-bottom:40px; font-size:2em;}
 .cards {display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:25px;}
-.card {background:#fff; border-radius:10px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.1); transition:transform 0.3s, box-shadow 0.3s;}
+.card {background:#f9f9f9; border-radius:10px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.1); transition:transform 0.3s, box-shadow 0.3s;}
 .card:hover {transform:translateY(-7px); box-shadow:0 10px 20px rgba(0,0,0,0.2);}
 .card img {width:100%; height:150px; object-fit:cover;}
 .card-content {padding:15px;}
@@ -55,97 +56,98 @@ footer .socials a {color:#00bcd4; text-decoration:none; margin:0 5px;}
 </head>
 <body>
 
+<!-- CONTENITORE CENTRALE -->
 <div class="container">
 
-<!-- HEADER -->
-<header>
-    <div class="logo">MetaClone</div>
-    <nav>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Giochi</a></li>
-            <li><a href="#">Film</a></li>
-            <li><a href="#">Serie TV</a></li>
-            <li><a href="#">Musica</a></li>
-        </ul>
-    </nav>
-    <input type="text" placeholder="Cerca..." class="search">
-</header>
+    <!-- HEADER -->
+    <header>
+        <div class="logo">MetaClone</div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Giochi</a></li>
+                <li><a href="#">Film</a></li>
+                <li><a href="#">Serie TV</a></li>
+                <li><a href="#">Musica</a></li>
+            </ul>
+        </nav>
+        <input type="text" placeholder="Cerca..." class="search">
+    </header>
 
-<!-- SLIDER -->
-<section class="hero">
-    <div class="swiper mySwiper">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide" style="background-image:url('https://via.placeholder.com/1200x400?text=Novità+1')">
-                <div class="slide-text"><h2>Nuovo Gioco Epico</h2><p>Recensione critica + punteggio utente</p></div>
+    <!-- SLIDER -->
+    <section class="hero">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" style="background-image:url('https://via.placeholder.com/1200x400?text=Novità+1')">
+                    <div class="slide-text"><h2>Nuovo Gioco Epico</h2><p>Recensione critica + punteggio utente</p></div>
+                </div>
+                <div class="swiper-slide" style="background-image:url('https://via.placeholder.com/1200x400?text=Novità+2')">
+                    <div class="slide-text"><h2>Ultimo Film da non perdere</h2><p>Valutazione critica e popolare</p></div>
+                </div>
+                <div class="swiper-slide" style="background-image:url('https://via.placeholder.com/1200x400?text=Novità+3')">
+                    <div class="slide-text"><h2>Serie TV Top</h2><p>Valutazioni aggiornate</p></div>
+                </div>
             </div>
-            <div class="swiper-slide" style="background-image:url('https://via.placeholder.com/1200x400?text=Novità+2')">
-                <div class="slide-text"><h2>Ultimo Film da non perdere</h2><p>Valutazione critica e popolare</p></div>
-            </div>
-            <div class="swiper-slide" style="background-image:url('https://via.placeholder.com/1200x400?text=Novità+3')">
-                <div class="slide-text"><h2>Serie TV Top</h2><p>Valutazioni aggiornate</p></div>
-            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
         </div>
-        <div class="swiper-pagination"></div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-    </div>
-</section>
+    </section>
 
-<!-- FEATURED CARDS -->
-<section class="featured">
-    <h2>Recensioni Recenti</h2>
-    <div class="cards">
-        <div class="card">
-            <img src="https://via.placeholder.com/250x150" alt="Gioco 1">
-            <div class="card-content">
-                <h3>Gioco 1</h3>
-                <div class="score">
-                    <span class="meta green">87</span>
-                    <span>User: 8.5</span>
+    <!-- FEATURED CARDS -->
+    <section class="featured">
+        <h2>Recensioni Recenti</h2>
+        <div class="cards">
+            <div class="card">
+                <img src="https://via.placeholder.com/250x150" alt="Gioco 1">
+                <div class="card-content">
+                    <h3>Gioco 1</h3>
+                    <div class="score">
+                        <span class="meta green">87</span>
+                        <span>User: 8.5</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/250x150" alt="Film 1">
+                <div class="card-content">
+                    <h3>Film 1</h3>
+                    <div class="score">
+                        <span class="meta yellow">75</span>
+                        <span>User: 7.8</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/250x150" alt="Serie TV 1">
+                <div class="card-content">
+                    <h3>Serie TV 1</h3>
+                    <div class="score">
+                        <span class="meta green">92</span>
+                        <span>User: 9.0</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/250x150" alt="Album 1">
+                <div class="card-content">
+                    <h3>Album 1</h3>
+                    <div class="score">
+                        <span class="meta yellow">80</span>
+                        <span>User: 8.2</span>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="card">
-            <img src="https://via.placeholder.com/250x150" alt="Film 1">
-            <div class="card-content">
-                <h3>Film 1</h3>
-                <div class="score">
-                    <span class="meta yellow">75</span>
-                    <span>User: 7.8</span>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <img src="https://via.placeholder.com/250x150" alt="Serie TV 1">
-            <div class="card-content">
-                <h3>Serie TV 1</h3>
-                <div class="score">
-                    <span class="meta green">92</span>
-                    <span>User: 9.0</span>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <img src="https://via.placeholder.com/250x150" alt="Album 1">
-            <div class="card-content">
-                <h3>Album 1</h3>
-                <div class="score">
-                    <span class="meta yellow">80</span>
-                    <span>User: 8.2</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
-<!-- FOOTER -->
-<footer>
-    <p>&copy; 2025 MetaClone. Tutti i diritti riservati.</p>
-    <div class="socials">
-        <a href="#">FB</a> | <a href="#">TW</a> | <a href="#">IG</a>
-    </div>
-</footer>
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2025 MetaClone. Tutti i diritti riservati.</p>
+        <div class="socials">
+            <a href="#">FB</a> | <a href="#">TW</a> | <a href="#">IG</a>
+        </div>
+    </footer>
 
 </div> <!-- /container -->
 
