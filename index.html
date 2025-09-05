@@ -1,164 +1,138 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Recensioni Manga, Anime e Videogiochi</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        background: #1a1a1a;
-        color: #fff;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template Astra Clone</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset base */
+        * {margin:0; padding:0; box-sizing:border-box; font-family: 'Roboto', sans-serif;}
+        body {line-height: 1.6; color: #333;}
 
-    header {
-        background: #ff3d00; /* colore vivace per evidenziare il tema */
-        text-align: center;
-        padding: 20px;
-    }
+        /* Header */
+        header {
+            background: #0d6efd;
+            color: white;
+            padding: 20px 0;
+        }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header h1 {font-size: 24px;}
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+        nav ul li {margin-left: 20px;}
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
 
-    header h1 {
-        margin: 0;
-    }
+        /* Hero Section */
+        .hero {
+            background: url('https://www.bapsolutions.it/wp-content/uploads/2024/04/astra-starter-template-.webp') no-repeat center center/cover;
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+        .hero h2 {font-size: 48px; margin-bottom: 20px;}
+        .hero p {font-size: 20px; margin-bottom: 30px;}
+        .hero a {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #ffc107;
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+        }
 
-    nav {
-        margin-top: 10px;
-    }
+        /* Section */
+        section {padding: 80px 20px; max-width: 1200px; margin: 0 auto;}
+        section h3 {text-align: center; margin-bottom: 50px; font-size: 32px;}
+        .features {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .feature {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            flex: 1 1 250px;
+            text-align: center;
+        }
+        .feature h4 {margin-bottom: 15px; font-size: 24px;}
+        .feature p {font-size: 16px; color: #555;}
 
-    nav ul {
-        list-style: none;
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        padding: 0;
-    }
-
-    nav ul li a {
-        color: white;
-        text-decoration: none;
-        font-weight: bold;
-        transition: color 0.3s;
-    }
-
-    nav ul li a:hover {
-        color: #ffd700;
-    }
-
-    .gallery {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-        padding: 40px 20px;
-    }
-
-    .card {
-        width: 200px;
-        height: 300px;
-        background-size: cover;
-        background-position: center;
-        border-radius: 10px;
-        position: relative;
-        overflow: hidden;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        cursor: pointer;
-    }
-
-    .card:hover {
-        transform: scale(1.2) translateY(-10px);
-        box-shadow: 0 15px 25px rgba(0,0,0,0.5);
-        z-index: 10;
-    }
-
-    .card-info {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        background: rgba(0,0,0,0.7);
-        padding: 10px;
-        box-sizing: border-box;
-        text-align: center;
-        transition: transform 0.3s;
-        transform: translateY(100%);
-    }
-
-    .card:hover .card-info {
-        transform: translateY(0);
-    }
-
-    .card-info h3 {
-        margin: 0 0 5px 0;
-        font-size: 1rem;
-    }
-
-    .card-info p {
-        margin: 0;
-        font-size: 0.9rem;
-    }
-
-    footer {
-        text-align: center;
-        background: #222;
-        color: white;
-        padding: 20px;
-    }
-</style>
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+    </style>
 </head>
 <body>
-
-<header>
-    <h1>Recensioni Manga, Anime e Videogiochi</h1>
-    <nav>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Manga</a></li>
-            <li><a href="#">Anime</a></li>
-            <li><a href="#">Videogiochi</a></li>
-        </ul>
-    </nav>
-</header>
-
-<section class="gallery">
-    <div class="card" style="background-image: url('https://picsum.photos/200/300?random=1');">
-        <div class="card-info">
-            <h3>Attack on Titan</h3>
-            <p>Manga - 9/10</p>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1>Il Mio Sito</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Servizi</a></li>
+                    <li><a href="#">Chi Siamo</a></li>
+                    <li><a href="#">Contatti</a></li>
+                </ul>
+            </nav>
         </div>
-    </div>
+    </header>
 
-    <div class="card" style="background-image: url('https://picsum.photos/200/300?random=2');">
-        <div class="card-info">
-            <h3>Demon Slayer</h3>
-            <p>Anime - 8.5/10</p>
+    <!-- Hero -->
+    <section class="hero">
+        <div>
+            <h2>Benvenuto nel Nostro Sito</h2>
+            <p>Un design moderno ispirato a Astra Starter Template</p>
+            <a href="#">Scopri di più</a>
         </div>
-    </div>
+    </section>
 
-    <div class="card" style="background-image: url('https://picsum.photos/200/300?random=3');">
-        <div class="card-info">
-            <h3>The Legend of Zelda</h3>
-            <p>Videogioco - 10/10</p>
+    <!-- Features Section -->
+    <section>
+        <h3>I Nostri Servizi</h3>
+        <div class="features">
+            <div class="feature">
+                <h4>Servizio 1</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+            <div class="feature">
+                <h4>Servizio 2</h4>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+            </div>
+            <div class="feature">
+                <h4>Servizio 3</h4>
+                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod.</p>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <div class="card" style="background-image: url('https://picsum.photos/200/300?random=4');">
-        <div class="card-info">
-            <h3>One Piece</h3>
-            <p>Manga - 9/10</p>
-        </div>
-    </div>
-
-    <div class="card" style="background-image: url('https://picsum.photos/200/300?random=5');">
-        <div class="card-info">
-            <h3>My Hero Academia</h3>
-            <p>Anime - 8/10</p>
-        </div>
-    </div>
-</section>
-
-<footer>
-    © 2025 Recensioni Fan. Tutti i diritti riservati.
-</footer>
-
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Il Mio Sito. Tutti i diritti riservati.</p>
+    </footer>
 </body>
 </html>
