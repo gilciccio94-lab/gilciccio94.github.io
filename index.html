@@ -96,23 +96,6 @@ header .search {padding:5px 10px; border-radius:5px; border:none;}
     box-shadow: none;
 }
 
-/* COLONNA GUIDE LATERALE FUORI CONTENITORE */
-.sidebar {
-    position: absolute;
-    top: 0;
-    left: calc(50% + 600px); /* affiancata container 1200px */
-    width: 220px;
-    background: #f0f0f0;
-    border-radius: 10px;
-    padding: 15px;
-}
-
-.sidebar h3 {margin-bottom:15px; font-size:1.2em; color:#333;}
-.sidebar ul {list-style:none; padding-left:0;}
-.sidebar ul li {margin-bottom:10px;}
-.sidebar ul li a {text-decoration:none; color:#00bcd4; transition: color 0.3s;}
-.sidebar ul li a:hover {color:#007c91;}
-
 /* FOOTER */
 footer {background:#1a1a1a; color:#fff; text-align:center; padding:25px 0; margin-top:50px;}
 footer .socials a {color:#00bcd4; text-decoration:none; margin:0 5px;}
@@ -209,20 +192,6 @@ footer .socials a {color:#00bcd4; text-decoration:none; margin:0 5px;}
 
 </div> <!-- /container -->
 
-<!-- COLONNA GUIDE LATERALE FUORI CONTENITORE -->
-<aside class="sidebar">
-    <h3>Recensioni Recenti</h3>
-    <ul>
-        <li><a href="#">Street Fighter Alpha</a></li>
-        <li><a href="#">Lupin III: La partita Italiana</a></li>
-        <li><a href="#">Mobile Suit Gundam Wing</a></li>
-        <li><a href="#">Gundam Wing Endless Waltz OVA</a></li>
-        <li><a href="#">Welcome to Japan, Ms. Elf!</a></li>
-        <li><a href="#">Willy il Coyote e Beep Beep</a></li>
-        <li><a href="#">Shamanic Princess</a></li>
-    </ul>
-</aside>
-
 <!-- SWIPER JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 <script>
@@ -246,15 +215,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.2 });
     cards.forEach(card => observer.observe(card));
 });
-
-// SINCRONIZZA ALTEZZA COLONNA LATERALE
-function syncSidebarHeight() {
-    const container = document.querySelector('.container');
-    const sidebar = document.querySelector('.sidebar');
-    sidebar.style.height = container.offsetHeight + 'px';
-}
-window.addEventListener('load', syncSidebarHeight);
-window.addEventListener('resize', syncSidebarHeight);
 </script>
 </body>
 </html>
