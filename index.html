@@ -28,11 +28,28 @@ header .search {padding:5px 10px; border-radius:5px; border:none;}
 }
 
 /* SLIDER */
-.hero {margin-top:10px;}
+.hero {margin-top:10px; position:relative;}
 .swiper {width:100%; height:400px;}
 .swiper-slide {background-size:cover; background-position:center; position:relative; display:flex; align-items:center; justify-content:center;}
 .slide-text {background:rgba(0,0,0,0.6); padding:25px 35px; border-radius:10px; color:#fff; text-align:center; animation:fadeInUp 1s ease;}
 @keyframes fadeInUp {0%{opacity:0; transform:translateY(30px);}100%{opacity:1; transform:translateY(0);}}
+
+/* Pagination pallini in alto a sinistra */
+.swiper-pagination {
+    top: 10px;
+    left: 10px;
+    width: auto;
+    text-align: left;
+    position: absolute;
+    z-index: 10;
+}
+.swiper-pagination-bullet {
+    background: rgba(255,255,255,0.7);
+    opacity: 1;
+}
+.swiper-pagination-bullet-active {
+    background: #00bcd4;
+}
 
 /* FEATURED SECTION */
 .featured {padding:50px 0; text-align:center;}
@@ -89,8 +106,6 @@ footer .socials a {color:#00bcd4; text-decoration:none; margin:0 5px;}
                 </div>
             </div>
             <div class="swiper-pagination"></div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
         </div>
     </section>
 
@@ -151,15 +166,17 @@ footer .socials a {color:#00bcd4; text-decoration:none; margin:0 5px;}
 
 </div> <!-- /container -->
 
-<!-- SWIPER JS + SCRIPT INTERNO -->
+<!-- SWIPER JS + SCRIPT -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 <script>
 const swiper = new Swiper(".mySwiper", {
     loop: true,
-    pagination: {el:".swiper-pagination", clickable:true},
-    navigation: {nextEl:".swiper-button-next", prevEl:".swiper-button-prev"},
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+        type: "bullets",
+    },
 });
 </script>
 </body>
 </html>
-
