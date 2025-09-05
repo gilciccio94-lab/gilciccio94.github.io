@@ -1,110 +1,152 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MetaClone</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MetaClone</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+<style>
+/* RESET BASE */
+* {margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', sans-serif;}
+body {background:#f0f0f0; color:#333;}
+
+/* HEADER */
+header {display:flex; align-items:center; justify-content:space-between; padding:15px 50px; background:#1a1a1a; color:#fff; position:sticky; top:0; z-index:100;}
+header .logo {font-size:1.8em; font-weight:bold;}
+header nav ul {display:flex; list-style:none;}
+header nav ul li {margin-left:25px;}
+header nav ul li a {text-decoration:none; color:#fff; transition:color 0.3s;}
+header nav ul li a:hover {color:#00bcd4;}
+header .search {padding:5px 10px; border-radius:5px; border:none;}
+
+/* SLIDER */
+.hero {margin-top:10px;}
+.swiper {width:100%; height:400px;}
+.swiper-slide {background-size:cover; background-position:center; position:relative; display:flex; align-items:center; justify-content:center;}
+.slide-text {background:rgba(0,0,0,0.6); padding:25px 35px; border-radius:10px; color:#fff; text-align:center; animation:fadeInUp 1s ease;}
+@keyframes fadeInUp {0%{opacity:0; transform:translateY(30px);}100%{opacity:1; transform:translateY(0);}}
+
+/* FEATURED SECTION */
+.featured {padding:50px; text-align:center;}
+.featured h2 {margin-bottom:40px; font-size:2em;}
+.cards {display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:25px;}
+.card {background:#fff; border-radius:10px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.1); transition:transform 0.3s, box-shadow 0.3s;}
+.card:hover {transform:translateY(-7px); box-shadow:0 10px 20px rgba(0,0,0,0.2);}
+.card img {width:100%; height:150px; object-fit:cover;}
+.card-content {padding:15px;}
+.card-content h3 {margin-bottom:10px; font-size:1.1em;}
+.card-content .score {display:flex; justify-content:space-between; align-items:center; font-weight:bold;}
+.score .meta {padding:5px 8px; border-radius:4px; color:#fff; font-size:0.9em;}
+.meta.green {background:#6c9; }
+.meta.yellow {background:#ffcc00; color:#000;}
+.meta.red {background:#f44336;}
+
+/* FOOTER */
+footer {background:#1a1a1a; color:#fff; text-align:center; padding:25px 50px; margin-top:50px;}
+footer .socials a {color:#00bcd4; text-decoration:none; margin:0 5px;}
+</style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="logo">MetaClone</div>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Giochi</a></li>
-                <li><a href="#">Film</a></li>
-                <li><a href="#">Serie TV</a></li>
-                <li><a href="#">Musica</a></li>
-            </ul>
-        </nav>
-        <input type="text" placeholder="Cerca..." class="search">
-    </header>
 
-    <!-- Hero Slider -->
-    <section class="hero">
-        <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide" style="background-image:url('https://via.placeholder.com/1200x400?text=Novità+1')">
-                    <div class="slide-text">
-                        <h2>Nuovo Gioco Epico</h2>
-                        <p>Recensione critica + punteggio utente</p>
-                    </div>
-                </div>
-                <div class="swiper-slide" style="background-image:url('https://via.placeholder.com/1200x400?text=Novità+2')">
-                    <div class="slide-text">
-                        <h2>Ultimo Film da non perdere</h2>
-                        <p>Valutazione critica e popolare</p>
-                    </div>
-                </div>
-                <div class="swiper-slide" style="background-image:url('https://via.placeholder.com/1200x400?text=Novità+3')">
-                    <div class="slide-text">
-                        <h2>Serie TV Top</h2>
-                        <p>Valutazioni aggiornate</p>
-                    </div>
-                </div>
+<!-- HEADER -->
+<header>
+    <div class="logo">MetaClone</div>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Giochi</a></li>
+            <li><a href="#">Film</a></li>
+            <li><a href="#">Serie TV</a></li>
+            <li><a href="#">Musica</a></li>
+        </ul>
+    </nav>
+    <input type="text" placeholder="Cerca..." class="search">
+</header>
+
+<!-- SLIDER -->
+<section class="hero">
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" style="background-image:url('https://via.placeholder.com/1200x400?text=Novità+1')">
+                <div class="slide-text"><h2>Nuovo Gioco Epico</h2><p>Recensione critica + punteggio utente</p></div>
             </div>
-            <div class="swiper-pagination"></div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
+            <div class="swiper-slide" style="background-image:url('https://via.placeholder.com/1200x400?text=Novità+2')">
+                <div class="slide-text"><h2>Ultimo Film da non perdere</h2><p>Valutazione critica e popolare</p></div>
+            </div>
+            <div class="swiper-slide" style="background-image:url('https://via.placeholder.com/1200x400?text=Novità+3')">
+                <div class="slide-text"><h2>Serie TV Top</h2><p>Valutazioni aggiornate</p></div>
+            </div>
         </div>
-    </section>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</section>
 
-    <!-- Contenuti in evidenza -->
-    <section class="featured">
-        <h2>Recensioni recenti</h2>
-        <div class="cards">
-            <div class="card">
-                <img src="https://via.placeholder.com/250x150" alt="Gioco 1">
+<!-- FEATURED CARDS -->
+<section class="featured">
+    <h2>Recensioni Recenti</h2>
+    <div class="cards">
+        <div class="card">
+            <img src="https://via.placeholder.com/250x150" alt="Gioco 1">
+            <div class="card-content">
                 <h3>Gioco 1</h3>
-                <p>Metascore: 87 | User Score: 8.5</p>
+                <div class="score">
+                    <span class="meta green">87</span>
+                    <span>User: 8.5</span>
+                </div>
             </div>
-            <div class="card">
-                <img src="https://via.placeholder.com/250x150" alt="Film 1">
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/250x150" alt="Film 1">
+            <div class="card-content">
                 <h3>Film 1</h3>
-                <p>Metascore: 75 | User Score: 7.8</p>
+                <div class="score">
+                    <span class="meta yellow">75</span>
+                    <span>User: 7.8</span>
+                </div>
             </div>
-            <div class="card">
-                <img src="https://via.placeholder.com/250x150" alt="Serie TV 1">
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/250x150" alt="Serie TV 1">
+            <div class="card-content">
                 <h3>Serie TV 1</h3>
-                <p>Metascore: 92 | User Score: 9.0</p>
+                <div class="score">
+                    <span class="meta green">92</span>
+                    <span>User: 9.0</span>
+                </div>
             </div>
-            <div class="card">
-                <img src="https://via.placeholder.com/250x150" alt="Musica 1">
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/250x150" alt="Album 1">
+            <div class="card-content">
                 <h3>Album 1</h3>
-                <p>Metascore: 80 | User Score: 8.2</p>
+                <div class="score">
+                    <span class="meta yellow">80</span>
+                    <span>User: 8.2</span>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 MetaClone. Tutti i diritti riservati.</p>
-        <div class="socials">
-            <a href="#">FB</a> | <a href="#">TW</a> | <a href="#">IG</a>
-        </div>
-    </footer>
+<!-- FOOTER -->
+<footer>
+    <p>&copy; 2025 MetaClone. Tutti i diritti riservati.</p>
+    <div class="socials">
+        <a href="#">FB</a> | <a href="#">TW</a> | <a href="#">IG</a>
+    </div>
+</footer>
 
-    <!-- Swiper JS + script interno -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <script>
-        const swiper = new Swiper(".mySwiper", {
-            loop: true,
-            autoplay: {
-                delay: 4000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-        });
-    </script>
+<!-- SWIPER JS + SCRIPT INTERNO -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script>
+const swiper = new Swiper(".mySwiper", {
+    loop: true,
+    autoplay: {delay:4000, disableOnInteraction:false},
+    pagination: {el:".swiper-pagination", clickable:true},
+    navigation: {nextEl:".swiper-button-next", prevEl:".swiper-button-prev"},
+});
+</script>
 </body>
 </html>
