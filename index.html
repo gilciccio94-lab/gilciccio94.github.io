@@ -126,7 +126,7 @@ footer .socials a {color:#00bcd4; text-decoration:none; margin:0 5px;}
             <a href="hell-us.html" class="card-link">
                 <div class="card">
                     <div class="card-label">Recensione</div>
-                    <img src="https://www.nacongaming.com/media/hell-is-us-hero.jpg" alt="Hell Is Us">
+                    <img src="https://raw.githubusercontent.com/gilciccio94/gilciccio94.github.io/main/img/hell-is-us.jpg" alt="Hell Is Us">
                     <div class="card-content">
                         <h3>Hell Is Us</h3>
                         <div class="score">
@@ -167,63 +167,4 @@ footer .socials a {color:#00bcd4; text-decoration:none; margin:0 5px;}
                 </div>
             </a>
 
-            <!-- Card Album 1 -->
-            <a href="#" class="card-link">
-                <div class="card">
-                    <div class="card-label">Nuovo</div>
-                    <img src="https://via.placeholder.com/250x150" alt="Album 1">
-                    <div class="card-content">
-                        <h3>Album 1</h3>
-                        <div class="score">
-                            <span class="meta yellow">80</span>
-                            <span>User: 8.2</span>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <p>&copy; 2025 MetaClone. Tutti i diritti riservati.</p>
-        <div class="socials">
-            <a href="#">FB</a> | <a href="#">TW</a> | <a href="#">IG</a>
-        </div>
-    </footer>
-
-</div> <!-- /container -->
-
-<!-- SWIPER JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-<script>
-const swiper = new Swiper(".mySwiper", {
-    loop: true,
-    pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-        type: "bullets",
-    },
-});
-
-// FADE-IN CASCATA CARD
-document.addEventListener('DOMContentLoaded', () => {
-    const cards = document.querySelectorAll('.card');
-
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if(entry.isIntersecting) {
-                const index = Array.from(cards).indexOf(entry.target);
-                setTimeout(() => {
-                    entry.target.classList.add('visible');
-                }, index * 150); // 150ms di ritardo a cascata
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.2 });
-
-    cards.forEach(card => observer.observe(card));
-});
-</script>
-</body>
-</html>
+            <!-- Card Album 1
