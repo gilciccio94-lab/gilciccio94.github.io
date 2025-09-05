@@ -3,24 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Locandine Effetto Onda</title>
+<title>Recensioni Manga, Anime e Videogiochi</title>
 <style>
     body {
         font-family: Arial, sans-serif;
         margin: 0;
-        background: #f0f0f0;
-        color: #333;
+        background: #1a1a1a;
+        color: #fff;
     }
 
     header {
-        background: #4CAF50;
-        color: white;
+        background: #ff3d00; /* colore vivace per evidenziare il tema */
         text-align: center;
         padding: 20px;
     }
 
     header h1 {
         margin: 0;
+    }
+
+    nav {
+        margin-top: 10px;
+    }
+
+    nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        padding: 0;
+    }
+
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+        color: #ffd700;
     }
 
     .gallery {
@@ -37,15 +59,42 @@
         background-size: cover;
         background-position: center;
         border-radius: 10px;
+        position: relative;
+        overflow: hidden;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         cursor: pointer;
     }
 
-    /* Effetto onda */
     .card:hover {
         transform: scale(1.2) translateY(-10px);
-        box-shadow: 0 15px 25px rgba(0,0,0,0.3);
+        box-shadow: 0 15px 25px rgba(0,0,0,0.5);
         z-index: 10;
+    }
+
+    .card-info {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        background: rgba(0,0,0,0.7);
+        padding: 10px;
+        box-sizing: border-box;
+        text-align: center;
+        transition: transform 0.3s;
+        transform: translateY(100%);
+    }
+
+    .card:hover .card-info {
+        transform: translateY(0);
+    }
+
+    .card-info h3 {
+        margin: 0 0 5px 0;
+        font-size: 1rem;
+    }
+
+    .card-info p {
+        margin: 0;
+        font-size: 0.9rem;
     }
 
     footer {
@@ -59,20 +108,56 @@
 <body>
 
 <header>
-    <h1>Galleria di Locandine</h1>
+    <h1>Recensioni Manga, Anime e Videogiochi</h1>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Manga</a></li>
+            <li><a href="#">Anime</a></li>
+            <li><a href="#">Videogiochi</a></li>
+        </ul>
+    </nav>
 </header>
 
 <section class="gallery">
-    <div class="card" style="background-image: url('https://blog.register.it/wp-content/uploads/Idee-sito-web-768x432.jpg');"></div>
-    <div class="card" style="background-image: url('https://picsum.photos/200/300?random=1');"></div>
-    <div class="card" style="background-image: url('https://picsum.photos/200/300?random=2');"></div>
-    <div class="card" style="background-image: url('https://picsum.photos/200/300?random=3');"></div>
-    <div class="card" style="background-image: url('https://picsum.photos/200/300?random=4');"></div>
-    <div class="card" style="background-image: url('https://picsum.photos/200/300?random=5');"></div>
+    <div class="card" style="background-image: url('https://picsum.photos/200/300?random=1');">
+        <div class="card-info">
+            <h3>Attack on Titan</h3>
+            <p>Manga - 9/10</p>
+        </div>
+    </div>
+
+    <div class="card" style="background-image: url('https://picsum.photos/200/300?random=2');">
+        <div class="card-info">
+            <h3>Demon Slayer</h3>
+            <p>Anime - 8.5/10</p>
+        </div>
+    </div>
+
+    <div class="card" style="background-image: url('https://picsum.photos/200/300?random=3');">
+        <div class="card-info">
+            <h3>The Legend of Zelda</h3>
+            <p>Videogioco - 10/10</p>
+        </div>
+    </div>
+
+    <div class="card" style="background-image: url('https://picsum.photos/200/300?random=4');">
+        <div class="card-info">
+            <h3>One Piece</h3>
+            <p>Manga - 9/10</p>
+        </div>
+    </div>
+
+    <div class="card" style="background-image: url('https://picsum.photos/200/300?random=5');">
+        <div class="card-info">
+            <h3>My Hero Academia</h3>
+            <p>Anime - 8/10</p>
+        </div>
+    </div>
 </section>
 
 <footer>
-    © 2025 Galleria Effetto Onda. Tutti i diritti riservati.
+    © 2025 Recensioni Fan. Tutti i diritti riservati.
 </footer>
 
 </body>
