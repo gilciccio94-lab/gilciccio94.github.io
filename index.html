@@ -10,8 +10,15 @@
 * {margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', sans-serif;}
 body {background:#f0f0f0; color:#333;}
 
+/* CONTENITORE CENTRALE */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
 /* HEADER */
-header {display:flex; align-items:center; justify-content:space-between; padding:15px 50px; background:#1a1a1a; color:#fff; position:sticky; top:0; z-index:100;}
+header {display:flex; align-items:center; justify-content:space-between; padding:15px 0; background:#1a1a1a; color:#fff; position:sticky; top:0; z-index:100;}
 header .logo {font-size:1.8em; font-weight:bold;}
 header nav ul {display:flex; list-style:none;}
 header nav ul li {margin-left:25px;}
@@ -27,7 +34,7 @@ header .search {padding:5px 10px; border-radius:5px; border:none;}
 @keyframes fadeInUp {0%{opacity:0; transform:translateY(30px);}100%{opacity:1; transform:translateY(0);}}
 
 /* FEATURED SECTION */
-.featured {padding:50px; text-align:center;}
+.featured {padding:50px 0; text-align:center;}
 .featured h2 {margin-bottom:40px; font-size:2em;}
 .cards {display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:25px;}
 .card {background:#fff; border-radius:10px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.1); transition:transform 0.3s, box-shadow 0.3s;}
@@ -42,11 +49,13 @@ header .search {padding:5px 10px; border-radius:5px; border:none;}
 .meta.red {background:#f44336;}
 
 /* FOOTER */
-footer {background:#1a1a1a; color:#fff; text-align:center; padding:25px 50px; margin-top:50px;}
+footer {background:#1a1a1a; color:#fff; text-align:center; padding:25px 0; margin-top:50px;}
 footer .socials a {color:#00bcd4; text-decoration:none; margin:0 5px;}
 </style>
 </head>
 <body>
+
+<div class="container">
 
 <!-- HEADER -->
 <header>
@@ -138,15 +147,14 @@ footer .socials a {color:#00bcd4; text-decoration:none; margin:0 5px;}
     </div>
 </footer>
 
+</div> <!-- /container -->
+
 <!-- SWIPER JS + SCRIPT INTERNO -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 <script>
 const swiper = new Swiper(".mySwiper", {
     loop: true,
-    autoplay: {
-        delay: 8000, // 8 secondi
-        disableOnInteraction: false
-    },
+    // autoplay rimosso: le slide cambiano solo manualmente
     pagination: {el:".swiper-pagination", clickable:true},
     navigation: {nextEl:".swiper-button-next", prevEl:".swiper-button-prev"},
 });
