@@ -41,52 +41,44 @@ header .search {padding:5px 10px; border-radius:5px; border:none;}
 
 /* CARD LINK & HOVER */
 .card-link {text-decoration:none; color:inherit; display:block;}
-.card-link .card {
+.card {
+    position: relative;
     display: flex;
     flex-direction: column;
-    background-size: cover;
-    background-position: center;
-    border-radius:10px;
-    overflow:hidden;
+    border-radius: 10px;
+    overflow: hidden;
     box-shadow:0 4px 12px rgba(0,0,0,0.1);
     transition: transform 0.3s, box-shadow 0.3s;
-    position: relative;
     height: 240px;
-    opacity: 0;
+    opacity:0;
     transform: translateY(20px);
-    color: #fff;
+    color:#fff;
 }
+.card:hover {transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.35);}
 
-/* OVERLAY PER TESTO */
-.card-overlay {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    padding: 10px 8px;
-    background: rgba(0,0,0,0.5);
+/* IMMAGINE DI SFONDO CON OVERLAY */
+.card .card-image {
+    width:100%;
+    height:100%;
+    background-size: cover;
+    background-position: center;
     display: flex;
-    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    padding:10px;
+    position: relative;
 }
-.card-overlay h3 {
-    margin:0;
-    font-size:1em;
-    font-weight:bold;
+.card .card-overlay {
+    width:100%;
+    background: rgba(0,0,0,0.5);
+    padding:10px 8px;
+    text-align:center;
 }
-.card-overlay .editor,
-.card-overlay .date {
-    font-size:0.7em;
-    margin-top:2px;
-    color:#ddd;
-}
+.card .card-overlay h3 {margin:0; font-size:1em; font-weight:bold;}
+.card .card-overlay .editor, .card .card-overlay .date {font-size:0.7em; color:#ddd; margin-top:2px;}
 
 /* ETICHETTA CARD */
-.card-label {position:absolute; top:10px; left:10px; background:#00bcd4; color:#fff; padding:3px 6px; font-size:0.7em; font-weight:bold; border-radius:3px; z-index:10;}
-
-/* HOVER CARD */
-.card-link:hover .card {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.35);
-}
+.card-label {position:absolute; top:10px; left:10px; background:#00bcd4; color:white; padding:3px 6px; font-size:0.7em; font-weight:bold; border-radius:3px; z-index:10;}
 
 /* FOOTER */
 footer {background:#1a1a1a; color:#fff; text-align:center; padding:25px 0; margin-top:50px;}
@@ -116,13 +108,13 @@ footer .socials a {color:#00bcd4; text-decoration:none; margin:0 5px;}
     <section class="hero">
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide" style="background-image:url('img/slide1.jpg')">
+                <div class="swiper-slide" style="background-image:url('https://picsum.photos/1200/400?random=1')">
                     <div class="slide-text"><h2>Nuovo Gioco Epico</h2><p>Recensione critica + punteggio</p></div>
                 </div>
-                <div class="swiper-slide" style="background-image:url('img/slide2.jpg')">
+                <div class="swiper-slide" style="background-image:url('https://picsum.photos/1200/400?random=2')">
                     <div class="slide-text"><h2>Ultimo Film da non perdere</h2><p>Valutazione critica</p></div>
                 </div>
-                <div class="swiper-slide" style="background-image:url('img/slide3.jpg')">
+                <div class="swiper-slide" style="background-image:url('https://picsum.photos/1200/400?random=3')">
                     <div class="slide-text"><h2>Serie TV Top</h2><p>Valutazioni aggiornate</p></div>
                 </div>
             </div>
@@ -135,16 +127,18 @@ footer .socials a {color:#00bcd4; text-decoration:none; margin:0 5px;}
         <h2>Recensioni Giochi</h2>
         <div class="cards">
             <a href="hell-us.html" class="card-link">
-                <div class="card" style="background-image:url('img/hell-is-us.jpg')">
-                    <div class="card-overlay">
-                        <h3>Hell Is Us</h3>
-                        <p class="editor">Editore: Ivano Torre</p>
-                        <p class="date">12/08/2025</p>
+                <div class="card">
+                    <div class="card-image" style="background-image:url('https://picsum.photos/300/240?random=10')">
+                        <div class="card-overlay">
+                            <h3>Hell Is Us</h3>
+                            <p class="editor">Ivano Torre</p>
+                            <p class="date">12/08/2025</p>
+                        </div>
+                        <div class="card-label">Recensione</div>
                     </div>
-                    <div class="card-label">Recensione</div>
                 </div>
             </a>
-            <!-- altre card giochi -->
+            <!-- altre card giochi con immagini online -->
         </div>
     </section>
 
@@ -153,13 +147,15 @@ footer .socials a {color:#00bcd4; text-decoration:none; margin:0 5px;}
         <h2>Recensioni Anime</h2>
         <div class="cards">
             <a href="#" class="card-link">
-                <div class="card" style="background-image:url('img/serie1.jpg')">
-                    <div class="card-overlay">
-                        <h3>Serie TV 1</h3>
-                        <p class="editor">Editore: Ivano Torre</p>
-                        <p class="date">05/08/2025</p>
+                <div class="card">
+                    <div class="card-image" style="background-image:url('https://picsum.photos/300/240?random=20')">
+                        <div class="card-overlay">
+                            <h3>Serie TV 1</h3>
+                            <p class="editor">Ivano Torre</p>
+                            <p class="date">05/08/2025</p>
+                        </div>
+                        <div class="card-label">Top Rated</div>
                     </div>
-                    <div class="card-label">Top Rated</div>
                 </div>
             </a>
             <!-- altre card anime -->
@@ -192,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if(entry.isIntersecting) {
                 const index = Array.from(cards).indexOf(entry.target);
-                setTimeout(() => { entry.target.classList.add('visible'); }, index * 150); 
+                setTimeout(() => { entry.target.style.opacity = 1; entry.target.style.transform = 'translateY(0)'; }, index * 150); 
                 observer.unobserve(entry.target);
             }
         });
@@ -202,4 +198,3 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 </body>
 </html>
-
