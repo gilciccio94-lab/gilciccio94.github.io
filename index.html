@@ -3,11 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MetaClone</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+<title>MetaClone - Il tuo sito di recensioni</title>
 <style>
 /* RESET BASE */
-* {margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', sans-serif;}
+* {margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', sans-serif;}
 body {background:#f5f5f5; color:#333;}
 
 /* HEADER */
@@ -19,65 +18,24 @@ header nav ul li a {text-decoration:none; color:#fff; transition:color 0.3s;}
 header nav ul li a:hover {color:#00bcd4;}
 header .search {padding:5px 10px; border-radius:5px; border:none;}
 
-/* CONTENITORE CENTRALE */
-.container {max-width: 1200px; margin: 0 auto; padding: 0 20px; background: #f5f5f5; position: relative;}
+/* HERO */
+.hero {background:url('https://blog.register.it/wp-content/uploads/Idee-sito-web-768x432.jpg') no-repeat center center/cover; height:400px; display:flex; align-items:center; justify-content:center; color:#fff; text-align:center;}
+.hero-content {background:rgba(0,0,0,0.5); padding:20px; border-radius:10px;}
+.hero h1 {font-size:2.5em; margin-bottom:10px;}
+.hero p {font-size:1.2em;}
 
-/* SLIDER */
-.hero {margin-top:10px; position:relative;}
-.swiper {width:100%; height:400px;}
-.swiper-slide {background-size:cover; background-position:center; display:flex; align-items:center; justify-content:center;}
-.slide-text {background:rgba(0,0,0,0.6); padding:25px 35px; border-radius:10px; color:#fff; text-align:center;}
-.swiper-pagination {top: 10px; left: 10px; width: auto; text-align: left; position: absolute; z-index: 10;}
-.swiper-pagination-bullet {background: rgba(255,255,255,0.7); opacity: 1;}
-.swiper-pagination-bullet-active {background: #00bcd4;}
+/* SEZIONI */
+section {padding:50px 20px;}
+section h2 {text-align:center; font-size:2em; margin-bottom:40px;}
 
-/* FEATURED POSTERS */
-.featured {padding:50px 0; text-align:center;}
-.featured h2 {margin-bottom:40px; font-size:2em;}
-.posters {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 15px;
-    justify-items: center;
-}
-
-.poster-link {
-    display: flex;
-    flex-direction: column;
-    text-decoration: none;
-    color: inherit;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.poster-link img {
-    width: 100%;
-    height: 360px;
-    object-fit: cover;
-    border-radius: 6px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-}
-
-.poster-info {
-    text-align: center;
-    margin-top: 6px;
-}
-
-.poster-info h3 {
-    font-size: 1em;
-    margin-bottom: 4px;
-    font-weight: 600;
-}
-
-.poster-info p {
-    font-size: 0.75em;
-    color: #555;
-    margin-bottom: 2px;
-}
-
-.poster-link:hover {
-    transform: translateY(-12px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.35);
-}
+/* LOCANDINE */
+.posters {display:grid; grid-template-columns:repeat(5, 1fr); gap:20px; justify-items:center;}
+.poster {text-decoration:none; color:inherit; transition:transform 0.3s, box-shadow 0.3s; display:flex; flex-direction:column; align-items:center;}
+.poster img {width:100%; height:360px; object-fit:cover; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,0.25);}
+.poster-info {text-align:center; margin-top:8px;}
+.poster-info h3 {font-size:1em; font-weight:600; margin-bottom:4px;}
+.poster-info p {font-size:0.75em; color:#555; margin-bottom:2px;}
+.poster:hover {transform:translateY(-10px); box-shadow:0 20px 40px rgba(0,0,0,0.35);}
 
 /* FOOTER */
 footer {background:#1a1a1a; color:#fff; text-align:center; padding:25px 0; margin-top:50px;}
@@ -100,136 +58,52 @@ footer .socials a {color:#00bcd4; text-decoration:none; margin:0 5px;}
     <input type="text" placeholder="Cerca..." class="search">
 </header>
 
-<div class="container">
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Benvenuto su MetaClone</h1>
+        <p>Scopri le ultime recensioni di giochi, anime, film e musica.</p>
+    </div>
+</section>
 
-    <!-- SLIDER -->
-    <section class="hero">
-        <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide" style="background-image:url('img/slide1.jpg')">
-                    <div class="slide-text"><h2>Nuovo Gioco Epico</h2><p>Recensione critica + punteggio</p></div>
-                </div>
-                <div class="swiper-slide" style="background-image:url('img/slide2.jpg')">
-                    <div class="slide-text"><h2>Ultimo Film da non perdere</h2><p>Valutazione critica</p></div>
-                </div>
-                <div class="swiper-slide" style="background-image:url('img/slide3.jpg')">
-                    <div class="slide-text"><h2>Serie TV Top</h2><p>Valutazioni aggiornate</p></div>
-                </div>
+<!-- SEZIONE GIOCHI -->
+<section>
+    <h2>Recensioni Giochi</h2>
+    <div class="posters">
+        <a href="hell-us.html" class="poster">
+            <img src="https://www.playstation.com/en-us/games/hell-is-us/" alt="Hell is Us">
+            <div class="poster-info">
+                <h3>Hell is Us</h3>
+                <p>Editore: Ivano Torre</p>
+                <p>12/08/2025</p>
             </div>
-            <div class="swiper-pagination"></div>
-        </div>
-    </section>
+        </a>
+        <!-- altre locandine giochi -->
+    </div>
+</section>
 
-    <!-- SEZIONE GIOCHI -->
-    <section class="featured">
-        <h2>Recensioni Giochi</h2>
-        <div class="posters">
-            <a href="hell-us.html" class="poster-link">
-                <img src="https://www.playstation.com/en-us/games/hell-is-us/" alt="Hell is Us">
-                <div class="poster-info">
-                    <h3>Hell is Us</h3>
-                    <p>Editore: Ivano Torre</p>
-                    <p class="date">12/08/2025</p>
-                </div>
-            </a>
-            <a href="#" class="poster-link">
-                <img src="img/game2.jpg" alt="Game 2">
-                <div class="poster-info">
-                    <h3>Game 2</h3>
-                    <p>Editore: Ivano Torre</p>
-                    <p class="date">01/09/2025</p>
-                </div>
-            </a>
-            <a href="#" class="poster-link">
-                <img src="img/game3.jpg" alt="Game 3">
-                <div class="poster-info">
-                    <h3>Game 3</h3>
-                    <p>Editore: Ivano Torre</p>
-                    <p class="date">15/09/2025</p>
-                </div>
-            </a>
-            <a href="#" class="poster-link">
-                <img src="img/game4.jpg" alt="Game 4">
-                <div class="poster-info">
-                    <h3>Game 4</h3>
-                    <p>Editore: Ivano Torre</p>
-                    <p class="date">20/09/2025</p>
-                </div>
-            </a>
-            <a href="#" class="poster-link">
-                <img src="img/game5.jpg" alt="Game 5">
-                <div class="poster-info">
-                    <h3>Game 5</h3>
-                    <p>Editore: Ivano Torre</p>
-                    <p class="date">25/09/2025</p>
-                </div>
-            </a>
-        </div>
-    </section>
+<!-- SEZIONE ANIME -->
+<section>
+    <h2>Recensioni Anime</h2>
+    <div class="posters">
+        <a href="#" class="poster">
+            <img src="https://www.imdb.com/title/tt0312258/" alt="X TV">
+            <div class="poster-info">
+                <h3>X TV</h3>
+                <p>Editore: Ivano Torre</p>
+                <p>05/08/2025</p>
+            </div>
+        </a>
+        <!-- altre locandine anime -->
+    </div>
+</section>
 
-    <!-- SEZIONE ANIME -->
-    <section class="featured">
-        <h2>Recensioni Anime</h2>
-        <div class="posters">
-            <a href="#" class="poster-link">
-                <img src="https://www.imdb.com/title/tt0312258/" alt="X TV">
-                <div class="poster-info">
-                    <h3>X TV</h3>
-                    <p>Editore: Ivano Torre</p>
-                    <p class="date">05/08/2025</p>
-                </div>
-            </a>
-            <a href="#" class="poster-link">
-                <img src="img/anime2.jpg" alt="Anime 2">
-                <div class="poster-info">
-                    <h3>Anime 2</h3>
-                    <p>Editore: Ivano Torre</p>
-                    <p class="date">12/08/2025</p>
-                </div>
-            </a>
-            <a href="#" class="poster-link">
-                <img src="img/anime3.jpg" alt="Anime 3">
-                <div class="poster-info">
-                    <h3>Anime 3</h3>
-                    <p>Editore: Ivano Torre</p>
-                    <p class="date">18/08/2025</p>
-                </div>
-            </a>
-            <a href="#" class="poster-link">
-                <img src="img/anime4.jpg" alt="Anime 4">
-                <div class="poster-info">
-                    <h3>Anime 4</h3>
-                    <p>Editore: Ivano Torre</p>
-                    <p class="date">22/08/2025</p>
-                </div>
-            </a>
-            <a href="#" class="poster-link">
-                <img src="img/anime5.jpg" alt="Anime 5">
-                <div class="poster-info">
-                    <h3>Anime 5</h3>
-                    <p>Editore: Ivano Torre</p>
-                    <p class="date">28/08/2025</p>
-                </div>
-            </a>
-        </div>
-    </section>
+<footer>
+    <p>&copy; 2025 MetaClone. Tutti i diritti riservati.</p>
+    <div class="socials">
+        <a href="#">FB</a> | <a href="#">TW</a> | <a href="#">IG</a>
+    </div>
+</footer>
 
-    <!-- FOOTER -->
-    <footer>
-        <p>&copy; 2025 MetaClone. Tutti i diritti riservati.</p>
-        <div class="socials">
-            <a href="#">FB</a> | <a href="#">TW</a> | <a href="#">IG</a>
-        </div>
-    </footer>
-
-</div> <!-- /container -->
-
-<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-<script>
-const swiper = new Swiper(".mySwiper", {
-    loop: true,
-    pagination: { el: ".swiper-pagination", clickable: true, type:"bullets" }
-});
-</script>
 </body>
 </html>
