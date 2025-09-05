@@ -55,8 +55,9 @@ header .search {padding:5px 10px; border-radius:5px; border:none;}
 .featured {padding:50px 0; text-align:center;}
 .featured h2 {margin-bottom:40px; font-size:2em;}
 .cards {display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:25px;}
-.card {background:#f9f9f9; border-radius:10px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.1); transition:transform 0.3s, box-shadow 0.3s;}
-.card:hover {transform:translateY(-7px); box-shadow:0 10px 20px rgba(0,0,0,0.2);}
+
+/* CARD */
+.card {background:#f9f9f9; border-radius:10px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.1); transition:transform 0.3s, box-shadow 0.3s; position: relative;}
 .card img {width:100%; height:150px; object-fit:cover;}
 .card-content {padding:15px;}
 .card-content h3 {margin-bottom:10px; font-size:1.1em;}
@@ -65,6 +66,25 @@ header .search {padding:5px 10px; border-radius:5px; border:none;}
 .meta.green {background:#6c9; }
 .meta.yellow {background:#ffcc00; color:#000;}
 .meta.red {background:#f44336;}
+
+/* ETICHETTA CARD */
+.card-label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #00bcd4;
+    color: #fff;
+    padding: 4px 8px;
+    font-size: 0.8em;
+    font-weight: bold;
+    border-radius: 3px;
+    z-index: 10;
+}
+
+/* CARD LINK & HOVER */
+.card-link {text-decoration:none; color:inherit; display:block;}
+.card-link .card {transition: transform 0.3s, box-shadow 0.3s;}
+.card-link:hover .card {transform: translateY(-7px); box-shadow:0 12px 25px rgba(0,0,0,0.3);}
 
 /* FOOTER */
 footer {background:#1a1a1a; color:#fff; text-align:center; padding:25px 0; margin-top:50px;}
@@ -88,7 +108,6 @@ footer .socials a {color:#00bcd4; text-decoration:none; margin:0 5px;}
     <input type="text" placeholder="Cerca..." class="search">
 </header>
 
-<!-- CONTENITORE CENTRALE -->
 <div class="container">
 
     <!-- SLIDER -->
@@ -113,46 +132,65 @@ footer .socials a {color:#00bcd4; text-decoration:none; margin:0 5px;}
     <section class="featured">
         <h2>Recensioni Recenti</h2>
         <div class="cards">
-            <div class="card">
-                <img src="https://via.placeholder.com/250x150" alt="Gioco 1">
-                <div class="card-content">
-                    <h3>Gioco 1</h3>
-                    <div class="score">
-                        <span class="meta green">87</span>
-                        <span>User: 8.5</span>
+            <!-- Card Hell Us -->
+            <a href="hell-us.html" class="card-link">
+                <div class="card">
+                    <div class="card-label">Recensione</div>
+                    <img src="https://via.placeholder.com/250x150" alt="Hell Us">
+                    <div class="card-content">
+                        <h3>Hell Us</h3>
+                        <div class="score">
+                            <span class="meta green">78</span>
+                            <span>User: 7.8</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="card">
-                <img src="https://via.placeholder.com/250x150" alt="Film 1">
-                <div class="card-content">
-                    <h3>Film 1</h3>
-                    <div class="score">
-                        <span class="meta yellow">75</span>
-                        <span>User: 7.8</span>
+            </a>
+
+            <!-- Card Film 1 -->
+            <a href="#" class="card-link">
+                <div class="card">
+                    <div class="card-label">Nuovo</div>
+                    <img src="https://via.placeholder.com/250x150" alt="Film 1">
+                    <div class="card-content">
+                        <h3>Film 1</h3>
+                        <div class="score">
+                            <span class="meta yellow">75</span>
+                            <span>User: 7.8</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="card">
-                <img src="https://via.placeholder.com/250x150" alt="Serie TV 1">
-                <div class="card-content">
-                    <h3>Serie TV 1</h3>
-                    <div class="score">
-                        <span class="meta green">92</span>
-                        <span>User: 9.0</span>
+            </a>
+
+            <!-- Card Serie TV 1 -->
+            <a href="#" class="card-link">
+                <div class="card">
+                    <div class="card-label">Top Rated</div>
+                    <img src="https://via.placeholder.com/250x150" alt="Serie TV 1">
+                    <div class="card-content">
+                        <h3>Serie TV 1</h3>
+                        <div class="score">
+                            <span class="meta green">92</span>
+                            <span>User: 9.0</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="card">
-                <img src="https://via.placeholder.com/250x150" alt="Album 1">
-                <div class="card-content">
-                    <h3>Album 1</h3>
-                    <div class="score">
-                        <span class="meta yellow">80</span>
-                        <span>User: 8.2</span>
+            </a>
+
+            <!-- Card Album 1 -->
+            <a href="#" class="card-link">
+                <div class="card">
+                    <div class="card-label">Nuovo</div>
+                    <img src="https://via.placeholder.com/250x150" alt="Album 1">
+                    <div class="card-content">
+                        <h3>Album 1</h3>
+                        <div class="score">
+                            <span class="meta yellow">80</span>
+                            <span>User: 8.2</span>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
     </section>
 
