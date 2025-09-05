@@ -36,7 +36,7 @@ header .search {padding:5px 10px; border-radius:5px; border:none;}
 .featured h2 {margin-bottom:40px; font-size:2em;}
 .posters {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 5 locandine per riga */
+    grid-template-columns: repeat(5, 1fr);
     gap: 15px;
     justify-items: center;
 }
@@ -51,20 +51,21 @@ header .search {padding:5px 10px; border-radius:5px; border:none;}
 
 .poster-link img {
     width: 100%;
-    height: 320px;
+    height: 360px;
     object-fit: cover;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    border-radius: 6px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
 }
 
 .poster-info {
     text-align: center;
-    margin-top: 8px;
+    margin-top: 6px;
 }
 
 .poster-info h3 {
     font-size: 1em;
     margin-bottom: 4px;
+    font-weight: 600;
 }
 
 .poster-info p {
@@ -74,8 +75,8 @@ header .search {padding:5px 10px; border-radius:5px; border:none;}
 }
 
 .poster-link:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.35);
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.35);
 }
 
 /* FOOTER */
@@ -85,7 +86,6 @@ footer .socials a {color:#00bcd4; text-decoration:none; margin:0 5px;}
 </head>
 <body>
 
-<!-- HEADER -->
 <header>
     <div class="logo">MetaClone</div>
     <nav>
@@ -132,7 +132,38 @@ footer .socials a {color:#00bcd4; text-decoration:none; margin:0 5px;}
                     <p class="date">12/08/2025</p>
                 </div>
             </a>
-            <!-- altre locandine giochi -->
+            <a href="#" class="poster-link">
+                <img src="img/game2.jpg" alt="Game 2">
+                <div class="poster-info">
+                    <h3>Game 2</h3>
+                    <p>Editore: Ivano Torre</p>
+                    <p class="date">01/09/2025</p>
+                </div>
+            </a>
+            <a href="#" class="poster-link">
+                <img src="img/game3.jpg" alt="Game 3">
+                <div class="poster-info">
+                    <h3>Game 3</h3>
+                    <p>Editore: Ivano Torre</p>
+                    <p class="date">15/09/2025</p>
+                </div>
+            </a>
+            <a href="#" class="poster-link">
+                <img src="img/game4.jpg" alt="Game 4">
+                <div class="poster-info">
+                    <h3>Game 4</h3>
+                    <p>Editore: Ivano Torre</p>
+                    <p class="date">20/09/2025</p>
+                </div>
+            </a>
+            <a href="#" class="poster-link">
+                <img src="img/game5.jpg" alt="Game 5">
+                <div class="poster-info">
+                    <h3>Game 5</h3>
+                    <p>Editore: Ivano Torre</p>
+                    <p class="date">25/09/2025</p>
+                </div>
+            </a>
         </div>
     </section>
 
@@ -148,7 +179,38 @@ footer .socials a {color:#00bcd4; text-decoration:none; margin:0 5px;}
                     <p class="date">05/08/2025</p>
                 </div>
             </a>
-            <!-- altre locandine anime -->
+            <a href="#" class="poster-link">
+                <img src="img/anime2.jpg" alt="Anime 2">
+                <div class="poster-info">
+                    <h3>Anime 2</h3>
+                    <p>Editore: Ivano Torre</p>
+                    <p class="date">12/08/2025</p>
+                </div>
+            </a>
+            <a href="#" class="poster-link">
+                <img src="img/anime3.jpg" alt="Anime 3">
+                <div class="poster-info">
+                    <h3>Anime 3</h3>
+                    <p>Editore: Ivano Torre</p>
+                    <p class="date">18/08/2025</p>
+                </div>
+            </a>
+            <a href="#" class="poster-link">
+                <img src="img/anime4.jpg" alt="Anime 4">
+                <div class="poster-info">
+                    <h3>Anime 4</h3>
+                    <p>Editore: Ivano Torre</p>
+                    <p class="date">22/08/2025</p>
+                </div>
+            </a>
+            <a href="#" class="poster-link">
+                <img src="img/anime5.jpg" alt="Anime 5">
+                <div class="poster-info">
+                    <h3>Anime 5</h3>
+                    <p>Editore: Ivano Torre</p>
+                    <p class="date">28/08/2025</p>
+                </div>
+            </a>
         </div>
     </section>
 
@@ -162,7 +224,6 @@ footer .socials a {color:#00bcd4; text-decoration:none; margin:0 5px;}
 
 </div> <!-- /container -->
 
-<!-- SWIPER JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 <script>
 const swiper = new Swiper(".mySwiper", {
