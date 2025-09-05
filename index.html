@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GameSphere - Recensioni e Notizie</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { margin: 0; font-family: sans-serif; background-color: #111827; color: white; }
+    a { text-decoration: none; }
+    .slide { position: relative; width: 100%; height: 24rem; overflow: hidden; border-radius: 0.5rem; cursor: grab; }
+    .slide img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+    .slide img:hover { transform: scale(1.05); }
+    .dot { width: 0.75rem; height: 0.75rem; border-radius: 9999px; display: inline-block; margin-right: 0.25rem; }
+    .slide-info { position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); padding: 1rem; }
+    .slide-rating { position: absolute; top: 0.5rem; right: 0.5rem; background-color: rgba(255,255,0,0.5); color: black; font-weight: bold; padding: 0.25rem 0.5rem; border-radius: 0.25rem; opacity: 0; transition: opacity 0.3s; }
+    .slide:hover .slide-rating { opacity: 1; }
+    .news-card { position: relative; overflow: hidden; border-radius: 0.5rem; background-color: #1f2937; }
+    .news-card img { width: 100%; height: 15rem; object-fit: cover; transition: transform 0.3s; }
+    .news-card:hover img { transform: scale(1.05); }
+    .news-rating { position: absolute; top: 0.5rem; right: 0.5rem; background-color: rgba(255,255,0,0.5); color: black; font-weight: bold; padding: 0.25rem 0.5rem; border-radius: 0.25rem; opacity: 0; transition: opacity 0.3s; }
+    .news-card:hover .news-rating { opacity: 1; }
+  </style>
+</head>
+<body>
+  <header class="flex items-center justify-between p-6 bg-gray-800">
+    <div class="text-2xl font-bold text-indigo-400">GameSphere</div>
+    <nav class="space-x-4">
+      <a href="#" class="hover:text-indigo-400">Home</a>
+      <a href="#" class="hover:text-indigo-400">Videogiochi</a>
+      <a href="#" class="hover:text-indigo-400">Anime</a>
+      <a href="#" class="hover:text-indigo-400">Manga</a>
+      <a href="#" class="hover:text-indigo-400">Notizie</a>
+    </nav>
+  </header>
+
+  <main class="max-w-6xl mx-auto mt-6 px-4">
+    <h1 class="text-3xl font-bold mb-4">In Evidenza</h1>
+    <div id="slide-container" class="slide">
+      <span id="dots" class="absolute top-2 left-2 flex"></span>
+      <div id="slide-content" class="relative w-full h-full"></div>
+    </div>
+
+    <section class="mt-8">
+      <h2 class="text-2xl font-bold mb-4">Altre Notizie</h2>
+      <div id="news-grid" class="grid grid-cols-2 md:grid-cols-4 gap-6"></div>
+    </section>
+  </main>
+
+  <footer class="p-6 bg-gray-800 mt-12 text-center text-gray-400">
+    © 2025 GameSphere - Demo | <a href="#" class="hover:text-indigo-400">Contatti</a> | <a href="#" class="hover:text-indigo-400">Privacy</a>
+  </footer>
+
+  <script>
+    const SAMPLE_CONTENT = [
+      { title: "Elden Ring Review", type: "Game", excerpt: "Analisi approfondita di Elden Ring: gameplay, grafica e lore.", cover: "https://images.unsplash.com/photo-1605902711622-cfb43c4437d7?auto=format&fit=crop&w=800&q=60", rating: 9.5 },
+      { title: "Demon Slayer Anime News", type: "Anime", excerpt: "Ultimi aggiornamenti sulla stagione finale di Demon Slayer.", cover: "https://images.unsplash.com/photo-1618271436841-2e5fbb0b7a7b?auto=format&fit=crop&w=800&q=60", rating: 8.7 },
+      { title: "One Piece Manga Chapter 1050", type: "Manga", excerpt: "Riepilogo e analisi del capitolo 1050 di One Piece.", cover: "https://images.unsplash.com/photo-1618271436840-3a5fbb0a7a7f?auto=format&fit=crop&w=800&q=60", rating: 9.0 }
+    ];
+
+    const ADDITIONAL_CONTENT = [
+      { title: "Hogwarts Legacy Review", type: "Game", cover: "https://via.placeholder.com/300x450", rating: 8.5 },
+      { title: "Jujutsu Kaisen Anime Update", type: "Anime", cover: "https://via.placeholder.com/300x450", rating: 9.1 },
+      { title: "Naruto Manga Chapter 750", type: "Manga", cover: "https://via.placeholder.com/300x450", rating: 8.8 },
+      { title: "God of War Review", type: "Game", cover: "https://via.placeholder.com/300x450", rating: 9.7 }
+    ];
+
+    let currentSlide = 0;
+    const slideContainer = document.getElementById('slide-container');
+    const slideContent = document.getElementById('slide-content');
+    const dotsContainer = document.getElementById('dots');
+
+    function renderSlide() {
+      const item = SAMPLE_CONTENT[currentSlide];
+      slideContent.innerHTML = `
+        <img src="${item.cover}" alt="${item.title}">
+        <div class="slide-rating">${item.rating}/10</div>
+        <div class="slide-info">
+          <h2 class="text-xl font-bold">${item.title}</h2>
+          <p class="text-sm text-gray-200">${item.excerpt}</p>
+          <span class="text-xs bg-indigo-600 px-2 py-1 rounded mt-1 inline-block">${item.type}</span>
+        </div>
+      `;
+
+      dotsContainer.innerHTML = '';
+      SAMPLE_CONTENT.forEach((_, idx) => {
+        const dot = document.createElement('span');
+        dot.className = 'dot ' + (idx === currentSlide ? 'bg-indigo-400' : 'bg-white/50');
+        dotsContainer.appendChild(dot);
+      });
+    }
+
+    slideContainer.addEventListener('mousedown', e => {
+      const startX = e.clientX;
+      const onMouseMove = () => {};
+      const onMouseUp = e => {
+        const diff = e.clientX - startX;
+        if(diff > 50) currentSlide = (currentSlide - 1 + SAMPLE_CONTENT.length) % SAMPLE_CONTENT.length;
+        else if(diff < -50) currentSlide = (currentSlide + 1) % SAMPLE_CONTENT.length;
+        renderSlide();
+        window.removeEventListener('mouseup', onMouseUp);
+      };
+      window.addEventListener('mouseup', onMouseUp);
+    });
+
+    renderSlide();
+
+    // Render news grid
+    const newsGrid = document.getElementById('news-grid');
+    ADDITIONAL_CONTENT.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'news-card group';
+      card.innerHTML = `
+        <img src="${item.cover}" alt="${item.title}">
+        <div class="p-3">
+          <h3 class="text-lg font-semibold mb-1 truncate">${item.title}</h3>
+          <span class="text-xs bg-indigo-600 px-2 py-1 rounded">${item.type}</span>
+        </div>
+        <div class="news-rating">${item.rating}/10</div>
+      `;
+      newsGrid.appendChild(card);
+    });
+  </script>
+</body>
+</html>
