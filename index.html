@@ -1,122 +1,122 @@
-<?php
-// Simuliamo un array di post dinamici
-$posts = [
-    [
-        "title" => "Nuovo Gioco Annunciato",
-        "excerpt" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel hendrerit libero.",
-        "image" => "https://via.placeholder.com/600x300",
-        "link" => "#"
-    ],
-    [
-        "title" => "Recensione: Gioco XYZ",
-        "excerpt" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel hendrerit libero.",
-        "image" => "https://via.placeholder.com/600x300",
-        "link" => "#"
-    ],
-    [
-        "title" => "Guida: Come Vincere a Gioco ABC",
-        "excerpt" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel hendrerit libero.",
-        "image" => "https://via.placeholder.com/600x300",
-        "link" => "#"
-    ],
-];
-?>
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editorial Gaming Clone</title>
+    <title>Sito Gaming</title>
     <style>
-        body {font-family: 'Arial', sans-serif; background-color: #121212; color: #f5f5f5; margin:0;}
-        a {color: #ff4d4d; text-decoration: none;}
-        header {background-color: #1e1e1e; padding: 20px; text-align: center;}
-        header h1 {color: #ff4d4d; font-size: 36px;}
-        nav ul {list-style: none; display: flex; justify-content: center; gap: 20px; padding: 0;}
-        nav li {display: inline;}
-        main {display: grid; grid-template-columns: 3fr 1fr; gap: 20px; padding: 20px;}
-        article {background-color: #1e1e1e; padding: 15px; border-radius: 8px; margin-bottom: 20px;}
-        article img {max-width: 100%; border-radius: 5px;}
-        article h2 {color: #ff4d4d; margin: 10px 0;}
-        article p {margin: 10px 0;}
-        aside {background-color: #1e1e1e; padding: 15px; border-radius: 8px;}
-        aside h3 {color: #ff4d4d; margin-bottom: 10px;}
-        aside ul {list-style: none;}
-        aside ul li {margin-bottom: 10px;}
-        footer {text-align: center; padding: 20px; background-color: #1e1e1e; color: #aaa; margin-top: 20px;}
-        .highlight {background-color: #2e2e2e; transition: 0.3s;}
-        @media (max-width: 768px) {main {grid-template-columns: 1fr;}}
-        .menu-toggle {display:none; cursor:pointer; color:#ff4d4d; font-size:20px;}
-        @media (max-width:768px) {nav ul {flex-direction: column; display:none;} .menu-toggle{display:block;}}
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #0d0d0d;
+            color: #f0f0f0;
+        }
+        a { text-decoration: none; }
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background: #111;
+        }
+        .hero h1 {
+            font-size: 48px;
+            color: #ff0055;
+        }
+        .hero p {
+            font-size: 20px;
+            margin: 20px 0;
+        }
+        .hero a {
+            padding: 12px 25px;
+            background: #ff0055;
+            color: white;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        section {
+            padding: 50px 20px;
+        }
+        h2 {
+            text-align: center;
+            color: #ff0055;
+            margin-bottom: 40px;
+        }
+        .game-list {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .game-card {
+            background: #222;
+            padding: 20px;
+            border-radius: 10px;
+            width: 220px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .game-card:hover {
+            transform: scale(1.05);
+        }
+        .game-card img {
+            width: 100%;
+            border-radius: 5px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #111;
+            color: #888;
+        }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>Editorial Gaming</h1>
-    <span class="menu-toggle">☰ Menu</span>
-    <nav>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Notizie</a></li>
-            <li><a href="#">Recensioni</a></li>
-            <li><a href="#">Guide</a></li>
-            <li><a href="#">Contatti</a></li>
-        </ul>
-    </nav>
-</header>
+    <div class="hero">
+        <h1>Benvenuti nel Mio Sito Gaming</h1>
+        <p>Notizie, recensioni e tutto sul mondo dei videogiochi!</p>
+        <a href="#games">Scopri di più</a>
+    </div>
 
-<main>
-    <section>
-        <?php foreach($posts as $post): ?>
-            <article class="post">
-                <img src="<?php echo $post['image']; ?>" alt="<?php echo $post['title']; ?>">
-                <h2><?php echo $post['title']; ?></h2>
-                <p><?php echo $post['excerpt']; ?></p>
-                <a href="<?php echo $post['link']; ?>">Leggi di più</a>
-            </article>
-        <?php endforeach; ?>
+    <section id="games">
+        <h2>Ultimi Giochi</h2>
+        <div class="game-list">
+            <div class="game-card">
+                <img src="https://via.placeholder.com/200x100" alt="Gioco 1">
+                <h3>Gioco 1</h3>
+                <p>Descrizione breve del gioco.</p>
+            </div>
+            <div class="game-card">
+                <img src="https://via.placeholder.com/200x100" alt="Gioco 2">
+                <h3>Gioco 2</h3>
+                <p>Descrizione breve del gioco.</p>
+            </div>
+            <div class="game-card">
+                <img src="https://via.placeholder.com/200x100" alt="Gioco 3">
+                <h3>Gioco 3</h3>
+                <p>Descrizione breve del gioco.</p>
+            </div>
+        </div>
     </section>
 
-    <aside>
-        <h3>Categorie</h3>
-        <ul>
-            <li><a href="#">Notizie</a></li>
-            <li><a href="#">Recensioni</a></li>
-            <li><a href="#">Guide</a></li>
-            <li><a href="#">Anteprime</a></li>
-        </ul>
+    <section id="reviews" style="background:#111;">
+        <h2>Recensioni Recenti</h2>
+        <div class="game-list">
+            <div class="game-card">
+                <img src="https://via.placeholder.com/200x100" alt="Recensione 1">
+                <h3>Recensione 1</h3>
+                <p>Breve recensione del gioco.</p>
+            </div>
+            <div class="game-card">
+                <img src="https://via.placeholder.com/200x100" alt="Recensione 2">
+                <h3>Recensione 2</h3>
+                <p>Breve recensione del gioco.</p>
+            </div>
+        </div>
+    </section>
 
-        <h3>Articoli Recenti</h3>
-        <ul>
-            <li><a href="#">Gioco XYZ in Offerta</a></li>
-            <li><a href="#">Nuove Espansioni</a></li>
-            <li><a href="#">Aggiornamento Patch 1.2</a></li>
-            <li><a href="#">Eventi Multiplayer</a></li>
-        </ul>
-    </aside>
-</main>
-
-<footer>
-    &copy; 2025 Editorial Gaming. Tutti i diritti riservati.
-</footer>
-
-<script>
-    // Toggle menu mobile
-    const toggle = document.querySelector('.menu-toggle');
-    const nav = document.querySelector('nav ul');
-    toggle.addEventListener('click', () => {
-        nav.style.display = (nav.style.display === 'flex') ? 'none' : 'flex';
-    });
-
-    // Evidenzia articolo al passaggio del mouse
-    const articles = document.querySelectorAll('.post');
-    articles.forEach(a => {
-        a.addEventListener('mouseenter', () => { a.classList.add('highlight'); });
-        a.addEventListener('mouseleave', () => { a.classList.remove('highlight'); });
-    });
-</script>
+    <footer>
+        &copy; 2025 Sito Gaming. Tutti i diritti riservati.
+    </footer>
 
 </body>
 </html>
