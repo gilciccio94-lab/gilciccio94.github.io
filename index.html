@@ -3,120 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sito Gaming</title>
+    <title>Gaming News Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
-            font-family: 'Arial', sans-serif;
-            background-color: #0d0d0d;
-            color: #f0f0f0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
         }
-        a { text-decoration: none; }
-        .hero {
+
+        /* Header */
+        header {
+            background-color: #222;
+            color: #fff;
+            padding: 20px;
             text-align: center;
-            padding: 100px 20px;
-            background: #111;
         }
-        .hero h1 {
-            font-size: 48px;
-            color: #ff0055;
+
+        header h1 {
+            margin: 0;
+            font-size: 2em;
         }
-        .hero p {
-            font-size: 20px;
-            margin: 20px 0;
+
+        /* Menu */
+        nav {
+            background-color: #444;
         }
-        .hero a {
-            padding: 12px 25px;
-            background: #ff0055;
-            color: white;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-        section {
-            padding: 50px 20px;
-        }
-        h2 {
-            text-align: center;
-            color: #ff0055;
-            margin-bottom: 40px;
-        }
-        .game-list {
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
             display: flex;
             justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0;
+        }
+
+        nav ul li a {
+            display: block;
+            padding: 15px 25px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            background-color: #666;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            display: flex;
             gap: 20px;
             flex-wrap: wrap;
+            padding: 0 10px;
         }
-        .game-card {
-            background: #222;
-            padding: 20px;
-            border-radius: 10px;
-            width: 220px;
-            text-align: center;
-            transition: transform 0.3s;
+
+        section {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            flex: 1 1 300px;
         }
-        .game-card:hover {
-            transform: scale(1.05);
+
+        section h2 {
+            margin-top: 0;
+            color: #222;
         }
-        .game-card img {
-            width: 100%;
-            border-radius: 5px;
+
+        article {
+            margin-bottom: 15px;
         }
+
+        article h3 {
+            margin: 0 0 5px;
+            font-size: 1.2em;
+        }
+
+        article p {
+            margin: 0;
+            color: #555;
+        }
+
+        /* Footer */
         footer {
+            background-color: #222;
+            color: #fff;
             text-align: center;
             padding: 20px;
-            background: #111;
-            color: #888;
+            margin-top: 40px;
+        }
+
+        /* Responsive */
+        @media(max-width: 768px){
+            main {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 <body>
+    <header>
+        <h1>Gaming News Hub</h1>
+    </header>
 
-    <div class="hero">
-        <h1>Benvenuti nel Mio Sito Gaming</h1>
-        <p>Notizie, recensioni e tutto sul mondo dei videogiochi!</p>
-        <a href="#games">Scopri di più</a>
-    </div>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Notizie</a></li>
+            <li><a href="#">Recensioni</a></li>
+            <li><a href="#">Guide</a></li>
+            <li><a href="#">Forum</a></li>
+        </ul>
+    </nav>
 
-    <section id="games">
-        <h2>Ultimi Giochi</h2>
-        <div class="game-list">
-            <div class="game-card">
-                <img src="https://via.placeholder.com/200x100" alt="Gioco 1">
-                <h3>Gioco 1</h3>
-                <p>Descrizione breve del gioco.</p>
-            </div>
-            <div class="game-card">
-                <img src="https://via.placeholder.com/200x100" alt="Gioco 2">
-                <h3>Gioco 2</h3>
-                <p>Descrizione breve del gioco.</p>
-            </div>
-            <div class="game-card">
-                <img src="https://via.placeholder.com/200x100" alt="Gioco 3">
-                <h3>Gioco 3</h3>
-                <p>Descrizione breve del gioco.</p>
-            </div>
-        </div>
-    </section>
+    <main>
+        <!-- Sezione Notizie -->
+        <section>
+            <h2>Ultime Notizie</h2>
+            <article>
+                <h3>Nuovo gioco PS5 annunciato</h3>
+                <p>Il titolo uscirà il prossimo anno con funzionalità esclusive per PS5.</p>
+            </article>
+            <article>
+                <h3>Aggiornamento firmware PS5</h3>
+                <p>Sony rilascia aggiornamento con miglioramenti alle prestazioni e alla stabilità.</p>
+            </article>
+        </section>
 
-    <section id="reviews" style="background:#111;">
-        <h2>Recensioni Recenti</h2>
-        <div class="game-list">
-            <div class="game-card">
-                <img src="https://via.placeholder.com/200x100" alt="Recensione 1">
-                <h3>Recensione 1</h3>
-                <p>Breve recensione del gioco.</p>
-            </div>
-            <div class="game-card">
-                <img src="https://via.placeholder.com/200x100" alt="Recensione 2">
-                <h3>Recensione 2</h3>
-                <p>Breve recensione del gioco.</p>
-            </div>
-        </div>
-    </section>
+        <!-- Sezione Recensioni -->
+        <section>
+            <h2>Recensioni</h2>
+            <article>
+                <h3>Gioco XYZ - Recensione</h3>
+                <p>Analisi completa del gameplay, grafica e contenuti. Voto: 9/10</p>
+            </article>
+            <article>
+                <h3>Gioco ABC - Recensione</h3>
+                <p>Un'avventura emozionante con meccaniche innovative. Voto: 8/10</p>
+            </article>
+        </section>
+    </main>
 
     <footer>
-        &copy; 2025 Sito Gaming. Tutti i diritti riservati.
+        &copy; 2025 Gaming News Hub. Tutti i diritti riservati.
     </footer>
-
 </body>
 </html>
