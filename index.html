@@ -8,7 +8,7 @@
 <style>
 /* RESET BASE */
 * {margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', sans-serif;}
-body {background:#f5f5f5; color:#333;}
+body {background:#f5f5f5; color:#333; position: relative;}
 
 /* HEADER */
 header {display:flex; align-items:center; justify-content:space-between; padding:15px 50px; background:#1a1a1a; color:#fff; position:sticky; top:0; z-index:100;}
@@ -20,7 +20,7 @@ header nav ul li a:hover {color:#00bcd4;}
 header .search {padding:5px 10px; border-radius:5px; border:none;}
 
 /* CONTENITORE CENTRALE */
-.container {max-width: 1200px; margin: 0 auto; padding: 0 20px; background: #f5f5f5;}
+.container {max-width: 1200px; margin: 0 auto; padding: 0 20px; background: #f5f5f5; position: relative;}
 
 /* SLIDER */
 .hero {margin-top:10px; position:relative;}
@@ -33,19 +33,6 @@ header .search {padding:5px 10px; border-radius:5px; border:none;}
 .swiper-pagination {top: 10px; left: 10px; width: auto; text-align: left; position: absolute; z-index: 10;}
 .swiper-pagination-bullet {background: rgba(255,255,255,0.7); opacity: 1;}
 .swiper-pagination-bullet-active {background: #00bcd4;}
-
-/* COLONNA GUIDE SOTTO SLIDER */
-.guides {
-    margin: 30px 0;
-    padding: 15px;
-    background: #f0f0f0;
-    border-radius: 10px;
-}
-.guides h3 {margin-bottom: 15px; font-size: 1.2em; color: #333;}
-.guides ul {list-style:none; padding-left:0;}
-.guides ul li {margin-bottom:10px;}
-.guides ul li a {text-decoration:none; color:#00bcd4; transition: color 0.3s;}
-.guides ul li a:hover {color:#007c91;}
 
 /* FEATURED CARDS */
 .featured {padding:50px 0; text-align:center;}
@@ -109,6 +96,23 @@ header .search {padding:5px 10px; border-radius:5px; border:none;}
     box-shadow: none;
 }
 
+/* COLONNA GUIDE LATERALE FUORI CONTENITORE */
+.guides-column {
+    position: absolute;
+    top: 0;
+    left: calc(50% + 600px); /* affiancata container 1200px */
+    width: 220px;
+    background: #f0f0f0;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.guides-column h3 {margin-bottom:15px; font-size:1.2em; color:#333;}
+.guides-column ul {list-style:none; padding-left:0;}
+.guides-column ul li {margin-bottom:10px;}
+.guides-column ul li a {text-decoration:none; color:#00bcd4; transition: color 0.3s;}
+.guides-column ul li a:hover {color:#007c91;}
+
 /* FOOTER */
 footer {background:#1a1a1a; color:#fff; text-align:center; padding:25px 0; margin-top:50px;}
 footer .socials a {color:#00bcd4; text-decoration:none; margin:0 5px;}
@@ -151,18 +155,6 @@ footer .socials a {color:#00bcd4; text-decoration:none; margin:0 5px;}
         </div>
     </section>
 
-    <!-- COLONNA GUIDE SOTTO SLIDER -->
-    <section class="guides">
-      <h3>Guide Giochi</h3>
-      <ul>
-        <li><a href="#">Guida a Hell Us</a></li>
-        <li><a href="#">Strategie Final Fantasy XVI</a></li>
-        <li><a href="#">Come sbloccare tutti i trofei di Zelda</a></li>
-        <li><a href="#">Guida PvP: Apex Legends</a></li>
-        <li><a href="#">Migliori build in Elden Ring</a></li>
-      </ul>
-    </section>
-
     <!-- SEZIONE GIOCHI -->
     <section class="featured">
         <h2>Recensioni Giochi</h2>
@@ -181,7 +173,7 @@ footer .socials a {color:#00bcd4; text-decoration:none; margin:0 5px;}
                     </div>
                 </div>
             </a>
-            <!-- Altre 4 card giochi -->
+            <!-- altre card -->
         </div>
     </section>
 
@@ -203,7 +195,7 @@ footer .socials a {color:#00bcd4; text-decoration:none; margin:0 5px;}
                     </div>
                 </div>
             </a>
-            <!-- Altre 4 card anime -->
+            <!-- altre card -->
         </div>
     </section>
 
@@ -217,34 +209,50 @@ footer .socials a {color:#00bcd4; text-decoration:none; margin:0 5px;}
 
 </div> <!-- /container -->
 
+<!-- COLONNA GUIDE FUORI CONTENITORE -->
+<aside class="guides-column">
+    <h3>Guide Giochi</h3>
+    <ul>
+        <li><a href="#">Guida a Hell Us</a></li>
+        <li><a href="#">Strategie Final Fantasy XVI</a></li>
+        <li><a href="#">Come sbloccare tutti i trofei di Zelda</a></li>
+        <li><a href="#">Guida PvP: Apex Legends</a></li>
+        <li><a href="#">Migliori build in Elden Ring</a></li>
+    </ul>
+</aside>
+
 <!-- SWIPER JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 <script>
+// SWIPER
 const swiper = new Swiper(".mySwiper", {
     loop: true,
-    pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-        type: "bullets",
-    },
+    pagination: { el: ".swiper-pagination", clickable: true, type:"bullets" }
 });
 
-// FADE-IN CASCATA CARD
+// FADE-IN CARD
 document.addEventListener('DOMContentLoaded', () => {
     const cards = document.querySelectorAll('.card');
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if(entry.isIntersecting) {
                 const index = Array.from(cards).indexOf(entry.target);
-                setTimeout(() => {
-                    entry.target.classList.add('visible');
-                }, index * 150); 
+                setTimeout(() => { entry.target.classList.add('visible'); }, index * 150); 
                 observer.unobserve(entry.target);
             }
         });
     }, { threshold: 0.2 });
     cards.forEach(card => observer.observe(card));
 });
+
+// ALTEZZA COLONNA GUIDE
+function syncGuideHeight() {
+    const container = document.querySelector('.container');
+    const guides = document.querySelector('.guides-column');
+    guides.style.height = container.offsetHeight + 'px';
+}
+window.addEventListener('load', syncGuideHeight);
+window.addEventListener('resize', syncGuideHeight);
 </script>
 </body>
 </html>
