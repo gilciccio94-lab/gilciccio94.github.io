@@ -97,12 +97,45 @@ header .search {padding:5px 10px; border-radius:5px; border:none;}
     box-shadow: none;
 }
 
+/* COLONNA GUIDE GIOCHI */
+.guides-column {
+  position: fixed;
+  top: 100px;
+  right: 0;
+  width: 220px;
+  background: #f0f0f0;
+  border-left: 2px solid #ddd;
+  padding: 15px;
+  height: calc(100% - 100px);
+  overflow-y: auto;
+  font-size: 0.9em;
+  z-index: 1;
+}
+
+.guides-column h3 {margin-bottom:15px; font-size:1.1em; color:#333;}
+.guides-column ul {list-style:none; padding-left:0;}
+.guides-column ul li {margin-bottom:10px;}
+.guides-column ul li a {text-decoration:none; color:#00bcd4; transition: color 0.3s;}
+.guides-column ul li a:hover {color:#007c91;}
+
 /* FOOTER */
 footer {background:#1a1a1a; color:#fff; text-align:center; padding:25px 0; margin-top:50px;}
 footer .socials a {color:#00bcd4; text-decoration:none; margin:0 5px;}
 </style>
 </head>
 <body>
+
+<!-- COLONNA GUIDE GIOCHI -->
+<div class="guides-column">
+  <h3>Guide Giochi</h3>
+  <ul>
+    <li><a href="#">Guida a Hell Us</a></li>
+    <li><a href="#">Strategie Final Fantasy XVI</a></li>
+    <li><a href="#">Come sbloccare tutti i trofei di Zelda</a></li>
+    <li><a href="#">Guida PvP: Apex Legends</a></li>
+    <li><a href="#">Migliori build in Elden Ring</a></li>
+  </ul>
+</div>
 
 <!-- HEADER -->
 <header>
