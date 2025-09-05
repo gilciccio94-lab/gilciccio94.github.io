@@ -1,138 +1,84 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sito Astra Clone</title>
-<style>
-    /* Reset e base */
-    * {margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif;}
-    body {line-height:1.6; color:#333;}
-    a {text-decoration:none; color: inherit;}
-
-    /* Header */
-    header {
-        background:#0d6efd;
-        color:white;
-        padding:20px 0;
-    }
-    header .container {
-        display:flex;
-        justify-content:space-between;
-        align-items:center;
-        max-width:1200px;
-        margin:0 auto;
-        padding:0 20px;
-    }
-    header h1 {font-size:24px;}
-    nav ul {display:flex; list-style:none;}
-    nav ul li {margin-left:20px;}
-    nav ul li a {color:white; font-weight:500;}
-
-    /* Hero */
-    .hero {
-        background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), #0d6efd;
-        color:white;
-        text-align:center;
-        padding:100px 20px;
-    }
-    .hero h2 {font-size:48px; margin-bottom:20px;}
-    .hero p {font-size:20px; margin-bottom:30px;}
-    .hero button {
-        padding:12px 30px;
-        background:#ffc107;
-        color:#333;
-        border:none;
-        border-radius:5px;
-        font-weight:bold;
-        cursor:pointer;
-        transition:0.3s;
-    }
-    .hero button:hover {background:#e0a800;}
-
-    /* Sezione Servizi */
-    section {padding:80px 20px; max-width:1200px; margin:0 auto;}
-    section h3 {text-align:center; margin-bottom:50px; font-size:32px;}
-    .features {
-        display:flex;
-        flex-wrap:wrap;
-        gap:30px;
-        justify-content:center;
-    }
-    .feature {
-        flex:1 1 250px;
-        background:#f8f9fa;
-        padding:30px;
-        border-radius:10px;
-        text-align:center;
-        transition: transform 0.3s;
-    }
-    .feature:hover {transform: translateY(-10px);}
-    .feature h4 {margin-bottom:15px; font-size:24px;}
-    .feature p {font-size:16px; color:#555;}
-
-    /* Footer */
-    footer {
-        background:#333;
-        color:white;
-        text-align:center;
-        padding:40px 20px;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galleria Locandine</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
     }
 
-    /* Responsive */
-    @media(max-width:768px){
-        header .container {flex-direction:column; gap:15px;}
-        nav ul {flex-direction:column; gap:10px;}
+    h1 {
+      text-align: center;
+      padding: 20px;
+      color: #333;
     }
-</style>
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .poster {
+      background-color: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .poster:hover {
+      transform: scale(1.05);
+    }
+
+    .poster img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .poster-title {
+      padding: 10px;
+      text-align: center;
+      font-weight: bold;
+      color: #555;
+    }
+  </style>
 </head>
 <body>
 
-<!-- Header -->
-<header>
-    <div class="container">
-        <h1>Il Mio Sito</h1>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Servizi</a></li>
-                <li><a href="#">Chi Siamo</a></li>
-                <li><a href="#">Contatti</a></li>
-            </ul>
-        </nav>
+  <h1>Galleria Locandine</h1>
+
+  <div class="gallery">
+    <div class="poster">
+      <img src="https://via.placeholder.com/300x450" alt="Locandina 1">
+      <div class="poster-title">Film 1</div>
     </div>
-</header>
-
-<!-- Hero -->
-<section class="hero">
-    <h2>Benvenuto nel Nostro Sito</h2>
-    <p>Un design moderno ispirato ai template Astra Starter</p>
-    <button>Scopri di più</button>
-</section>
-
-<!-- Features -->
-<section>
-    <h3>I Nostri Servizi</h3>
-    <div class="features">
-        <div class="feature">
-            <h4>Servizio 1</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
-        <div class="feature">
-            <h4>Servizio 2</h4>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-        </div>
-        <div class="feature">
-            <h4>Servizio 3</h4>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod.</p>
-        </div>
+    <div class="poster">
+      <img src="https://via.placeholder.com/300x400" alt="Locandina 2">
+      <div class="poster-title">Film 2</div>
     </div>
-</section>
-
-<!-- Footer -->
-<footer>
-    <p>&copy; 2025 Il Mio Sito. Tutti i diritti riservati.</p>
-</footer>
+    <div class="poster">
+      <img src="https://via.placeholder.com/200x300" alt="Locandina 3">
+      <div class="poster-title">Film 3</div>
+    </div>
+    <div class="poster">
+      <img src="https://via.placeholder.com/250x350" alt="Locandina 4">
+      <div class="poster-title">Film 4</div>
+    </div>
+    <div class="poster">
+      <img src="https://via.placeholder.com/400x600" alt="Locandina 5">
+      <div class="poster-title">Film 5</div>
+    </div>
+  </div>
 
 </body>
 </html>
