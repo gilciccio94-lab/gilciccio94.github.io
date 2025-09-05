@@ -104,13 +104,13 @@ footer .socials a {color:#00bcd4; text-decoration:none; margin:0 5px;}
     <section class="hero">
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide" style="background-image:url('https://via.placeholder.com/1200x400?text=Novità+1')">
+                <div class="swiper-slide" style="background-image:url('img/slide1.jpg')">
                     <div class="slide-text"><h2>Nuovo Gioco Epico</h2><p>Recensione critica + punteggio utente</p></div>
                 </div>
-                <div class="swiper-slide" style="background-image:url('https://via.placeholder.com/1200x400?text=Novità+2')">
+                <div class="swiper-slide" style="background-image:url('img/slide2.jpg')">
                     <div class="slide-text"><h2>Ultimo Film da non perdere</h2><p>Valutazione critica e popolare</p></div>
                 </div>
-                <div class="swiper-slide" style="background-image:url('https://via.placeholder.com/1200x400?text=Novità+3')">
+                <div class="swiper-slide" style="background-image:url('img/slide3.jpg')">
                     <div class="slide-text"><h2>Serie TV Top</h2><p>Valutazioni aggiornate</p></div>
                 </div>
             </div>
@@ -126,7 +126,7 @@ footer .socials a {color:#00bcd4; text-decoration:none; margin:0 5px;}
             <a href="hell-us.html" class="card-link">
                 <div class="card">
                     <div class="card-label">Recensione</div>
-                    <img src="https://raw.githubusercontent.com/gilciccio94/gilciccio94.github.io/main/img/hell-is-us.jpg" alt="Hell Is Us">
+                    <img src="img/hell-is-us.jpg" alt="Hell Is Us">
                     <div class="card-content">
                         <h3>Hell Is Us</h3>
                         <div class="score">
@@ -141,7 +141,7 @@ footer .socials a {color:#00bcd4; text-decoration:none; margin:0 5px;}
             <a href="#" class="card-link">
                 <div class="card">
                     <div class="card-label">Nuovo</div>
-                    <img src="https://via.placeholder.com/250x150" alt="Film 1">
+                    <img src="img/film1.jpg" alt="Film 1">
                     <div class="card-content">
                         <h3>Film 1</h3>
                         <div class="score">
@@ -156,7 +156,7 @@ footer .socials a {color:#00bcd4; text-decoration:none; margin:0 5px;}
             <a href="#" class="card-link">
                 <div class="card">
                     <div class="card-label">Top Rated</div>
-                    <img src="https://via.placeholder.com/250x150" alt="Serie TV 1">
+                    <img src="img/serie1.jpg" alt="Serie TV 1">
                     <div class="card-content">
                         <h3>Serie TV 1</h3>
                         <div class="score">
@@ -171,7 +171,7 @@ footer .socials a {color:#00bcd4; text-decoration:none; margin:0 5px;}
             <a href="#" class="card-link">
                 <div class="card">
                     <div class="card-label">Nuovo</div>
-                    <img src="https://via.placeholder.com/250x150" alt="Album 1">
+                    <img src="img/album1.jpg" alt="Album 1">
                     <div class="card-content">
                         <h3>Album 1</h3>
                         <div class="score">
@@ -194,37 +194,4 @@ footer .socials a {color:#00bcd4; text-decoration:none; margin:0 5px;}
 
 </div> <!-- /container -->
 
-<!-- SWIPER JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-<script>
-const swiper = new Swiper(".mySwiper", {
-    loop: true,
-    pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-        type: "bullets",
-    },
-});
-
-// FADE-IN CASCATA CARD
-document.addEventListener('DOMContentLoaded', () => {
-    const cards = document.querySelectorAll('.card');
-
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if(entry.isIntersecting) {
-                const index = Array.from(cards).indexOf(entry.target);
-                setTimeout(() => {
-                    entry.target.classList.add('visible');
-                }, index * 150); // 150ms di ritardo a cascata
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.2 });
-
-    cards.forEach(card => observer.observe(card));
-});
-</script>
-</body>
-</html>
-
+<!-- SWIP
