@@ -97,7 +97,7 @@ header .search {padding:5px 10px; border-radius:5px; border:none;}
 }
 
 /* COLONNA GUIDE LATERALE FUORI CONTENITORE */
-.guides-column {
+.sidebar {
     position: absolute;
     top: 0;
     left: calc(50% + 600px); /* affiancata container 1200px */
@@ -107,11 +107,11 @@ header .search {padding:5px 10px; border-radius:5px; border:none;}
     padding: 15px;
 }
 
-.guides-column h3 {margin-bottom:15px; font-size:1.2em; color:#333;}
-.guides-column ul {list-style:none; padding-left:0;}
-.guides-column ul li {margin-bottom:10px;}
-.guides-column ul li a {text-decoration:none; color:#00bcd4; transition: color 0.3s;}
-.guides-column ul li a:hover {color:#007c91;}
+.sidebar h3 {margin-bottom:15px; font-size:1.2em; color:#333;}
+.sidebar ul {list-style:none; padding-left:0;}
+.sidebar ul li {margin-bottom:10px;}
+.sidebar ul li a {text-decoration:none; color:#00bcd4; transition: color 0.3s;}
+.sidebar ul li a:hover {color:#007c91;}
 
 /* FOOTER */
 footer {background:#1a1a1a; color:#fff; text-align:center; padding:25px 0; margin-top:50px;}
@@ -173,7 +173,7 @@ footer .socials a {color:#00bcd4; text-decoration:none; margin:0 5px;}
                     </div>
                 </div>
             </a>
-            <!-- altre card -->
+            <!-- altre card giochi -->
         </div>
     </section>
 
@@ -195,7 +195,7 @@ footer .socials a {color:#00bcd4; text-decoration:none; margin:0 5px;}
                     </div>
                 </div>
             </a>
-            <!-- altre card -->
+            <!-- altre card anime -->
         </div>
     </section>
 
@@ -209,15 +209,17 @@ footer .socials a {color:#00bcd4; text-decoration:none; margin:0 5px;}
 
 </div> <!-- /container -->
 
-<!-- COLONNA GUIDE FUORI CONTENITORE -->
-<aside class="guides-column">
-    <h3>Guide Giochi</h3>
+<!-- COLONNA GUIDE LATERALE FUORI CONTENITORE -->
+<aside class="sidebar">
+    <h3>Recensioni Recenti</h3>
     <ul>
-        <li><a href="#">Guida a Hell Us</a></li>
-        <li><a href="#">Strategie Final Fantasy XVI</a></li>
-        <li><a href="#">Come sbloccare tutti i trofei di Zelda</a></li>
-        <li><a href="#">Guida PvP: Apex Legends</a></li>
-        <li><a href="#">Migliori build in Elden Ring</a></li>
+        <li><a href="#">Street Fighter Alpha</a></li>
+        <li><a href="#">Lupin III: La partita Italiana</a></li>
+        <li><a href="#">Mobile Suit Gundam Wing</a></li>
+        <li><a href="#">Gundam Wing Endless Waltz OVA</a></li>
+        <li><a href="#">Welcome to Japan, Ms. Elf!</a></li>
+        <li><a href="#">Willy il Coyote e Beep Beep</a></li>
+        <li><a href="#">Shamanic Princess</a></li>
     </ul>
 </aside>
 
@@ -245,14 +247,14 @@ document.addEventListener('DOMContentLoaded', () => {
     cards.forEach(card => observer.observe(card));
 });
 
-// ALTEZZA COLONNA GUIDE
-function syncGuideHeight() {
+// SINCRONIZZA ALTEZZA COLONNA LATERALE
+function syncSidebarHeight() {
     const container = document.querySelector('.container');
-    const guides = document.querySelector('.guides-column');
-    guides.style.height = container.offsetHeight + 'px';
+    const sidebar = document.querySelector('.sidebar');
+    sidebar.style.height = container.offsetHeight + 'px';
 }
-window.addEventListener('load', syncGuideHeight);
-window.addEventListener('resize', syncGuideHeight);
+window.addEventListener('load', syncSidebarHeight);
+window.addEventListener('resize', syncSidebarHeight);
 </script>
 </body>
 </html>
