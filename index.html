@@ -50,7 +50,7 @@ header .search {padding:5px 10px; border-radius:5px; border:none;}
     box-shadow:0 4px 12px rgba(0,0,0,0.1);
     transition: transform 0.3s, box-shadow 0.3s;
     position: relative;
-    height: 220px; /* card compatta ottimizzata */
+    height: 180px; /* più compatta senza descrizione */
     opacity: 0;
     transform: translateY(20px);
 }
@@ -62,22 +62,13 @@ header .search {padding:5px 10px; border-radius:5px; border:none;}
 .card img {width: 100%; height: 110px; object-fit: cover; border-bottom: 1px solid #ddd; flex-shrink: 0;}
 
 /* CONTENUTO CARD */
-.card-content {padding:6px 8px; flex-grow:1; display:flex; flex-direction:column; justify-content:space-between;}
+.card-content {padding:6px 8px; flex-grow:1; display:flex; flex-direction:column; justify-content:flex-start;}
 .card-content h3 {margin-bottom:4px; font-size:1em;}
 .card-content p.card-meta {font-size:0.7em; color:#777; margin-bottom:4px;}
-.card-content p.card-excerpt {
-    font-size:0.75em;
-    color:#555;
-    line-height:1.1em;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 3; /* massimo 3 righe */
-    -webkit-box-orient: vertical;
-}
+.card-content p.card-excerpt {display:none;} /* rimuove eventuali descrizioni */
 
 /* SCORE */
-.card-content .score {display:flex; justify-content:flex-start; align-items:center; font-weight:bold; transition: transform 0.3s ease, box-shadow 0.3s ease; margin-top:4px;}
+.card-content .score {display:flex; justify-content:flex-start; align-items:center; font-weight:bold; transition: transform 0.3s ease, box-shadow 0.3s ease; margin-top:auto;}
 .score .meta {padding:3px 5px; border-radius:4px; color:#fff; font-size:0.8em;}
 .meta.green {background:#6c9;}
 .meta.yellow {background:#ffcc00; color:#000;}
@@ -151,7 +142,6 @@ footer .socials a {color:#00bcd4; text-decoration:none; margin:0 5px;}
                     <div class="card-content">
                         <h3>Hell Is Us</h3>
                         <p class="card-meta">Pubblicato: 12/08/2025 | Editore: Ivano Torre</p>
-                        <p class="card-excerpt">Un mix di azione e horror immersivo con combattimenti stimolanti e grafica d’impatto.</p>
                         <div class="score">
                             <span class="meta green">78</span>
                         </div>
@@ -173,7 +163,6 @@ footer .socials a {color:#00bcd4; text-decoration:none; margin:0 5px;}
                     <div class="card-content">
                         <h3>Serie TV 1</h3>
                         <p class="card-meta">Pubblicato: 05/08/2025 | Editore: Ivano Torre</p>
-                        <p class="card-excerpt">Una serie avvincente con trama intricata e personaggi ben sviluppati.</p>
                         <div class="score">
                             <span class="meta green">92</span>
                         </div>
