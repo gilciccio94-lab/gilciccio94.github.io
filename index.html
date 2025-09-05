@@ -1,167 +1,177 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gaming News Hub</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Roboto', sans-serif;
-            background-color: #f4f4f4;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gaming News Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    body {
+        margin: 0;
+        font-family: 'Roboto', sans-serif;
+        background-color: #f4f4f4;
+    }
 
-        /* Header */
-        header {
-            background-color: #222;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
+    /* Header */
+    header {
+        background-color: #222;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+    }
 
-        header h1 {
-            margin: 0;
-            font-size: 2em;
-        }
+    header h1 {
+        margin: 0;
+        font-size: 2em;
+    }
 
-        /* Menu */
-        nav {
-            background-color: #444;
-        }
+    /* Menu */
+    nav {
+        background-color: #444;
+    }
 
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-        }
+    nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
 
-        nav ul li {
-            margin: 0;
-        }
+    nav ul li {
+        margin: 0;
+    }
 
-        nav ul li a {
-            display: block;
-            padding: 15px 25px;
-            color: #fff;
-            text-decoration: none;
-        }
+    nav ul li a {
+        display: block;
+        padding: 15px 25px;
+        color: #fff;
+        text-decoration: none;
+    }
 
-        nav ul li a:hover {
-            background-color: #666;
-        }
+    nav ul li a:hover {
+        background-color: #666;
+    }
 
-        /* Main Content */
+    /* Main Content */
+    main {
+        max-width: 1200px;
+        margin: 20px auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 0 10px;
+    }
+
+    .featured {
+        flex: 2 1 600px;
+        background-color: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .featured img {
+        width: 100%;
+        display: block;
+    }
+
+    .featured h2 {
+        margin: 10px;
+    }
+
+    .grid {
+        flex: 1 1 300px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .card {
+        background-color: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .card img {
+        width: 100%;
+        display: block;
+    }
+
+    .card h3 {
+        margin: 10px;
+        font-size: 1.1em;
+    }
+
+    .card p {
+        margin: 0 10px 10px;
+        color: #555;
+    }
+
+    footer {
+        background-color: #222;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+        margin-top: 40px;
+    }
+
+    @media(max-width: 768px){
         main {
-            max-width: 1200px;
-            margin: 20px auto;
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            padding: 0 10px;
+            flex-direction: column;
         }
-
-        section {
-            background-color: #fff;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            flex: 1 1 300px;
-        }
-
-        section h2 {
-            margin-top: 0;
-            color: #222;
-        }
-
-        article {
-            margin-bottom: 20px;
-        }
-
-        article img {
-            width: 100%;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-
-        article h3 {
-            margin: 0 0 5px;
-            font-size: 1.2em;
-        }
-
-        article p {
-            margin: 0;
-            color: #555;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #222;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-        }
-
-        /* Responsive */
-        @media(max-width: 768px){
-            main {
-                flex-direction: column;
-            }
-        }
-    </style>
+    }
+</style>
 </head>
 <body>
-    <header>
-        <h1>Gaming News Hub</h1>
-    </header>
 
-    <nav>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Notizie</a></li>
-            <li><a href="#">Recensioni</a></li>
-            <li><a href="#">Guide</a></li>
-            <li><a href="#">Forum</a></li>
-        </ul>
-    </nav>
+<header>
+    <h1>Gaming News Hub</h1>
+</header>
 
-    <main>
-        <!-- Sezione Notizie -->
-        <section>
-            <h2>Ultime Notizie</h2>
-            <article>
-                <img src="https://via.placeholder.com/600x300?text=Nuovo+Gioco+PS5" alt="Nuovo Gioco PS5">
-                <h3>Nuovo gioco PS5 annunciato</h3>
-                <p>Il titolo uscirà il prossimo anno con funzionalità esclusive per PS5.</p>
-            </article>
-            <article>
-                <img src="https://via.placeholder.com/600x300?text=Aggiornamento+Firmware+PS5" alt="Aggiornamento PS5">
-                <h3>Aggiornamento firmware PS5</h3>
-                <p>Sony rilascia aggiornamento con miglioramenti alle prestazioni e alla stabilità.</p>
-            </article>
-        </section>
+<nav>
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Notizie</a></li>
+        <li><a href="#">Recensioni</a></li>
+        <li><a href="#">Guide</a></li>
+        <li><a href="#">Forum</a></li>
+    </ul>
+</nav>
 
-        <!-- Sezione Recensioni -->
-        <section>
-            <h2>Recensioni</h2>
-            <article>
-                <img src="https://via.placeholder.com/600x300?text=Gioco+XYZ" alt="Gioco XYZ">
-                <h3>Gioco XYZ - Recensione</h3>
-                <p>Analisi completa del gameplay, grafica e contenuti. Voto: 9/10</p>
-            </article>
-            <article>
-                <img src="https://via.placeholder.com/600x300?text=Gioco+ABC" alt="Gioco ABC">
-                <h3>Gioco ABC - Recensione</h3>
-                <p>Un'avventura emozionante con meccaniche innovative. Voto: 8/10</p>
-            </article>
-        </section>
-    </main>
+<main>
+    <!-- Articolo in evidenza -->
+    <div class="featured">
+        <img src="https://via.placeholder.com/1200x500?text=Gioco+PS5+In+Evidenza" alt="Gioco PS5 In Evidenza">
+        <h2>Gioco PS5 in Evidenza</h2>
+        <p style="padding:0 10px 10px;">Il titolo più atteso dell’anno con caratteristiche uniche e gameplay mozzafiato.</p>
+    </div>
 
-    <footer>
-        &copy; 2025 Gaming News Hub. Tutti i diritti riservati.
-    </footer>
+    <!-- Griglia di articoli più piccoli -->
+    <div class="grid">
+        <div class="card">
+            <img src="https://via.placeholder.com/600x300?text=Gioco+ABC" alt="Gioco ABC">
+            <h3>Gioco ABC - Recensione</h3>
+            <p>Un’avventura emozionante con grafica spettacolare. Voto: 8/10</p>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/600x200?text=Gioco+XYZ" alt="Gioco XYZ">
+            <h3>Gioco XYZ - Anteprima</h3>
+            <p>Gameplay innovativo e missioni avvincenti.</p>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/600x250?text=Nuovo+Aggiornamento" alt="Aggiornamento">
+            <h3>Aggiornamento PS5</h3>
+            <p>Nuove funzionalità e miglioramenti alla stabilità del sistema.</p>
+        </div>
+    </div>
+</main>
+
+<footer>
+    &copy; 2025 Gaming News Hub. Tutti i diritti riservati.
+</footer>
+
 </body>
 </html>
