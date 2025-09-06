@@ -28,12 +28,14 @@ main {
     gap: 1rem;
 }
 
+/* Top row */
 .top-row {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
 }
 
+/* Highlight card / slider */
 .highlight-card {
     flex: 2;
     min-height: 300px;
@@ -104,6 +106,7 @@ main {
     background-color: #717171;
 }
 
+/* Right column cards */
 .right-column {
     display: flex;
     flex-direction: column;
@@ -139,6 +142,7 @@ main {
     background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
 }
 
+/* Bottom row square cards */
 .bottom-row {
     display: flex;
     gap: 1rem;
@@ -190,24 +194,28 @@ main {
     gap: 1rem;
 }
 
+/* Card ultime notizie */
 .latest-news-card {
     display: flex;
     justify-content: flex-start;
-    align-items: stretch;
+    align-items: flex-start;
     overflow: hidden;
-    height: 150px;
+    height: 150px; /* altezza fissa della card */
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     background: #fff;
 }
 
-/* contenitore immagine a sinistra */
+/* Contenitore immagine quadrata */
 .latest-news-card .news-left {
-    flex: 0 0 40%;
+    width: 150px;   /* larghezza quadrato */
+    height: 150px;  /* altezza quadrato */
     background-size: cover;
     background-position: center;
+    border-radius: 0;
+    flex-shrink: 0;
 }
 
-/* contenitore testo a destra */
+/* Contenitore testo a destra */
 .latest-news-card .news-right {
     flex: 1;
     padding: 10px;
@@ -249,9 +257,8 @@ main {
         height: auto;
     }
     .latest-news-card .news-left {
-        flex: none;
-        height: 150px;
         width: 100%;
+        height: 150px;
     }
 }
 </style>
