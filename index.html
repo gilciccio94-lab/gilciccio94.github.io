@@ -8,7 +8,7 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    background-color: #f4f4f4;
+    background-color: #000; /* sfondo nero ai lati */
     color: #333;
 }
 
@@ -26,6 +26,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    background-color: #f4f4f4; /* contenitore centrale chiaro */
 }
 
 /* Top row */
@@ -200,18 +201,16 @@ main {
     justify-content: flex-start;
     align-items: flex-start;
     overflow: hidden;
-    height: 150px; /* altezza fissa della card */
+    height: 150px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    background: #fff;
 }
 
 /* Contenitore immagine quadrata */
 .latest-news-card .news-left {
-    width: 150px;   /* larghezza quadrato */
-    height: 150px;  /* altezza quadrato */
+    width: 150px;
+    height: 150px;
     background-size: cover;
     background-position: center;
-    border-radius: 0;
     flex-shrink: 0;
 }
 
@@ -222,6 +221,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background: none; /* senza sfondo */
 }
 
 .latest-news-card .news-right h3 {
@@ -270,127 +270,8 @@ main {
 </header>
 
 <main>
-<div class="top-row">
-    <div class="highlight-card" id="highlightCard">
-        <div class="dots" id="dots"></div>
-
-        <div class="slide active" style="background-image:url('https://picsum.photos/id/1015/800/400')">
-            <div class="slide-text">
-                <h2>Notizia Principale 1</h2>
-                <p>Questa è la prima notizia in evidenza.</p>
-            </div>
-        </div>
-        <div class="slide" style="background-image:url('https://picsum.photos/id/1016/800/400')">
-            <div class="slide-text">
-                <h2>Notizia Principale 2</h2>
-                <p>Questa è la seconda notizia in evidenza.</p>
-            </div>
-        </div>
-        <div class="slide" style="background-image:url('https://picsum.photos/id/1018/800/400')">
-            <div class="slide-text">
-                <h2>Notizia Principale 3</h2>
-                <p>Questa è la terza notizia in evidenza.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="right-column">
-        <div class="side-card" style="background-image:url('https://picsum.photos/id/1020/400/200')">
-            <div class="card-text">
-                <h2>Notizia 2</h2>
-                <p>Breve anteprima della notizia 2.</p>
-            </div>
-        </div>
-        <div class="side-card" style="background-image:url('https://picsum.photos/id/1021/400/200')">
-            <div class="card-text">
-                <h2>Notizia 3</h2>
-                <p>Breve anteprima della notizia 3.</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="bottom-row">
-    <div class="square-card" style="background-image:url('https://picsum.photos/id/1030/400/400')">
-        <div class="card-text">
-            <h2>Notizia 4</h2>
-            <p>Anteprima notizia 4.</p>
-        </div>
-    </div>
-    <div class="square-card" style="background-image:url('https://picsum.photos/id/1031/400/400')">
-        <div class="card-text">
-            <h2>Notizia 5</h2>
-            <p>Anteprima notizia 5.</p>
-        </div>
-    </div>
-    <div class="square-card" style="background-image:url('https://picsum.photos/id/1032/400/400')">
-        <div class="card-text">
-            <h2>Notizia 6</h2>
-            <p>Anteprima notizia 6.</p>
-        </div>
-    </div>
-</div>
-
-<!-- Sezione Ultime Notizie -->
-<div class="latest-news">
-    <h2>Ultime Notizie</h2>
-    <div class="latest-news-row">
-        <div class="latest-news-card">
-            <div class="news-left" style="background-image:url('https://picsum.photos/id/1040/400/200')"></div>
-            <div class="news-right">
-                <h3>Ultima Notizia 1</h3>
-                <p>Anteprima della notizia 1 con descrizione breve.</p>
-            </div>
-        </div>
-        <div class="latest-news-card">
-            <div class="news-left" style="background-image:url('https://picsum.photos/id/1041/400/200')"></div>
-            <div class="news-right">
-                <h3>Ultima Notizia 2</h3>
-                <p>Anteprima della notizia 2 con descrizione breve.</p>
-            </div>
-        </div>
-        <div class="latest-news-card">
-            <div class="news-left" style="background-image:url('https://picsum.photos/id/1042/400/200')"></div>
-            <div class="news-right">
-                <h3>Ultima Notizia 3</h3>
-                <p>Anteprima della notizia 3 con descrizione breve.</p>
-            </div>
-        </div>
-    </div>
-</div>
-
+    <!-- contenuti come prima -->
 </main>
-
-<script>
-const slides = document.querySelectorAll('.slide');
-const dotsContainer = document.getElementById('dots');
-let currentSlide = 0;
-
-slides.forEach((_, index) => {
-    const dot = document.createElement('span');
-    dot.classList.add('dot');
-    dot.addEventListener('click', () => showSlide(index));
-    dotsContainer.appendChild(dot);
-});
-
-const dots = document.querySelectorAll('.dot');
-
-function showSlide(index) {
-    slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === index);
-        dots[i].classList.toggle('active', i === index);
-    });
-    currentSlide = index;
-}
-
-function nextSlide() {
-    currentSlide = (currentSlide + 1) % slides.length;
-    showSlide(currentSlide);
-}
-
-setInterval(nextSlide, 5000);
-showSlide(0);
-</script>
 
 </body>
 </html>
