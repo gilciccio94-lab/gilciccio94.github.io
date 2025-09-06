@@ -192,13 +192,18 @@ main {
 
 .latest-news-card {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: stretch;
-    border-radius: 10px;
     overflow: hidden;
-    min-height: 120px;
+    height: 150px; /* altezza fissa */
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     background: #fff;
+}
+
+.latest-news-card .news-image {
+    flex: 0 0 40%; /* immagine a sinistra */
+    background-size: cover;
+    background-position: center;
 }
 
 .latest-news-card .news-text {
@@ -221,12 +226,6 @@ main {
     color: #555;
 }
 
-.latest-news-card .news-image {
-    flex: 0 0 40%; /* immagine a destra */
-    background-size: cover;
-    background-position: center;
-}
-
 @media (max-width: 800px) {
     .top-row {
         flex-direction: column;
@@ -245,6 +244,7 @@ main {
     }
     .latest-news-card {
         flex-direction: column;
+        height: auto; /* nelle versioni piccole torniamo flessibili */
     }
     .latest-news-card .news-image {
         flex: none;
@@ -327,25 +327,25 @@ main {
     <h2>Ultime Notizie</h2>
     <div class="latest-news-row">
         <div class="latest-news-card">
+            <div class="news-image" style="background-image:url('https://picsum.photos/id/1040/400/200')"></div>
             <div class="news-text">
                 <h3>Ultima Notizia 1</h3>
                 <p>Anteprima della notizia 1 con descrizione breve.</p>
             </div>
-            <div class="news-image" style="background-image:url('https://picsum.photos/id/1040/400/200')"></div>
         </div>
         <div class="latest-news-card">
+            <div class="news-image" style="background-image:url('https://picsum.photos/id/1041/400/200')"></div>
             <div class="news-text">
                 <h3>Ultima Notizia 2</h3>
                 <p>Anteprima della notizia 2 con descrizione breve.</p>
             </div>
-            <div class="news-image" style="background-image:url('https://picsum.photos/id/1041/400/200')"></div>
         </div>
         <div class="latest-news-card">
+            <div class="news-image" style="background-image:url('https://picsum.photos/id/1042/400/200')"></div>
             <div class="news-text">
                 <h3>Ultima Notizia 3</h3>
                 <p>Anteprima della notizia 3 con descrizione breve.</p>
             </div>
-            <div class="news-image" style="background-image:url('https://picsum.photos/id/1042/400/200')"></div>
         </div>
     </div>
 </div>
