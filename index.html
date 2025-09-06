@@ -57,9 +57,6 @@
         justify-content: flex-end;
         align-items: flex-start;
 
-        padding-left: 0; 
-        padding-bottom: 0; 
-
         color: white;
         background-size: cover;
         background-position: center;
@@ -69,17 +66,22 @@
         opacity: 1;
     }
 
+    /* Sfondo sfumato graduale */
     .slide-text {
-        background-color: rgba(0, 0, 0, 0.4); /* sfondo semitrasparente più piccolo */
-        padding: 5px; /* padding ridotto */
-        border-radius: 3px;
-        margin: 0;
-        font-size: 0.9rem; /* testo più piccolo */
+        width: 100%;
+        padding: 10px;
+        font-size: 0.9rem;
         position: absolute;
         bottom: 0;
         left: 0;
-        margin-bottom: 5px;
-        margin-left: 5px;
+        right: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0)); /* sfumatura verticale */
+    }
+
+    .slide-text h2, .slide-text p {
+        margin: 0;
+        padding-left: 5px;
+        padding-right: 5px;
     }
 
     .dots {
@@ -129,15 +131,14 @@
 
     .side-card .card-text,
     .square-card .card-text {
-        background-color: rgba(0,0,0,0.4);
-        padding: 5px;
-        border-radius: 3px;
+        width: 100%;
+        padding: 10px;
         font-size: 0.9rem;
         position: absolute;
         bottom: 0;
         left: 0;
-        margin-bottom: 5px;
-        margin-left: 5px;
+        right: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
     }
 
     .bottom-row {
@@ -154,12 +155,12 @@
 
     h2 {
         margin: 0;
-        font-size: 1rem; /* titolo più piccolo */
+        font-size: 1rem;
     }
 
     p {
         margin: 0;
-        font-size: 0.8rem; /* testo più piccolo */
+        font-size: 0.8rem;
     }
 
     @media (max-width: 800px) {
