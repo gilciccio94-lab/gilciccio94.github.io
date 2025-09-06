@@ -5,281 +5,285 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Notizie in Evidenza</title>
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        background-color: #f4f4f4;
-        color: #333;
-    }
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
 
-    header {
-        background-color: #111;
-        color: white;
-        padding: 1rem 2rem;
-        text-align: center;
-    }
+header {
+    background-color: #111;
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
 
-    main {
-        padding: 2rem;
-        max-width: 1200px;
-        margin: auto;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-    }
+main {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
 
+.top-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.highlight-card {
+    flex: 2;
+    min-height: 300px;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden; /* impedisce alla sfumatura di uscire */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+
+    color: white;
+    background-size: cover;
+    background-position: center;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+/* sfumatura limitata alla card */
+.slide-text {
+    padding: 10px;
+    font-size: 0.9rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0)); 
+    max-height: 80px; /* limita la sfumatura */
+    overflow: hidden;
+}
+
+.slide-text h2, .slide-text p {
+    margin: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.dots {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #bbb;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dot.active {
+    background-color: #717171;
+}
+
+.right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex: 1;
+}
+
+.side-card, .square-card {
+    background-size: cover;
+    background-position: center;
+    color: white;
+    border-radius: 10px;
+    position: relative;
+    min-height: 145px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 0;
+    overflow: hidden; /* impedisce alla sfumatura di uscire */
+}
+
+.side-card .card-text,
+.square-card .card-text {
+    width: 100%;
+    padding: 10px;
+    font-size: 0.9rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
+    max-height: 80px; /* limita la sfumatura */
+    overflow: hidden;
+}
+
+.bottom-row {
+    display: flex;
+    gap: 1rem;
+    width: 66.666%;
+    margin-left: 0;
+}
+
+.square-card {
+    flex: 1;
+    min-height: 250px;
+}
+
+h2 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+p {
+    margin: 0;
+    font-size: 0.8rem;
+}
+
+@media (max-width: 800px) {
     .top-row {
-        display: flex;
-        gap: 1rem;
-        flex-wrap: wrap;
-    }
-
-    .highlight-card {
-        flex: 2;
-        min-height: 300px;
-        border-radius: 10px;
-        position: relative;
-        overflow: hidden;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-
-    .slide {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0;
-        transition: opacity 1s ease-in-out;
-
-        display: flex;
         flex-direction: column;
-        justify-content: flex-end;
-        align-items: flex-start;
-
-        color: white;
-        background-size: cover;
-        background-position: center;
     }
-
-    .slide.active {
-        opacity: 1;
-    }
-
-    /* Sfondo sfumato graduale */
-    .slide-text {
-        width: 100%;
-        padding: 10px;
-        font-size: 0.9rem;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0)); /* sfumatura verticale */
-    }
-
-    .slide-text h2, .slide-text p {
-        margin: 0;
-        padding-left: 5px;
-        padding-right: 5px;
-    }
-
-    .dots {
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        display: flex;
-        gap: 10px;
-        z-index: 10;
-    }
-
-    .dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background-color: #bbb;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-
-    .dot.active {
-        background-color: #717171;
-    }
-
     .right-column {
-        display: flex;
-        flex-direction: column;
+        flex-direction: row;
         gap: 1rem;
+    }
+    .highlight-card, .side-card, .square-card {
         flex: 1;
+        min-height: 150px;
     }
-
-    .side-card, .square-card {
-        background-size: cover;
-        background-position: center;
-        color: white;
-        border-radius: 10px;
-        position: relative;
-        min-height: 145px;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        align-items: flex-start;
-        padding: 0;
-    }
-
-    .side-card .card-text,
-    .square-card .card-text {
-        width: 100%;
-        padding: 10px;
-        font-size: 0.9rem;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
-    }
-
     .bottom-row {
-        display: flex;
-        gap: 1rem;
-        width: 66.666%;
-        margin-left: 0;
+        flex-direction: column;
+        width: 100%;
     }
-
-    .square-card {
-        flex: 1;
-        min-height: 250px;
-    }
-
-    h2 {
-        margin: 0;
-        font-size: 1rem;
-    }
-
-    p {
-        margin: 0;
-        font-size: 0.8rem;
-    }
-
-    @media (max-width: 800px) {
-        .top-row {
-            flex-direction: column;
-        }
-        .right-column {
-            flex-direction: row;
-            gap: 1rem;
-        }
-        .highlight-card, .side-card, .square-card {
-            flex: 1;
-            min-height: 150px;
-        }
-        .bottom-row {
-            flex-direction: column;
-            width: 100%;
-        }
-    }
+}
 </style>
 </head>
 <body>
 
 <header>
-    <h1>Notizie in Evidenza</h1>
+<h1>Notizie in Evidenza</h1>
 </header>
 
 <main>
-    <div class="top-row">
-        <div class="highlight-card" id="highlightCard">
-            <div class="dots" id="dots"></div>
+<div class="top-row">
+    <div class="highlight-card" id="highlightCard">
+        <div class="dots" id="dots"></div>
 
-            <div class="slide active" style="background-image:url('https://picsum.photos/id/1015/800/400')">
-                <div class="slide-text">
-                    <h2>Notizia Principale 1</h2>
-                    <p>Questa è la prima notizia in evidenza.</p>
-                </div>
-            </div>
-            <div class="slide" style="background-image:url('https://picsum.photos/id/1016/800/400')">
-                <div class="slide-text">
-                    <h2>Notizia Principale 2</h2>
-                    <p>Questa è la seconda notizia in evidenza.</p>
-                </div>
-            </div>
-            <div class="slide" style="background-image:url('https://picsum.photos/id/1018/800/400')">
-                <div class="slide-text">
-                    <h2>Notizia Principale 3</h2>
-                    <p>Questa è la terza notizia in evidenza.</p>
-                </div>
+        <div class="slide active" style="background-image:url('https://picsum.photos/id/1015/800/400')">
+            <div class="slide-text">
+                <h2>Notizia Principale 1</h2>
+                <p>Questa è la prima notizia in evidenza.</p>
             </div>
         </div>
-
-        <div class="right-column">
-            <div class="side-card" style="background-image:url('https://picsum.photos/id/1020/400/200')">
-                <div class="card-text">
-                    <h2>Notizia 2</h2>
-                    <p>Breve anteprima della notizia 2.</p>
-                </div>
+        <div class="slide" style="background-image:url('https://picsum.photos/id/1016/800/400')">
+            <div class="slide-text">
+                <h2>Notizia Principale 2</h2>
+                <p>Questa è la seconda notizia in evidenza.</p>
             </div>
-            <div class="side-card" style="background-image:url('https://picsum.photos/id/1021/400/200')">
-                <div class="card-text">
-                    <h2>Notizia 3</h2>
-                    <p>Breve anteprima della notizia 3.</p>
-                </div>
+        </div>
+        <div class="slide" style="background-image:url('https://picsum.photos/id/1018/800/400')">
+            <div class="slide-text">
+                <h2>Notizia Principale 3</h2>
+                <p>Questa è la terza notizia in evidenza.</p>
             </div>
         </div>
     </div>
 
-    <div class="bottom-row">
-        <div class="square-card" style="background-image:url('https://picsum.photos/id/1022/400/400')">
+    <div class="right-column">
+        <div class="side-card" style="background-image:url('https://picsum.photos/id/1020/400/200')">
             <div class="card-text">
-                <h2>Notizia 4</h2>
-                <p>Anteprima notizia 4.</p>
+                <h2>Notizia 2</h2>
+                <p>Breve anteprima della notizia 2.</p>
             </div>
         </div>
-        <div class="square-card" style="background-image:url('https://picsum.photos/id/1023/400/400')">
+        <div class="side-card" style="background-image:url('https://picsum.photos/id/1021/400/200')">
             <div class="card-text">
-                <h2>Notizia 5</h2>
-                <p>Anteprima notizia 5.</p>
-            </div>
-        </div>
-        <div class="square-card" style="background-image:url('https://picsum.photos/id/1024/400/400')">
-            <div class="card-text">
-                <h2>Notizia 6</h2>
-                <p>Anteprima notizia 6.</p>
+                <h2>Notizia 3</h2>
+                <p>Breve anteprima della notizia 3.</p>
             </div>
         </div>
     </div>
+</div>
+
+<div class="bottom-row">
+    <div class="square-card" style="background-image:url('https://picsum.photos/id/1022/400/400')">
+        <div class="card-text">
+            <h2>Notizia 4</h2>
+            <p>Anteprima notizia 4.</p>
+        </div>
+    </div>
+    <div class="square-card" style="background-image:url('https://picsum.photos/id/1023/400/400')">
+        <div class="card-text">
+            <h2>Notizia 5</h2>
+            <p>Anteprima notizia 5.</p>
+        </div>
+    </div>
+    <div class="square-card" style="background-image:url('https://picsum.photos/id/1024/400/400')">
+        <div class="card-text">
+            <h2>Notizia 6</h2>
+            <p>Anteprima notizia 6.</p>
+        </div>
+    </div>
+</div>
 </main>
 
 <script>
-    const slides = document.querySelectorAll('.slide');
-    const dotsContainer = document.getElementById('dots');
-    let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const dotsContainer = document.getElementById('dots');
+let currentSlide = 0;
 
-    slides.forEach((_, index) => {
-        const dot = document.createElement('span');
-        dot.classList.add('dot');
-        dot.addEventListener('click', () => showSlide(index));
-        dotsContainer.appendChild(dot);
+slides.forEach((_, index) => {
+    const dot = document.createElement('span');
+    dot.classList.add('dot');
+    dot.addEventListener('click', () => showSlide(index));
+    dotsContainer.appendChild(dot);
+});
+
+const dots = document.querySelectorAll('.dot');
+
+function showSlide(index) {
+    slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+        dots[i].classList.toggle('active', i === index);
     });
+    currentSlide = index;
+}
 
-    const dots = document.querySelectorAll('.dot');
+function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+}
 
-    function showSlide(index) {
-        slides.forEach((slide, i) => {
-            slide.classList.toggle('active', i === index);
-            dots[i].classList.toggle('active', i === index);
-        });
-        currentSlide = index;
-    }
-
-    function nextSlide() {
-        currentSlide = (currentSlide + 1) % slides.length;
-        showSlide(currentSlide);
-    }
-
-    setInterval(nextSlide, 5000);
-    showSlide(0);
+setInterval(nextSlide, 5000);
+showSlide(0);
 </script>
 
 </body>
