@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pure Xbox Clone Mobile Friendly</title>
+<title>Pure Xbox Clone Full Autoplay</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <style>
   * {margin:0;padding:0;box-sizing:border-box;}
@@ -18,14 +18,12 @@
   nav ul li a.active, nav ul li a:hover{color:#00ff00;}
 
   .container {width:90%;max-width:1200px;margin:20px auto;}
-
-  /* Search */
   .search-bar {margin-bottom:20px;display:flex;}
   .search-bar input {flex:1;padding:10px;border-radius:5px;border:none;margin-right:5px;}
   .search-bar button {padding:10px 20px;border:none;border-radius:5px;background:#00ff00;color:#000;cursor:pointer;transition:all 0.3s;}
   .search-bar button:hover {background:#ff0000;color:#fff;}
 
-  /* Slider notizie */
+  /* Slider Notizie */
   .slider {position:relative;margin:20px 0;overflow:hidden;border-radius:10px;}
   .slides {display:flex;transition:transform 0.7s ease-in-out;touch-action: pan-y;}
   .slides img {width:100%;border-radius:10px;transition:transform 0.5s;}
@@ -47,7 +45,6 @@
   .like-btn {position:absolute;top:10px;right:10px;background:#00ff00;border:none;color:#000;padding:5px 10px;border-radius:5px;cursor:pointer;transition:all 0.3s;}
   .like-btn.liked {background:#ff0000;color:#fff;}
 
-  /* Commenti */
   .comments-section {margin-top:15px;}
   .comments-list {margin-bottom:10px;}
   .comments-list p {background:#2a2a2a;padding:5px 10px;border-radius:5px;margin-bottom:5px;color:#ccc;transition:all 0.3s;}
@@ -60,9 +57,14 @@
   .video-section h2 {color:#00ff00;margin-bottom:20px;}
   .video-slider {position:relative;overflow:hidden;border-radius:10px;}
   .video-slides {display:flex;transition:transform 0.7s ease-in-out;touch-action: pan-y;}
-  .video-card {min-width:300px;margin-right:10px;transition:transform 0.5s;}
+  .video-card {min-width:300px;margin-right:10px;transition:transform 0.5s;position:relative;overflow:hidden;}
   .video-card:hover {transform:scale(1.03);}
-  .video-card iframe {width:100%;height:160px;border-radius:10px;}
+  .video-card iframe {width:100%;height:160px;border-radius:10px;pointer-events:none;}
+  .video-card .thumbnail {
+    position:absolute;top:0;left:0;width:100%;height:100%;background-size:cover;background-position:center;transition:opacity 0.5s ease-in-out;z-index:2;
+  }
+  .video-card.playing .thumbnail {opacity:0;}
+
   .video-slider-buttons {position:absolute;top:50%;width:100%;display:flex;justify-content:space-between;transform:translateY(-50%);}
   .video-slider-buttons button {background:rgba(0,0,0,0.5);border:none;color:#fff;padding:10px;cursor:pointer;font-size:18px;border-radius:50%;transition:all 0.3s;}
   .video-slider-buttons button:hover {background:#00ff00;color:#000;}
@@ -150,10 +152,18 @@
     <h2>Video Recenti</h2>
     <div class="video-slider">
       <div class="video-slides">
-        <div class="video-card"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe></div>
-        <div class="video-card"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe></div>
-        <div class="video-card"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe></div>
-        <div class="video-card"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe></div>
+        <div class="video-card">
+          <div class="thumbnail" style="background-image:url('https://via.placeholder.com/300x160.png?text=Video+1');"></div>
+          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1" allowfullscreen></iframe>
+        </div>
+        <div class="video-card">
+          <div class="thumbnail" style="background-image:url('https://via.placeholder.com/300x160.png?text=Video+2');"></div>
+          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1" allowfullscreen></iframe>
+        </div>
+        <div class="video-card">
+          <div class="thumbnail" style="background-image:url('https://via.placeholder.com/300x160.png?text=Video+3');"></div>
+          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1" allowfullscreen></iframe>
+        </div>
       </div>
       <div class="video-slider-buttons">
         <button id="video-prev">&#10094;</button>
@@ -175,9 +185,7 @@
 
   // Cards fade-in
   const cards=document.querySelectorAll('.card');
-  const observer=new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');}});
-  },{threshold:0.2});
+  const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');}});},{threshold:0.2});
   cards.forEach(card=>observer.observe(card));
 
   // Slider Notizie
@@ -192,15 +200,9 @@
   newsPrev.addEventListener('click',()=>showNewsSlide((newsIndex-1+newsImages.length)%newsImages.length));
   newsThumbs.forEach((t,i)=>t.addEventListener('click',()=>showNewsSlide(i)));
   setInterval(()=>showNewsSlide((newsIndex+1)%newsImages.length),5000);
-
-  // Touch support for News Slider
   let startX=0,endX=0;
   newsSlides.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;});
-  newsSlides.addEventListener('touchend',e=>{
-    endX=e.changedTouches[0].clientX;
-    if(endX-startX>50) showNewsSlide((newsIndex-1+newsImages.length)%newsImages.length);
-    else if(startX-endX>50) showNewsSlide((newsIndex+1)%newsImages.length);
-  });
+  newsSlides.addEventListener('touchend',e=>{endX=e.changedTouches[0].clientX;if(endX-startX>50) showNewsSlide((newsIndex-1+newsImages.length)%newsImages.length); else if(startX-endX>50) showNewsSlide((newsIndex+1)%newsImages.length);});
 
   // Slider Video
   const videoSlides=document.querySelector('.video-slides');
@@ -211,15 +213,9 @@
   function showVideoSlide(i){const cardWidth=videoCards[0].offsetWidth+10;videoIndex=i;videoSlides.style.transform=`translateX(${-i*cardWidth}px)`;}
   videoNext.addEventListener('click',()=>showVideoSlide(Math.min(videoIndex+1,videoCards.length-3)));
   videoPrev.addEventListener('click',()=>showVideoSlide(Math.max(videoIndex-1,0)));
-
-  // Touch support for Video Slider
   let vStartX=0,vEndX=0;
   videoSlides.addEventListener('touchstart',e=>{vStartX=e.touches[0].clientX;});
-  videoSlides.addEventListener('touchend',e=>{
-    vEndX=e.changedTouches[0].clientX;
-    if(vEndX-vStartX>50) showVideoSlide(Math.max(videoIndex-1,0));
-    else if(vStartX-vEndX>50) showVideoSlide(Math.min(videoIndex+1,videoCards.length-3));
-  });
+  videoSlides.addEventListener('touchend',e=>{vEndX=e.changedTouches[0].clientX;if(vEndX-vStartX>50) showVideoSlide(Math.max(videoIndex-1,0)); else if(vStartX-vEndX>50) showVideoSlide(Math.min(videoIndex+1,videoCards.length-3));});
 
   // Like buttons
   document.querySelectorAll('.like-btn').forEach(btn=>btn.addEventListener('click',()=>{btn.classList.toggle('liked');btn.textContent=btn.classList.contains('liked')?'Liked':'Like';}));
@@ -254,14 +250,26 @@
   const navLinks=document.querySelectorAll('.nav-link');
   window.addEventListener('scroll',()=>{
     const scrollPos=window.scrollY+150;
-    for(const id in sections){
-      const s=sections[id];
-      if(scrollPos>=s.offsetTop && scrollPos<s.offsetTop+s.offsetHeight){
-        navLinks.forEach(l=>l.classList.remove('active'));
-        document.querySelector(`.nav-link[href="#${id}"]`).classList.add('active');
-      }
-    }
+    for(const id in sections){const s=sections[id];if(scrollPos>=s.offsetTop && scrollPos<s.offsetTop+s.offsetHeight){navLinks.forEach(l=>l.classList.remove('active'));document.querySelector(`.nav-link[href="#${id}"]`).classList.add('active');}}
   });
+
+  // YouTube API for autoplay + thumbnail
+  let tag=document.createElement('script');tag.src="https://www.youtube.com/iframe_api";document.body.appendChild(tag);
+  window.onYouTubeIframeAPIReady=function(){
+    videoCards.forEach(card=>{
+      const iframe=card.querySelector('iframe');
+      const player=new YT.Player(iframe,{
+        events:{
+          'onStateChange': e=>{
+            if(e.data==YT.PlayerState.PLAYING) card.classList.add('playing');
+            else card.classList.remove('playing');
+          }
+        }
+      });
+      card.addEventListener('mouseenter', ()=>player.pauseVideo());
+      card.addEventListener('mouseleave', ()=>player.playVideo());
+    });
+  };
 </script>
 </body>
 </html>
