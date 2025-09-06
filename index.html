@@ -51,12 +51,10 @@ main {
     height: 100%;
     opacity: 0;
     transition: opacity 1s ease-in-out;
-
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-start;
-
     color: white;
     background-size: cover;
     background-position: center;
@@ -66,7 +64,6 @@ main {
     opacity: 1;
 }
 
-/* sfumatura verticale limitata e testo in basso */
 .slide-text {
     width: 100%;
     padding: 10px;
@@ -75,9 +72,8 @@ main {
     bottom: 0;
     left: 0;
     right: 0;
+    border-radius: 0 0 10px 10px; /* bordo inferiore arrotondato */
     background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
-    max-height: 80px;
-    overflow: hidden;
 }
 
 .slide-text h2, .slide-text p {
@@ -123,7 +119,6 @@ main {
     position: relative;
     min-height: 180px; /* leggermente più alta */
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-
     display: flex;
     flex-direction: column;
     justify-content: flex-end; 
@@ -132,8 +127,7 @@ main {
     overflow: hidden; 
 }
 
-.side-card .card-text,
-.square-card .card-text {
+.side-card .card-text {
     width: 100%;
     padding: 10px;
     font-size: 0.9rem;
@@ -141,9 +135,8 @@ main {
     bottom: 0;
     left: 0;
     right: 0;
+    border-radius: 0 0 10px 10px;
     background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
-    max-height: 80px;
-    overflow: hidden;
 }
 
 .bottom-row {
@@ -156,6 +149,28 @@ main {
 .square-card {
     flex: 1;
     min-height: 250px;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.square-card .card-text {
+    width: 100%;
+    padding: 10px;
+    font-size: 0.9rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 0 0 10px 10px;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
 }
 
 h2 {
