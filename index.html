@@ -231,27 +231,22 @@ main {
     padding-bottom: 1px;
 }
 
+/* Voti quadrati */
 .rating {
-    display: inline-block;
-    margin-top: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
     font-weight: bold;
-    padding: 3px 6px;
     border-radius: 4px;
     color: white;
-    min-width: 30px;
+    text-align: center;
 }
 
-.rating.good {
-    background-color: green;
-}
-
-.rating.medium {
-    background-color: orange;
-}
-
-.rating.bad {
-    background-color: red;
-}
+.rating.good { background-color: green; }
+.rating.medium { background-color: orange; }
+.rating.bad { background-color: red; }
 
 @media (max-width: 800px) {
     .top-row {
