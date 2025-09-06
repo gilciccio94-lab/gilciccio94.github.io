@@ -37,14 +37,12 @@
 
     /* Slide container */
     .highlight-card {
-        background-color: #fff;
         flex: 2;
         min-height: 300px;
         border-radius: 10px;
-        padding: 1rem;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         position: relative;
         overflow: hidden;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
     .slide {
@@ -61,12 +59,22 @@
         justify-content: flex-end;
         align-items: flex-start;
 
-        padding-left: 15px; /* margine sinistro */
-        padding-bottom: 15px; /* margine inferiore */
+        padding-left: 15px;
+        padding-bottom: 15px;
+
+        color: white;
+        background-size: cover;
+        background-position: center;
     }
 
     .slide.active {
         opacity: 1;
+    }
+
+    .slide-text {
+        background-color: rgba(0, 0, 0, 0.5); /* sfondo semitrasparente */
+        padding: 10px;
+        border-radius: 5px;
     }
 
     /* Pallini in alto a sinistra */
@@ -99,24 +107,30 @@
         flex: 1;
     }
 
-    .side-card {
-        background-color: #fff;
-        flex: 1;
-        min-height: 145px;
+    .side-card, .square-card {
+        background-size: cover;
+        background-position: center;
+        color: white;
         border-radius: 10px;
-        padding: 1rem;
+        position: relative;
+        min-height: 145px;
         box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
         align-items: flex-start;
-
-        padding-left: 15px; /* margine sinistro */
-        padding-bottom: 15px; /* margine inferiore */
+        padding-left: 15px;
+        padding-bottom: 15px;
     }
 
-    /* Riga dei tre quadrati sotto la grande */
+    .side-card .card-text,
+    .square-card .card-text {
+        background-color: rgba(0,0,0,0.5);
+        padding: 10px;
+        border-radius: 5px;
+    }
+
     .bottom-row {
         display: flex;
         gap: 1rem;
@@ -125,24 +139,12 @@
     }
 
     .square-card {
-        background-color: #fff;
         flex: 1;
         min-height: 250px;
-        border-radius: 10px;
-        padding: 1rem;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        align-items: flex-start;
-
-        padding-left: 15px; /* margine sinistro */
-        padding-bottom: 15px; /* margine inferiore */
     }
 
     h2 {
-        margin-top: 0;
+        margin: 0;
     }
 
     /* Responsive */
@@ -177,45 +179,61 @@
             <!-- Pallini -->
             <div class="dots" id="dots"></div>
 
-            <!-- Slides -->
-            <div class="slide active">
-                <h2>Notizia Principale 1</h2>
-                <p>Questa è la prima notizia in evidenza.</p>
+            <!-- Slides con immagini -->
+            <div class="slide active" style="background-image:url('https://picsum.photos/id/1015/800/400')">
+                <div class="slide-text">
+                    <h2>Notizia Principale 1</h2>
+                    <p>Questa è la prima notizia in evidenza.</p>
+                </div>
             </div>
-            <div class="slide">
-                <h2>Notizia Principale 2</h2>
-                <p>Questa è la seconda notizia in evidenza.</p>
+            <div class="slide" style="background-image:url('https://picsum.photos/id/1016/800/400')">
+                <div class="slide-text">
+                    <h2>Notizia Principale 2</h2>
+                    <p>Questa è la seconda notizia in evidenza.</p>
+                </div>
             </div>
-            <div class="slide">
-                <h2>Notizia Principale 3</h2>
-                <p>Questa è la terza notizia in evidenza.</p>
+            <div class="slide" style="background-image:url('https://picsum.photos/id/1018/800/400')">
+                <div class="slide-text">
+                    <h2>Notizia Principale 3</h2>
+                    <p>Questa è la terza notizia in evidenza.</p>
+                </div>
             </div>
         </div>
 
         <div class="right-column">
-            <div class="side-card">
-                <h2>Notizia 2</h2>
-                <p>Breve anteprima della notizia 2.</p>
+            <div class="side-card" style="background-image:url('https://picsum.photos/id/1020/400/200')">
+                <div class="card-text">
+                    <h2>Notizia 2</h2>
+                    <p>Breve anteprima della notizia 2.</p>
+                </div>
             </div>
-            <div class="side-card">
-                <h2>Notizia 3</h2>
-                <p>Breve anteprima della notizia 3.</p>
+            <div class="side-card" style="background-image:url('https://picsum.photos/id/1021/400/200')">
+                <div class="card-text">
+                    <h2>Notizia 3</h2>
+                    <p>Breve anteprima della notizia 3.</p>
+                </div>
             </div>
         </div>
     </div>
 
     <div class="bottom-row">
-        <div class="square-card">
-            <h2>Notizia 4</h2>
-            <p>Anteprima notizia 4.</p>
+        <div class="square-card" style="background-image:url('https://picsum.photos/id/1022/400/400')">
+            <div class="card-text">
+                <h2>Notizia 4</h2>
+                <p>Anteprima notizia 4.</p>
+            </div>
         </div>
-        <div class="square-card">
-            <h2>Notizia 5</h2>
-            <p>Anteprima notizia 5.</p>
+        <div class="square-card" style="background-image:url('https://picsum.photos/id/1023/400/400')">
+            <div class="card-text">
+                <h2>Notizia 5</h2>
+                <p>Anteprima notizia 5.</p>
+            </div>
         </div>
-        <div class="square-card">
-            <h2>Notizia 6</h2>
-            <p>Anteprima notizia 6.</p>
+        <div class="square-card" style="background-image:url('https://picsum.photos/id/1024/400/400')">
+            <div class="card-text">
+                <h2>Notizia 6</h2>
+                <p>Anteprima notizia 6.</p>
+            </div>
         </div>
     </div>
 </main>
