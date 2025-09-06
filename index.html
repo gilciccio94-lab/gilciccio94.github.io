@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pure Xbox Masonry Layout Clone</title>
+<title>Pure Xbox Masonry Layout Clone - Nuovo</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <style>
   *{margin:0;padding:0;box-sizing:border-box;}
@@ -17,20 +17,24 @@
   nav ul li a{color:#fff;text-decoration:none;font-weight:bold;transition:color 0.3s;}
   nav ul li a:hover,a.active{color:#00ff00;}
 
-  /* Container principale */
+  /* Container */
   .container{width:90%;max-width:1200px;margin:20px auto;}
 
-  /* Masonry layout */
+  /* Main layout */
   .main-content{display:flex;gap:20px;}
-  .sections{flex:1;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));grid-auto-rows:10px;gap:15px;}
+  .sections{flex:1;display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:10px;gap:15px;}
+
+  /* Card generica */
   .card{background:#1c1c1c;padding:10px;border-radius:10px;display:flex;flex-direction:column;}
   .card img{width:100%;border-radius:10px;margin-bottom:10px;}
   .card h3{color:#00ff00;margin-bottom:5px;}
   .card p{color:#ccc;margin-bottom:10px;}
-  /* Card heights diverse */
-  .card.large{grid-row:span 40;}
-  .card.medium{grid-row:span 25;}
-  .card.small{grid-row:span 15;}
+
+  /* Specifiche dimensioni */
+  .large-square{grid-column:span 4;grid-row:span 40;}
+  .rect-small{grid-column:span 2;grid-row:span 20;}
+  .rect-medium{grid-column:span 2;grid-row:span 25;}
+  .square-small{grid-column:span 2;grid-row:span 20;}
 
   /* Sidebar */
   .sidebar{width:300px;flex-shrink:0;display:flex;flex-direction:column;gap:20px;}
@@ -45,8 +49,7 @@
   footer a{color:#00ff00;text-decoration:none;margin:0 10px;}
   footer a:hover{text-decoration:underline;}
 
-  /* Responsive */
-  @media(max-width:1024px){.main-content{flex-direction:column;}.sidebar{width:100%;}}
+  @media(max-width:1024px){.main-content{flex-direction:column;}.sidebar{width:100%;}.sections{grid-template-columns:repeat(2,1fr);grid-auto-rows:10px;}}
 </style>
 </head>
 <body>
@@ -65,37 +68,42 @@
 
 <div class="container">
   <div class="main-content">
-    <!-- Masonry Grid -->
+    <!-- Masonry Grid con disposizione personalizzata -->
     <div class="sections">
-      <div class="card large">
-        <img src="https://via.placeholder.com/600x400.png?text=Notizia+Grande+1" alt="Notizia Grande 1">
+      <!-- Notizia grande quadrata -->
+      <div class="card large-square">
+        <img src="https://via.placeholder.com/600x600.png?text=Notizia+Grande+1" alt="Notizia Grande 1">
         <h3>Notizia Grande 1</h3>
         <p>Breve descrizione della notizia in evidenza.</p>
       </div>
-      <div class="card medium">
-        <img src="https://via.placeholder.com/400x300.png?text=Notizia+Media+1" alt="Notizia Media 1">
-        <h3>Notizia Media 1</h3>
-        <p>Descrizione della notizia media.</p>
-      </div>
-      <div class="card small">
-        <img src="https://via.placeholder.com/300x200.png?text=Notizia+Piccola+1" alt="Notizia Piccola 1">
-        <h3>Notizia Piccola 1</h3>
+
+      <!-- Tre quadrati sotto Notizia Grande 1 -->
+      <div class="card square-small">
+        <img src="https://via.placeholder.com/300x300.png?text=Notizia+Piccola+2" alt="Notizia Piccola 2">
+        <h3>Piccola 2</h3>
         <p>Descrizione breve.</p>
       </div>
-      <div class="card medium">
-        <img src="https://via.placeholder.com/400x300.png?text=Notizia+Media+2" alt="Notizia Media 2">
-        <h3>Notizia Media 2</h3>
-        <p>Breve descrizione della notizia.</p>
-      </div>
-      <div class="card small">
-        <img src="https://via.placeholder.com/300x200.png?text=Notizia+Piccola+2" alt="Notizia Piccola 2">
-        <h3>Notizia Piccola 2</h3>
+      <div class="card square-small">
+        <img src="https://via.placeholder.com/300x300.png?text=Notizia+Media+2" alt="Notizia Media 2">
+        <h3>Media 2</h3>
         <p>Breve descrizione.</p>
       </div>
-      <div class="card large">
-        <img src="https://via.placeholder.com/600x400.png?text=Notizia+Grande+2" alt="Notizia Grande 2">
-        <h3>Notizia Grande 2</h3>
-        <p>Breve descrizione della notizia in evidenza.</p>
+      <div class="card square-small">
+        <img src="https://via.placeholder.com/300x300.png?text=Notizia+Grande+2" alt="Notizia Grande 2">
+        <h3>Grande 2</h3>
+        <p>Breve descrizione.</p>
+      </div>
+
+      <!-- Altre card rettangolari ai lati -->
+      <div class="card rect-medium">
+        <img src="https://via.placeholder.com/400x250.png?text=Notizia+Media+1" alt="Notizia Media 1">
+        <h3>Media 1</h3>
+        <p>Descrizione della notizia media.</p>
+      </div>
+      <div class="card rect-small">
+        <img src="https://via.placeholder.com/300x200.png?text=Notizia+Piccola+1" alt="Notizia Piccola 1">
+        <h3>Piccola 1</h3>
+        <p>Breve descrizione.</p>
       </div>
     </div>
 
