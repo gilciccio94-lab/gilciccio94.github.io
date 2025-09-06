@@ -84,28 +84,6 @@ main {
     padding-right: 5px;
 }
 
-.dots {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    display: flex;
-    gap: 10px;
-    z-index: 10;
-}
-
-.dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: #bbb;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.dot.active {
-    background-color: #717171;
-}
-
 .right-column {
     display: flex;
     flex-direction: column;
@@ -173,12 +151,21 @@ main {
     background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
 }
 
+/* Sezione Locandine */
 .latest-posters {
     margin-top: 2rem;
     width: 66.666%;
     display: flex;
     flex-direction: column;
     gap: 1rem;
+}
+
+.section-title {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding-left: 5px;
+    color: #111;
 }
 
 .section-bar {
@@ -191,6 +178,7 @@ main {
 .posters-row {
     display: flex;
     gap: 0.5rem;
+    position: relative;
 }
 
 .poster-card {
@@ -199,6 +187,7 @@ main {
     flex-direction: column;
     align-items: flex-start;
     gap: 5px;
+    position: relative;
 }
 
 .poster-image {
@@ -224,6 +213,18 @@ main {
     display: block;
     border-bottom: 1px solid #111; 
     padding-bottom: 1px;
+}
+
+.poster-label {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background-color: rgba(0,0,0,0.7);
+    color: white;
+    padding: 2px 6px;
+    font-size: 0.7rem;
+    border-radius: 3px;
+    z-index: 2;
 }
 
 .score-badge {
@@ -258,6 +259,7 @@ main {
 </header>
 
 <main>
+    <!-- Riga superiore -->
     <div class="top-row">
         <div class="highlight-card">
             <div class="slide" style="background-image:url('https://picsum.photos/800/400?random=1');">
@@ -277,6 +279,7 @@ main {
         </div>
     </div>
 
+    <!-- Bottom row quadrati -->
     <div class="bottom-row">
         <div class="square-card" style="background-image:url('https://picsum.photos/200/200?random=6');">
             <div class="card-text"><h3>Notizia 4</h3></div>
@@ -289,10 +292,13 @@ main {
         </div>
     </div>
 
+    <!-- Sezione Locandine -->
     <section class="latest-posters">
+        <h2 class="section-title">Giochi</h2>
         <div class="section-bar"></div>
         <div class="posters-row">
             <div class="poster-card">
+                <span class="poster-label">Recensione</span>
                 <div class="poster-image" style="background-image:url('https://picsum.photos/200/200?random=12');"></div>
                 <div class="poster-info">
                     <h3>Locandina 1</h3>
@@ -300,6 +306,7 @@ main {
                 </div>
             </div>
             <div class="poster-card">
+                <span class="poster-label">Guida</span>
                 <div class="poster-image" style="background-image:url('https://picsum.photos/200/200?random=13');"></div>
                 <div class="poster-info">
                     <h3>Locandina 2</h3>
@@ -307,6 +314,7 @@ main {
                 </div>
             </div>
             <div class="poster-card">
+                <span class="poster-label">Recensione</span>
                 <div class="poster-image" style="background-image:url('https://picsum.photos/200/200?random=14');"></div>
                 <div class="poster-info">
                     <h3>Locandina 3</h3>
@@ -314,6 +322,7 @@ main {
                 </div>
             </div>
             <div class="poster-card">
+                <span class="poster-label">Guida</span>
                 <div class="poster-image" style="background-image:url('https://picsum.photos/200/200?random=15');"></div>
                 <div class="poster-info">
                     <h3>Locandina 4</h3>
@@ -321,6 +330,7 @@ main {
                 </div>
             </div>
             <div class="poster-card">
+                <span class="poster-label">Recensione</span>
                 <div class="poster-image" style="background-image:url('https://picsum.photos/200/200?random=16');"></div>
                 <div class="poster-info">
                     <h3>Locandina 5</h3>
