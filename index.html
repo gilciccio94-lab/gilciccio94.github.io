@@ -12,7 +12,6 @@
         background-color: #f4f4f4;
     }
 
-    /* Header */
     header {
         background-color: #222;
         color: #fff;
@@ -20,12 +19,6 @@
         text-align: center;
     }
 
-    header h1 {
-        margin: 0;
-        font-size: 2em;
-    }
-
-    /* Menu */
     nav {
         background-color: #444;
     }
@@ -39,10 +32,6 @@
         flex-wrap: wrap;
     }
 
-    nav ul li {
-        margin: 0;
-    }
-
     nav ul li a {
         display: block;
         padding: 15px 25px;
@@ -54,34 +43,34 @@
         background-color: #666;
     }
 
-    /* Area in evidenza */
-    .featured-grid {
+    /* --- GRIGLIA IN EVIDENZA --- */
+    .highlight-grid {
         max-width: 1200px;
         margin: 20px auto;
         display: grid;
-        grid-template-columns: 1.5fr 1fr 1fr;
-        grid-template-rows: 250px 250px;
-        gap: 20px;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 250px);
+        gap: 15px;
         padding: 0 10px;
     }
 
-    .featured-grid article {
+    .highlight-grid article {
         position: relative;
         border-radius: 8px;
         overflow: hidden;
         box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-        background-color: #000;
+        background: #000;
         color: #fff;
     }
 
-    .featured-grid article img {
+    .highlight-grid article img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         display: block;
     }
 
-    .featured-grid article h2 {
+    .highlight-grid article h2 {
         position: absolute;
         bottom: 10px;
         left: 10px;
@@ -89,13 +78,19 @@
         background: rgba(0,0,0,0.6);
         padding: 5px 10px;
         border-radius: 5px;
-        font-size: 1.1em;
+        font-size: 1em;
     }
 
-    /* Griglia sotto per articoli piccoli */
+    /* Articolo grande che occupa due celle */
+    .highlight-grid .big {
+        grid-row: span 2;
+        grid-column: span 2;
+    }
+
+    /* --- GRIGLIA ARTICOLI PICCOLI --- */
     .small-grid {
         max-width: 1200px;
-        margin: 20px auto;
+        margin: 30px auto;
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
         gap: 20px;
@@ -126,7 +121,6 @@
         color: #555;
     }
 
-    /* Footer */
     footer {
         background-color: #222;
         color: #fff;
@@ -135,11 +129,14 @@
         margin-top: 40px;
     }
 
-    /* Responsive */
     @media(max-width: 900px){
-        .featured-grid {
+        .highlight-grid {
             grid-template-columns: 1fr;
             grid-template-rows: auto;
+        }
+        .highlight-grid .big {
+            grid-column: span 1;
+            grid-row: span 1;
         }
     }
 </style>
@@ -160,30 +157,35 @@
     </ul>
 </nav>
 
-<!-- Sezione in evidenza -->
-<section class="featured-grid">
-    <!-- Articolo grande ridotto -->
-    <article style="grid-column: span 2;">
-        <img src="https://via.placeholder.com/800x400?text=Articolo+Grande+Ridotto" alt="Articolo Grande">
-        <h2>Articolo Grande Ridotto</h2>
-    </article>
-    <!-- Articolo quadrato nuovo -->
-    <article>
-        <img src="https://via.placeholder.com/400x400?text=Articolo+Quadrato" alt="Articolo Quadrato">
-        <h2>Articolo Quadrato</h2>
-    </article>
-    <!-- Due articoli medi -->
-    <article>
-        <img src="https://via.placeholder.com/400x250?text=Articolo+Medio+1" alt="Articolo Medio 1">
-        <h2>Articolo Medio 1</h2>
+<!-- SEZIONE HIGHLIGHT (1 grande + 5 piccoli) -->
+<section class="highlight-grid">
+    <article class="big">
+        <img src="https://via.placeholder.com/800x500?text=Articolo+Grande" alt="Articolo Grande">
+        <h2>Articolo Grande</h2>
     </article>
     <article>
-        <img src="https://via.placeholder.com/400x250?text=Articolo+Medio+2" alt="Articolo Medio 2">
-        <h2>Articolo Medio 2</h2>
+        <img src="https://via.placeholder.com/400x250?text=Piccolo+1" alt="Piccolo 1">
+        <h2>Piccolo 1</h2>
+    </article>
+    <article>
+        <img src="https://via.placeholder.com/400x250?text=Piccolo+2" alt="Piccolo 2">
+        <h2>Piccolo 2</h2>
+    </article>
+    <article>
+        <img src="https://via.placeholder.com/400x250?text=Piccolo+3" alt="Piccolo 3">
+        <h2>Piccolo 3</h2>
+    </article>
+    <article>
+        <img src="https://via.placeholder.com/400x250?text=Piccolo+4" alt="Piccolo 4">
+        <h2>Piccolo 4</h2>
+    </article>
+    <article>
+        <img src="https://via.placeholder.com/400x250?text=Piccolo+5" alt="Piccolo 5">
+        <h2>Piccolo 5</h2>
     </article>
 </section>
 
-<!-- Sezione articoli piccoli -->
+<!-- SEZIONE ARTICOLI SOTTO -->
 <section class="small-grid">
     <div class="card">
         <img src="https://via.placeholder.com/400x250?text=Notizia+1" alt="Notizia 1">
