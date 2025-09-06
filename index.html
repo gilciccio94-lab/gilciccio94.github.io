@@ -4,13 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Notizie in Evidenza</title>
-<!-- Import font Lato da Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
 <style>
 body {
     font-family: 'Lato', sans-serif;
     margin: 0;
-    background-color: #000; /* sfondo nero ai lati */
+    background-color: #000;
     color: #333;
 }
 
@@ -28,23 +27,21 @@ main {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    background-color: #f4f4f4; /* contenitore centrale chiaro */
+    background-color: #f4f4f4;
 }
 
-/* Top row */
 .top-row {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
 }
 
-/* Highlight card / slider */
 .highlight-card {
     flex: 2;
     min-height: 300px;
     border-radius: 10px;
     position: relative;
-    overflow: hidden; 
+    overflow: hidden;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
@@ -109,7 +106,6 @@ main {
     background-color: #717171;
 }
 
-/* Right column cards */
 .right-column {
     display: flex;
     flex-direction: column;
@@ -144,7 +140,6 @@ main {
     background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
 }
 
-/* Bottom row square cards */
 .bottom-row {
     display: flex;
     gap: 1rem;
@@ -178,7 +173,6 @@ main {
     background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
 }
 
-/* Sezione Locandine */
 .latest-posters {
     margin-top: 2rem;
     width: 66.666%;
@@ -187,7 +181,6 @@ main {
     gap: 1rem;
 }
 
-/* Linea sopra le locandine sottilissima */
 .section-bar {
     width: 100%;
     height: 1px; 
@@ -197,7 +190,7 @@ main {
 
 .posters-row {
     display: flex;
-    gap: 0.5rem; /* spazio ridotto tra le locandine */
+    gap: 0.5rem;
 }
 
 .poster-card {
@@ -225,7 +218,6 @@ main {
     gap: 2px;
 }
 
-/* Linea sotto titolo locandina sottilissima */
 .poster-info h3 {
     margin: 0;
     padding: 0;
@@ -234,42 +226,28 @@ main {
     padding-bottom: 1px;
 }
 
-/* Badge stile Metacritic */
-.metascore-badge {
+.score-badge {
     display: inline-block;
     width: 24px;
     height: 24px;
-    border-radius: 50%;
+    border-radius: 4px;
     font-size: 0.8rem;
     font-weight: bold;
     color: white;
     text-align: center;
     line-height: 24px;
-    margin-top: 2px;
-    margin-left: 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
-.metascore-good { background-color: #1e7e34; }   /* verde */
-.metascore-medium { background-color: #f0ad4e; } /* giallo */
-.metascore-bad { background-color: #d9534f; }    /* rosso */
+.score-good { background-color: #1e7e34; }   
+.score-medium { background-color: #f0ad4e; } 
+.score-bad { background-color: #d9534f; }    
 
 @media (max-width: 800px) {
-    .top-row {
-        flex-direction: column;
-    }
-    .right-column {
-        flex-direction: row;
-        gap: 1rem;
-    }
-    .highlight-card, .side-card, .square-card {
-        flex: 1;
-        min-height: 150px;
-    }
-    .bottom-row, .latest-posters {
-        flex-direction: column;
-        width: 100%;
-    }
+    .top-row { flex-direction: column; }
+    .right-column { flex-direction: row; gap: 1rem; }
+    .highlight-card, .side-card, .square-card { flex: 1; min-height: 150px; }
+    .bottom-row, .latest-posters { flex-direction: column; width: 100%; }
 }
 </style>
 </head>
@@ -280,14 +258,8 @@ main {
 </header>
 
 <main>
-    <!-- Riga superiore -->
     <div class="top-row">
         <div class="highlight-card">
-            <div class="dots">
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-            </div>
             <div class="slide" style="background-image:url('https://picsum.photos/800/400?random=1');">
                 <div class="slide-text">
                     <h2>Notizia Principale 1</h2>
@@ -297,43 +269,26 @@ main {
         </div>
         <div class="right-column">
             <div class="side-card" style="background-image:url('https://picsum.photos/400/200?random=4');">
-                <div class="card-text">
-                    <h3>Notizia 2</h3>
-                    <span class="metascore-badge metascore-good">85</span>
-                </div>
+                <div class="card-text"><h3>Notizia 2</h3></div>
             </div>
             <div class="side-card" style="background-image:url('https://picsum.photos/400/200?random=5');">
-                <div class="card-text">
-                    <h3>Notizia 3</h3>
-                    <span class="metascore-badge metascore-medium">65</span>
-                </div>
+                <div class="card-text"><h3>Notizia 3</h3></div>
             </div>
         </div>
     </div>
 
-    <!-- Bottom row quadrati -->
     <div class="bottom-row">
         <div class="square-card" style="background-image:url('https://picsum.photos/200/200?random=6');">
-            <div class="card-text">
-                <h3>Notizia 4</h3>
-                <span class="metascore-badge metascore-good">90</span>
-            </div>
+            <div class="card-text"><h3>Notizia 4</h3></div>
         </div>
         <div class="square-card" style="background-image:url('https://picsum.photos/200/200?random=7');">
-            <div class="card-text">
-                <h3>Notizia 5</h3>
-                <span class="metascore-badge metascore-medium">55</span>
-            </div>
+            <div class="card-text"><h3>Notizia 5</h3></div>
         </div>
         <div class="square-card" style="background-image:url('https://picsum.photos/200/200?random=8');">
-            <div class="card-text">
-                <h3>Notizia 6</h3>
-                <span class="metascore-badge metascore-bad">30</span>
-            </div>
+            <div class="card-text"><h3>Notizia 6</h3></div>
         </div>
     </div>
 
-    <!-- Sezione Locandine con badge -->
     <section class="latest-posters">
         <div class="section-bar"></div>
         <div class="posters-row">
@@ -341,35 +296,35 @@ main {
                 <div class="poster-image" style="background-image:url('https://picsum.photos/200/200?random=12');"></div>
                 <div class="poster-info">
                     <h3>Locandina 1</h3>
-                    <span class="metascore-badge metascore-good">88</span>
+                    <span class="score-badge score-good">88</span>
                 </div>
             </div>
             <div class="poster-card">
                 <div class="poster-image" style="background-image:url('https://picsum.photos/200/200?random=13');"></div>
                 <div class="poster-info">
                     <h3>Locandina 2</h3>
-                    <span class="metascore-badge metascore-medium">55</span>
+                    <span class="score-badge score-medium">55</span>
                 </div>
             </div>
             <div class="poster-card">
                 <div class="poster-image" style="background-image:url('https://picsum.photos/200/200?random=14');"></div>
                 <div class="poster-info">
                     <h3>Locandina 3</h3>
-                    <span class="metascore-badge metascore-bad">35</span>
+                    <span class="score-badge score-bad">35</span>
                 </div>
             </div>
             <div class="poster-card">
                 <div class="poster-image" style="background-image:url('https://picsum.photos/200/200?random=15');"></div>
                 <div class="poster-info">
                     <h3>Locandina 4</h3>
-                    <span class="metascore-badge metascore-good">77</span>
+                    <span class="score-badge score-good">77</span>
                 </div>
             </div>
             <div class="poster-card">
                 <div class="poster-image" style="background-image:url('https://picsum.photos/200/200?random=16');"></div>
                 <div class="poster-info">
                     <h3>Locandina 5</h3>
-                    <span class="metascore-badge metascore-medium">62</span>
+                    <span class="score-badge score-medium">62</span>
                 </div>
             </div>
         </div>
@@ -379,13 +334,9 @@ main {
 <script>
 let currentSlide = 0;
 const slides = document.querySelectorAll('.slide');
-const dots = document.querySelectorAll('.dot');
 
 function showSlide(index) {
-    slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === index);
-        dots[i].classList.toggle('active', i === index);
-    });
+    slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
     currentSlide = index;
 }
 
