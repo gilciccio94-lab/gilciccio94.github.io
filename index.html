@@ -59,8 +59,8 @@
         max-width: 1200px;
         margin: 20px auto;
         display: grid;
-        grid-template-columns: 2fr 1fr;
-        grid-template-rows: 300px 150px;
+        grid-template-columns: 1.5fr 1fr 1fr;
+        grid-template-rows: 250px 250px;
         gap: 20px;
         padding: 0 10px;
     }
@@ -162,16 +162,23 @@
 
 <!-- Sezione in evidenza -->
 <section class="featured-grid">
-    <article style="grid-row: span 2;">
-        <img src="https://via.placeholder.com/800x600?text=Articolo+Grande" alt="Articolo Grande">
-        <h2>Grande Articolo in Evidenza</h2>
+    <!-- Articolo grande ridotto -->
+    <article style="grid-column: span 2;">
+        <img src="https://via.placeholder.com/800x400?text=Articolo+Grande+Ridotto" alt="Articolo Grande">
+        <h2>Articolo Grande Ridotto</h2>
     </article>
+    <!-- Articolo quadrato nuovo -->
     <article>
-        <img src="https://via.placeholder.com/400x300?text=Articolo+Medio+1" alt="Articolo Medio 1">
+        <img src="https://via.placeholder.com/400x400?text=Articolo+Quadrato" alt="Articolo Quadrato">
+        <h2>Articolo Quadrato</h2>
+    </article>
+    <!-- Due articoli medi -->
+    <article>
+        <img src="https://via.placeholder.com/400x250?text=Articolo+Medio+1" alt="Articolo Medio 1">
         <h2>Articolo Medio 1</h2>
     </article>
     <article>
-        <img src="https://via.placeholder.com/400x200?text=Articolo+Medio+2" alt="Articolo Medio 2">
+        <img src="https://via.placeholder.com/400x250?text=Articolo+Medio+2" alt="Articolo Medio 2">
         <h2>Articolo Medio 2</h2>
     </article>
 </section>
