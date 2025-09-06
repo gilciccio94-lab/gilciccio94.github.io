@@ -121,13 +121,12 @@ main {
     color: white;
     border-radius: 10px;
     position: relative;
-    min-height: 180px;
+    min-height: 200px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     display: flex;
     flex-direction: column;
     justify-content: flex-end; 
     align-items: flex-start;
-    padding: 0;
     overflow: hidden; 
 }
 
@@ -152,7 +151,7 @@ main {
 
 .square-card {
     flex: 1;
-    min-height: 200px;
+    min-height: 180px;
     position: relative;
     border-radius: 10px;
     overflow: hidden;
@@ -270,8 +269,123 @@ main {
 </header>
 
 <main>
-    <!-- contenuti come prima -->
+    <!-- Riga superiore -->
+    <div class="top-row">
+        <!-- Notizia principale (slider) -->
+        <div class="highlight-card">
+            <div class="dots">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+            <div class="slide" style="background-image:url('https://picsum.photos/800/400?random=1');">
+                <div class="slide-text">
+                    <h2>Notizia Principale 1</h2>
+                    <p>Descrizione breve della notizia principale 1.</p>
+                </div>
+            </div>
+            <div class="slide" style="background-image:url('https://picsum.photos/800/400?random=2');">
+                <div class="slide-text">
+                    <h2>Notizia Principale 2</h2>
+                    <p>Descrizione breve della notizia principale 2.</p>
+                </div>
+            </div>
+            <div class="slide" style="background-image:url('https://picsum.photos/800/400?random=3');">
+                <div class="slide-text">
+                    <h2>Notizia Principale 3</h2>
+                    <p>Descrizione breve della notizia principale 3.</p>
+                </div>
+            </div>
+        </div>
+        <!-- Due rettangolari -->
+        <div class="right-column">
+            <div class="side-card" style="background-image:url('https://picsum.photos/400/200?random=4');">
+                <div class="card-text">
+                    <h3>Notizia 2</h3>
+                    <p>Descrizione breve della notizia 2.</p>
+                </div>
+            </div>
+            <div class="side-card" style="background-image:url('https://picsum.photos/400/200?random=5');">
+                <div class="card-text">
+                    <h3>Notizia 3</h3>
+                    <p>Descrizione breve della notizia 3.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Riga quadrati -->
+    <div class="bottom-row">
+        <div class="square-card" style="background-image:url('https://picsum.photos/200/200?random=6');">
+            <div class="card-text">
+                <h3>Notizia 4</h3>
+                <p>Descrizione breve della notizia 4.</p>
+            </div>
+        </div>
+        <div class="square-card" style="background-image:url('https://picsum.photos/200/200?random=7');">
+            <div class="card-text">
+                <h3>Notizia 5</h3>
+                <p>Descrizione breve della notizia 5.</p>
+            </div>
+        </div>
+        <div class="square-card" style="background-image:url('https://picsum.photos/200/200?random=8');">
+            <div class="card-text">
+                <h3>Notizia 6</h3>
+                <p>Descrizione breve della notizia 6.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ultime Notizie -->
+    <section class="latest-news">
+        <h2>Ultime Notizie</h2>
+        <div class="latest-news-row">
+            <div class="latest-news-card">
+                <div class="news-left" style="background-image:url('https://picsum.photos/200/200?random=9');"></div>
+                <div class="news-right">
+                    <h3>Ultima Notizia 1</h3>
+                    <p>Descrizione breve dell'ultima notizia 1.</p>
+                </div>
+            </div>
+            <div class="latest-news-card">
+                <div class="news-left" style="background-image:url('https://picsum.photos/200/200?random=10');"></div>
+                <div class="news-right">
+                    <h3>Ultima Notizia 2</h3>
+                    <p>Descrizione breve dell'ultima notizia 2.</p>
+                </div>
+            </div>
+            <div class="latest-news-card">
+                <div class="news-left" style="background-image:url('https://picsum.photos/200/200?random=11');"></div>
+                <div class="news-right">
+                    <h3>Ultima Notizia 3</h3>
+                    <p>Descrizione breve dell'ultima notizia 3.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 </main>
+
+<script>
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dot');
+
+function showSlide(index) {
+    slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+        dots[i].classList.toggle('active', i === index);
+    });
+    currentSlide = index;
+}
+
+function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+}
+
+setInterval(nextSlide, 5000);
+showSlide(0);
+</script>
 
 </body>
 </html>
