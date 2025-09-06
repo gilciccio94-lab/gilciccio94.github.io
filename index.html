@@ -54,62 +54,79 @@
         background-color: #666;
     }
 
-    /* Main Content */
-    main {
+    /* Area in evidenza */
+    .featured-grid {
         max-width: 1200px;
         margin: 20px auto;
-        display: flex;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: 300px 150px;
         gap: 20px;
         padding: 0 10px;
     }
 
-    .featured {
-        flex: 2 1 600px;
-        background-color: #fff;
+    .featured-grid article {
+        position: relative;
         border-radius: 8px;
         overflow: hidden;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+        background-color: #000;
+        color: #fff;
     }
 
-    .featured img {
+    .featured-grid article img {
         width: 100%;
+        height: 100%;
+        object-fit: cover;
         display: block;
     }
 
-    .featured h2 {
-        margin: 10px;
+    .featured-grid article h2 {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        margin: 0;
+        background: rgba(0,0,0,0.6);
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 1.1em;
     }
 
-    .grid {
-        flex: 1 1 300px;
-        display: flex;
-        flex-direction: column;
+    /* Griglia sotto per articoli piccoli */
+    .small-grid {
+        max-width: 1200px;
+        margin: 20px auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
         gap: 20px;
+        padding: 0 10px;
     }
 
-    .card {
+    .small-grid .card {
         background-color: #fff;
         border-radius: 8px;
         overflow: hidden;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
-    .card img {
+    .small-grid .card img {
         width: 100%;
+        height: 180px;
+        object-fit: cover;
         display: block;
     }
 
-    .card h3 {
+    .small-grid .card h3 {
         margin: 10px;
         font-size: 1.1em;
     }
 
-    .card p {
+    .small-grid .card p {
         margin: 0 10px 10px;
         color: #555;
     }
 
+    /* Footer */
     footer {
         background-color: #222;
         color: #fff;
@@ -118,9 +135,11 @@
         margin-top: 40px;
     }
 
-    @media(max-width: 768px){
-        main {
-            flex-direction: column;
+    /* Responsive */
+    @media(max-width: 900px){
+        .featured-grid {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto;
         }
     }
 </style>
@@ -141,33 +160,45 @@
     </ul>
 </nav>
 
-<main>
-    <!-- Articolo in evidenza -->
-    <div class="featured">
-        <img src="https://via.placeholder.com/1200x500?text=Gioco+PS5+In+Evidenza" alt="Gioco PS5 In Evidenza">
-        <h2>Gioco PS5 in Evidenza</h2>
-        <p style="padding:0 10px 10px;">Il titolo più atteso dell’anno con caratteristiche uniche e gameplay mozzafiato.</p>
-    </div>
+<!-- Sezione in evidenza -->
+<section class="featured-grid">
+    <article style="grid-row: span 2;">
+        <img src="https://via.placeholder.com/800x600?text=Articolo+Grande" alt="Articolo Grande">
+        <h2>Grande Articolo in Evidenza</h2>
+    </article>
+    <article>
+        <img src="https://via.placeholder.com/400x300?text=Articolo+Medio+1" alt="Articolo Medio 1">
+        <h2>Articolo Medio 1</h2>
+    </article>
+    <article>
+        <img src="https://via.placeholder.com/400x200?text=Articolo+Medio+2" alt="Articolo Medio 2">
+        <h2>Articolo Medio 2</h2>
+    </article>
+</section>
 
-    <!-- Griglia di articoli più piccoli -->
-    <div class="grid">
-        <div class="card">
-            <img src="https://via.placeholder.com/600x300?text=Gioco+ABC" alt="Gioco ABC">
-            <h3>Gioco ABC - Recensione</h3>
-            <p>Un’avventura emozionante con grafica spettacolare. Voto: 8/10</p>
-        </div>
-        <div class="card">
-            <img src="https://via.placeholder.com/600x200?text=Gioco+XYZ" alt="Gioco XYZ">
-            <h3>Gioco XYZ - Anteprima</h3>
-            <p>Gameplay innovativo e missioni avvincenti.</p>
-        </div>
-        <div class="card">
-            <img src="https://via.placeholder.com/600x250?text=Nuovo+Aggiornamento" alt="Aggiornamento">
-            <h3>Aggiornamento PS5</h3>
-            <p>Nuove funzionalità e miglioramenti alla stabilità del sistema.</p>
-        </div>
+<!-- Sezione articoli piccoli -->
+<section class="small-grid">
+    <div class="card">
+        <img src="https://via.placeholder.com/400x250?text=Notizia+1" alt="Notizia 1">
+        <h3>Notizia 1</h3>
+        <p>Breve descrizione della notizia per attirare il lettore.</p>
     </div>
-</main>
+    <div class="card">
+        <img src="https://via.placeholder.com/400x250?text=Notizia+2" alt="Notizia 2">
+        <h3>Notizia 2</h3>
+        <p>Altri dettagli su giochi e aggiornamenti.</p>
+    </div>
+    <div class="card">
+        <img src="https://via.placeholder.com/400x250?text=Notizia+3" alt="Notizia 3">
+        <h3>Notizia 3</h3>
+        <p>Articolo su un nuovo aggiornamento di PS5.</p>
+    </div>
+    <div class="card">
+        <img src="https://via.placeholder.com/400x250?text=Notizia+4" alt="Notizia 4">
+        <h3>Notizia 4</h3>
+        <p>Recensione di un nuovo titolo esclusivo.</p>
+    </div>
+</section>
 
 <footer>
     &copy; 2025 Gaming News Hub. Tutti i diritti riservati.
