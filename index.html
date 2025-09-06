@@ -229,22 +229,23 @@ main {
     z-index: 2;
 }
 
+/* Badge aggiornati: colori più chiari e testo nero */
 .score-badge {
     display: inline-block;
     width: 20px;
     height: 20px;
-    border-radius: 0; /* rimosso il radius */
+    border-radius: 0; 
     font-size: 0.72rem;
     font-weight: bold;
-    color: white;
+    color: black; /* testo dei voti in nero */
     text-align: center;
     line-height: 20px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
-.score-good { background-color: #1e7e34; }   
-.score-medium { background-color: #f0ad4e; } 
-.score-bad { background-color: #d9534f; }    
+.score-good { background-color: #4caf70; }    /* verde chiaro */
+.score-medium { background-color: #ffcc33; }  /* giallo chiaro */
+.score-bad { background-color: #f46b6b; }     /* rosso chiaro */
 
 @media (max-width: 800px) {
     .top-row { flex-direction: column; }
