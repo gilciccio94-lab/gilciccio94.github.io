@@ -1,145 +1,137 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MiniMetacritic</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notizie in Evidenza</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background-color: #f4f4f4;
+        color: #333;
+    }
 
-        header {
-            background-color: #111;
-            color: white;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    header {
+        background-color: #111;
+        color: white;
+        padding: 1rem 2rem;
+        text-align: center;
+    }
 
-        header h1 {
-            margin: 0;
-        }
+    main {
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        max-width: 1200px;
+        margin: auto;
+    }
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 1rem;
-            margin: 0;
-            padding: 0;
-        }
+    /* Container principale */
+    .top-row {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
 
-        nav a {
-            color: white;
-            text-decoration: none;
-        }
+    .highlight-card {
+        background-color: #fff;
+        flex: 2;
+        min-height: 300px;
+        border-radius: 10px;
+        padding: 1rem;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
 
-        .product-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            padding: 2rem;
-            justify-content: center;
-        }
+    .side-card {
+        background-color: #fff;
+        flex: 1;
+        min-height: 300px;
+        border-radius: 10px;
+        padding: 1rem;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
 
-        .product-card {
-            background-color: white;
-            padding: 1rem;
-            border-radius: 10px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-            width: 200px;
-            text-align: center;
-        }
+    /* Row sotto la grande */
+    .bottom-row {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
 
-        .product-card h2 {
-            font-size: 1.1rem;
-            margin: 0.5rem 0;
-        }
+    .square-card {
+        background-color: #fff;
+        flex: 1;
+        min-height: 200px;
+        border-radius: 10px;
+        padding: 1rem;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
 
-        .metacritic-score {
-            font-weight: bold;
-            font-size: 1.2rem;
-            padding: 0.3rem 0.6rem;
-            border-radius: 5px;
-            color: white;
-        }
+    /* Assicuriamoci che tutte le square-card abbiano la stessa altezza */
+    .square-card:nth-child(1) { flex-basis: 33.333%; }
+    .square-card:nth-child(2) { flex-basis: 33.333%; }
+    .square-card:nth-child(3) { flex-basis: 33.333%; }
 
-        .score-high {
-            background-color: green;
+    /* Responsive */
+    @media (max-width: 800px) {
+        .top-row {
+            flex-direction: column;
         }
+        .side-card, .highlight-card {
+            flex: 1;
+            min-height: 200px;
+        }
+        .square-card {
+            flex-basis: 100%;
+        }
+    }
 
-        .score-medium {
-            background-color: orange;
-        }
-
-        .score-low {
-            background-color: red;
-        }
-
-        footer {
-            text-align: center;
-            padding: 1rem;
-            background-color: #111;
-            color: white;
-        }
-    </style>
+    h2 {
+        margin-top: 0;
+    }
+</style>
 </head>
 <body>
-    <header>
-        <h1>MiniMetacritic</h1>
-        <nav>
-            <ul>
-                <li><a href="#">Film</a></li>
-                <li><a href="#">Giochi</a></li>
-                <li><a href="#">Musica</a></li>
-                <li><a href="#">TV</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main>
-        <section class="product-list" id="productList">
-            <!-- Prodotti caricati da JS -->
-        </section>
-    </main>
+<header>
+    <h1>Notizie in Evidenza</h1>
+</header>
 
-    <footer>
-        <p>&copy; 2025 MiniMetacritic</p>
-    </footer>
+<main>
+    <!-- Riga superiore: Highlight + 2 rettangolari -->
+    <div class="top-row">
+        <div class="highlight-card">
+            <h2>Notizia Principale</h2>
+            <p>Questa è la notizia in evidenza. Occupa più spazio rispetto alle altre card.</p>
+        </div>
+        <div class="side-card">
+            <h2>Notizia 2</h2>
+            <p>Breve anteprima della notizia 2.</p>
+        </div>
+        <div class="side-card">
+            <h2>Notizia 3</h2>
+            <p>Breve anteprima della notizia 3.</p>
+        </div>
+    </div>
 
-    <script>
-        const products = [
-            { title: "Film A", category: "Film", score: 88 },
-            { title: "Gioco B", category: "Giochi", score: 72 },
-            { title: "Serie C", category: "TV", score: 54 },
-            { title: "Album D", category: "Musica", score: 91 }
-        ];
+    <!-- Riga inferiore: 3 quadrati -->
+    <div class="bottom-row">
+        <div class="square-card">
+            <h2>Notizia 4</h2>
+            <p>Anteprima notizia 4.</p>
+        </div>
+        <div class="square-card">
+            <h2>Notizia 5</h2>
+            <p>Anteprima notizia 5.</p>
+        </div>
+        <div class="square-card">
+            <h2>Notizia 6</h2>
+            <p>Anteprima notizia 6.</p>
+        </div>
+    </div>
+</main>
 
-        function getScoreClass(score) {
-            if (score >= 75) return 'score-high';
-            if (score >= 50) return 'score-medium';
-            return 'score-low';
-        }
-
-        function displayProducts() {
-            const productList = document.getElementById('productList');
-            products.forEach(product => {
-                const card = document.createElement('div');
-                card.className = 'product-card';
-                card.innerHTML = `
-                    <h2>${product.title}</h2>
-                    <p>Categoria: ${product.category}</p>
-                    <div class="metacritic-score ${getScoreClass(product.score)}">${product.score}</div>
-                `;
-                productList.appendChild(card);
-            });
-        }
-
-        displayProducts();
-    </script>
 </body>
 </html>
