@@ -187,9 +187,10 @@ main {
     gap: 1rem;
 }
 
+/* Linea sopra le locandine sottilissima */
 .section-bar {
     width: 100%;
-    height: 2px; /* barra più sottile */
+    height: 1px; 
     background-color: #111;
     margin-bottom: 10px;
 }
@@ -209,7 +210,7 @@ main {
 
 .poster-image {
     width: 100%;
-    height: 200px; /* locandine più piccole */
+    height: 200px;
     border-radius: 10px;
     background-size: cover;
     background-position: center;
@@ -219,22 +220,20 @@ main {
     width: 100%;
     text-align: left;
     padding-left: 5px;
-    position: relative;
 }
 
+/* Linea sotto titolo locandina sottilissima */
 .poster-info h3 {
     margin: 0;
     padding: 0;
-    display: inline-block;
-    border-bottom: 2px solid #111;
-    padding-bottom: 2px;
+    display: block;
+    border-bottom: 1px solid #111; 
+    padding-bottom: 1px;
 }
 
 .rating {
     display: inline-block;
-    position: absolute;
-    bottom: -5px; /* sotto il titolo */
-    left: 0;
+    margin-top: 3px;
     font-weight: bold;
     padding: 3px 6px;
     border-radius: 4px;
@@ -282,7 +281,6 @@ main {
 <main>
     <!-- Riga superiore -->
     <div class="top-row">
-        <!-- Notizia principale (slider) -->
         <div class="highlight-card">
             <div class="dots">
                 <div class="dot"></div>
@@ -308,7 +306,6 @@ main {
                 </div>
             </div>
         </div>
-        <!-- Due rettangolari -->
         <div class="right-column">
             <div class="side-card" style="background-image:url('https://picsum.photos/400/200?random=4');">
                 <div class="card-text">
@@ -347,7 +344,7 @@ main {
         </div>
     </div>
 
-    <!-- Sezione Locandine -->
+    <!-- Sezione Locandine con 5 locandine -->
     <section class="latest-posters">
         <div class="section-bar"></div>
         <div class="posters-row">
@@ -377,6 +374,13 @@ main {
                 <div class="poster-info">
                     <h3>Locandina 4</h3>
                     <span class="rating good">7.8</span>
+                </div>
+            </div>
+            <div class="poster-card">
+                <div class="poster-image" style="background-image:url('https://picsum.photos/200/200?random=16');"></div>
+                <div class="poster-info">
+                    <h3>Locandina 5</h3>
+                    <span class="rating medium">6.1</span>
                 </div>
             </div>
         </div>
