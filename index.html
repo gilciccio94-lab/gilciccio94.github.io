@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pure Xbox Layout Clone</title>
+<title>Pure Xbox Masonry Layout Clone</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <style>
   *{margin:0;padding:0;box-sizing:border-box;}
@@ -20,24 +20,18 @@
   /* Container principale */
   .container{width:90%;max-width:1200px;margin:20px auto;}
 
-  /* Hero slider */
-  .hero-slider{position:relative;margin-bottom:30px;overflow:hidden;border-radius:10px;}
-  .hero-slides{display:flex;transition:transform 0.7s ease-in-out;}
-  .hero-slides img{width:100%;object-fit:cover;border-radius:10px;}
-  .hero-buttons{position:absolute;top:50%;width:100%;display:flex;justify-content:space-between;transform:translateY(-50%);}
-  .hero-buttons button{background:rgba(0,0,0,0.5);border:none;color:#fff;padding:10px;cursor:pointer;font-size:18px;border-radius:50%;}
-  .hero-buttons button:hover{background:#00ff00;color:#000;}
-
-  /* Main layout */
+  /* Masonry layout */
   .main-content{display:flex;gap:20px;}
-  .sections{flex:1;display:flex;flex-direction:column;gap:40px;}
-  .section h2{color:#00ff00;margin-bottom:15px;}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;}
-  .card{background:#1c1c1c;padding:10px;border-radius:10px;transition:transform 0.3s;}
-  .card img{width:100%;border-radius:10px;}
-  .card h3{margin:10px 0;color:#00ff00;}
-  .card p{color:#ccc;}
-  
+  .sections{flex:1;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));grid-auto-rows:10px;gap:15px;}
+  .card{background:#1c1c1c;padding:10px;border-radius:10px;display:flex;flex-direction:column;}
+  .card img{width:100%;border-radius:10px;margin-bottom:10px;}
+  .card h3{color:#00ff00;margin-bottom:5px;}
+  .card p{color:#ccc;margin-bottom:10px;}
+  /* Card heights diverse */
+  .card.large{grid-row:span 40;}
+  .card.medium{grid-row:span 25;}
+  .card.small{grid-row:span 15;}
+
   /* Sidebar */
   .sidebar{width:300px;flex-shrink:0;display:flex;flex-direction:column;gap:20px;}
   .widget{background:#1c1c1c;padding:15px;border-radius:10px;}
@@ -70,70 +64,38 @@
 </header>
 
 <div class="container">
-  <!-- Hero slider -->
-  <div class="hero-slider">
-    <div class="hero-slides">
-      <img src="https://via.placeholder.com/1200x400.png?text=Notizia+1" alt="Notizia 1">
-      <img src="https://via.placeholder.com/1200x400.png?text=Notizia+2" alt="Notizia 2">
-      <img src="https://via.placeholder.com/1200x400.png?text=Notizia+3" alt="Notizia 3">
-    </div>
-    <div class="hero-buttons">
-      <button id="hero-prev">&#10094;</button>
-      <button id="hero-next">&#10095;</button>
-    </div>
-  </div>
-
   <div class="main-content">
+    <!-- Masonry Grid -->
     <div class="sections">
-      <!-- Notizie -->
-      <div class="section" id="news">
-        <h2>Ultime Notizie</h2>
-        <div class="grid">
-          <div class="card">
-            <img src="https://via.placeholder.com/400x200.png?text=Notizia+1" alt="Notizia 1">
-            <h3>Notizia 1</h3>
-            <p>Descrizione breve della notizia.</p>
-          </div>
-          <div class="card">
-            <img src="https://via.placeholder.com/400x200.png?text=Notizia+2" alt="Notizia 2">
-            <h3>Notizia 2</h3>
-            <p>Descrizione breve della notizia.</p>
-          </div>
-        </div>
+      <div class="card large">
+        <img src="https://via.placeholder.com/600x400.png?text=Notizia+Grande+1" alt="Notizia Grande 1">
+        <h3>Notizia Grande 1</h3>
+        <p>Breve descrizione della notizia in evidenza.</p>
       </div>
-
-      <!-- Recensioni -->
-      <div class="section" id="reviews">
-        <h2>Recensioni</h2>
-        <div class="grid">
-          <div class="card">
-            <img src="https://via.placeholder.com/400x200.png?text=Recensione+1" alt="Recensione 1">
-            <h3>Recensione 1</h3>
-            <p>Breve descrizione della recensione.</p>
-          </div>
-        </div>
+      <div class="card medium">
+        <img src="https://via.placeholder.com/400x300.png?text=Notizia+Media+1" alt="Notizia Media 1">
+        <h3>Notizia Media 1</h3>
+        <p>Descrizione della notizia media.</p>
       </div>
-
-      <!-- Guide -->
-      <div class="section" id="guides">
-        <h2>Guide</h2>
-        <div class="grid">
-          <div class="card">
-            <img src="https://via.placeholder.com/400x200.png?text=Guida+1" alt="Guida 1">
-            <h3>Guida 1</h3>
-            <p>Breve descrizione della guida.</p>
-          </div>
-        </div>
+      <div class="card small">
+        <img src="https://via.placeholder.com/300x200.png?text=Notizia+Piccola+1" alt="Notizia Piccola 1">
+        <h3>Notizia Piccola 1</h3>
+        <p>Descrizione breve.</p>
       </div>
-
-      <!-- Video -->
-      <div class="section" id="videos">
-        <h2>Video</h2>
-        <div class="grid">
-          <div class="card">
-            <iframe width="100%" height="200" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
-          </div>
-        </div>
+      <div class="card medium">
+        <img src="https://via.placeholder.com/400x300.png?text=Notizia+Media+2" alt="Notizia Media 2">
+        <h3>Notizia Media 2</h3>
+        <p>Breve descrizione della notizia.</p>
+      </div>
+      <div class="card small">
+        <img src="https://via.placeholder.com/300x200.png?text=Notizia+Piccola+2" alt="Notizia Piccola 2">
+        <h3>Notizia Piccola 2</h3>
+        <p>Breve descrizione.</p>
+      </div>
+      <div class="card large">
+        <img src="https://via.placeholder.com/600x400.png?text=Notizia+Grande+2" alt="Notizia Grande 2">
+        <h3>Notizia Grande 2</h3>
+        <p>Breve descrizione della notizia in evidenza.</p>
       </div>
     </div>
 
@@ -144,6 +106,7 @@
         <ul>
           <li>Articolo Popolare 1</li>
           <li>Articolo Popolare 2</li>
+          <li>Articolo Popolare 3</li>
         </ul>
       </div>
       <div class="widget">
@@ -170,19 +133,6 @@
   <p>&copy; 2025 Pure Xbox Clone. Tutti i diritti riservati.</p>
   <p><a href="#">Privacy</a> | <a href="#">Termini di servizio</a></p>
 </footer>
-
-<script>
-  // Hero slider JS
-  const heroSlides=document.querySelector('.hero-slides');
-  const heroImages=document.querySelectorAll('.hero-slides img');
-  const heroPrev=document.getElementById('hero-prev');
-  const heroNext=document.getElementById('hero-next');
-  let heroIndex=0;
-  function showHeroSlide(i){heroIndex=i;heroSlides.style.transform=`translateX(${-i*100}%)`;}
-  heroNext.addEventListener('click',()=>showHeroSlide((heroIndex+1)%heroImages.length));
-  heroPrev.addEventListener('click',()=>showHeroSlide((heroIndex-1+heroImages.length)%heroImages.length));
-  setInterval(()=>showHeroSlide((heroIndex+1)%heroImages.length),5000);
-</script>
 
 </body>
 </html>
