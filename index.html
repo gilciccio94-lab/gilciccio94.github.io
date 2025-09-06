@@ -197,7 +197,7 @@ main {
 
 .posters-row {
     display: flex;
-    gap: 1rem;
+    gap: 0.5rem; /* spazio ridotto tra le locandine */
 }
 
 .poster-card {
@@ -209,8 +209,8 @@ main {
 }
 
 .poster-image {
-    width: 90%;
-    height: 180px;
+    width: 95%;   /* leggermente più grande */
+    height: 200px; /* leggermente più alta */
     border-radius: 10px;
     background-size: cover;
     background-position: center;
@@ -234,20 +234,20 @@ main {
     padding-bottom: 1px;
 }
 
-/* Voti quadrati piccoli con colori acqua e numeri neri in grassetto */
+/* Quadrati dei voti più grandi con numeri in grassetto */
 .rating {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 20px;
-    height: 20px;
-    font-weight: bold; /* grassetto */
-    font-size: 0.7rem;
+    width: 24px;  /* più grande */
+    height: 24px; /* più grande */
+    font-weight: bold; 
+    font-size: 0.8rem; /* leggermente più grande */
     border-radius: 4px;
-    color: black; /* numero nero */
+    color: black; 
     text-align: center;
-    margin-top: 5px;  /* spazio sopra per non spiaccicare */
-    margin-left: 2px; /* piccolo spazio a sinistra */
+    margin-top: 2px;
+    margin-left: 0;
 }
 
 .rating.good { 
