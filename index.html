@@ -43,7 +43,7 @@
         background-color: #666;
     }
 
-    /* --- GRIGLIA IN EVIDENZA --- */
+    /* --- GRIGLIA HIGHLIGHT (6 quadrati, 1 più grande a destra) --- */
     .highlight-grid {
         max-width: 1200px;
         margin: 20px auto;
@@ -81,10 +81,9 @@
         font-size: 1em;
     }
 
-    /* Articolo grande che occupa due celle */
-    .highlight-grid .big {
+    /* Primo quadrato a destra leggermente più grande */
+    .highlight-grid .big-right {
         grid-row: span 2;
-        grid-column: span 2;
     }
 
     /* --- GRIGLIA ARTICOLI PICCOLI --- */
@@ -134,8 +133,7 @@
             grid-template-columns: 1fr;
             grid-template-rows: auto;
         }
-        .highlight-grid .big {
-            grid-column: span 1;
+        .highlight-grid .big-right {
             grid-row: span 1;
         }
     }
@@ -157,31 +155,27 @@
     </ul>
 </nav>
 
-<!-- SEZIONE HIGHLIGHT (1 grande + 5 piccoli) -->
+<!-- SEZIONE HIGHLIGHT -->
 <section class="highlight-grid">
-    <article class="big">
-        <img src="https://via.placeholder.com/800x500?text=Articolo+Grande" alt="Articolo Grande">
-        <h2>Articolo Grande</h2>
+    <article>
+        <img src="https://via.placeholder.com/400x400?text=Evidenza" alt="Articolo Evidenza">
+        <h2>Articolo Evidenza</h2>
+    </article>
+    <article class="big-right">
+        <img src="https://via.placeholder.com/400x820?text=Grande+Destro" alt="Grande Destro">
+        <h2>Grande Destro</h2>
     </article>
     <article>
-        <img src="https://via.placeholder.com/400x250?text=Piccolo+1" alt="Piccolo 1">
+        <img src="https://via.placeholder.com/400x400?text=Piccolo+1" alt="Piccolo 1">
         <h2>Piccolo 1</h2>
     </article>
     <article>
-        <img src="https://via.placeholder.com/400x250?text=Piccolo+2" alt="Piccolo 2">
+        <img src="https://via.placeholder.com/400x400?text=Piccolo+2" alt="Piccolo 2">
         <h2>Piccolo 2</h2>
     </article>
     <article>
-        <img src="https://via.placeholder.com/400x250?text=Piccolo+3" alt="Piccolo 3">
+        <img src="https://via.placeholder.com/400x400?text=Piccolo+3" alt="Piccolo 3">
         <h2>Piccolo 3</h2>
-    </article>
-    <article>
-        <img src="https://via.placeholder.com/400x250?text=Piccolo+4" alt="Piccolo 4">
-        <h2>Piccolo 4</h2>
-    </article>
-    <article>
-        <img src="https://via.placeholder.com/400x250?text=Piccolo+5" alt="Piccolo 5">
-        <h2>Piccolo 5</h2>
     </article>
 </section>
 
