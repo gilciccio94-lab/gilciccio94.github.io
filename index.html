@@ -116,6 +116,11 @@
         border-radius: 10px;
         padding: 1rem;
         box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end; /* contenuto in basso */
+        align-items: flex-start;   /* contenuto a sinistra */
     }
 
     h2 {
@@ -226,8 +231,7 @@
 
     setInterval(nextSlide, 5000); // autoplay ogni 5 secondi
 
-    // inizializza pallini
-    showSlide(0);
+    showSlide(0); // inizializza pallini
 </script>
 
 </body>
