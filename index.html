@@ -209,8 +209,8 @@ main {
 }
 
 .poster-image {
-    width: 95%;   /* leggermente più grande */
-    height: 200px; /* leggermente più alta */
+    width: 95%;   
+    height: 200px; 
     border-radius: 10px;
     background-size: cover;
     background-position: center;
@@ -234,31 +234,25 @@ main {
     padding-bottom: 1px;
 }
 
-/* Quadrati dei voti più grandi con numeri in grassetto */
-.rating {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 24px;  /* più grande */
-    height: 24px; /* più grande */
-    font-weight: bold; 
-    font-size: 0.8rem; /* leggermente più grande */
-    border-radius: 4px;
-    color: black; 
+/* Badge stile Metacritic */
+.metascore-badge {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: white;
     text-align: center;
+    line-height: 24px;
     margin-top: 2px;
     margin-left: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.rating.good { 
-    background-color: #32cd32; /* verde acqua pieno */
-}
-.rating.medium { 
-    background-color: #ffd966; /* giallo acqua pieno */
-}
-.rating.bad { 
-    background-color: #ff6666; /* rosso acqua pieno */
-}
+.metascore-good { background-color: #1e7e34; }   /* verde */
+.metascore-medium { background-color: #f0ad4e; } /* giallo */
+.metascore-bad { background-color: #d9534f; }    /* rosso */
 
 @media (max-width: 800px) {
     .top-row {
@@ -300,58 +294,46 @@ main {
                     <p>Descrizione breve della notizia principale 1.</p>
                 </div>
             </div>
-            <div class="slide" style="background-image:url('https://picsum.photos/800/400?random=2');">
-                <div class="slide-text">
-                    <h2>Notizia Principale 2</h2>
-                    <p>Descrizione breve della notizia principale 2.</p>
-                </div>
-            </div>
-            <div class="slide" style="background-image:url('https://picsum.photos/800/400?random=3');">
-                <div class="slide-text">
-                    <h2>Notizia Principale 3</h2>
-                    <p>Descrizione breve della notizia principale 3.</p>
-                </div>
-            </div>
         </div>
         <div class="right-column">
             <div class="side-card" style="background-image:url('https://picsum.photos/400/200?random=4');">
                 <div class="card-text">
                     <h3>Notizia 2</h3>
-                    <p>Descrizione breve della notizia 2.</p>
+                    <span class="metascore-badge metascore-good">85</span>
                 </div>
             </div>
             <div class="side-card" style="background-image:url('https://picsum.photos/400/200?random=5');">
                 <div class="card-text">
                     <h3>Notizia 3</h3>
-                    <p>Descrizione breve della notizia 3.</p>
+                    <span class="metascore-badge metascore-medium">65</span>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Riga quadrati -->
+    <!-- Bottom row quadrati -->
     <div class="bottom-row">
         <div class="square-card" style="background-image:url('https://picsum.photos/200/200?random=6');">
             <div class="card-text">
                 <h3>Notizia 4</h3>
-                <p>Descrizione breve della notizia 4.</p>
+                <span class="metascore-badge metascore-good">90</span>
             </div>
         </div>
         <div class="square-card" style="background-image:url('https://picsum.photos/200/200?random=7');">
             <div class="card-text">
                 <h3>Notizia 5</h3>
-                <p>Descrizione breve della notizia 5.</p>
+                <span class="metascore-badge metascore-medium">55</span>
             </div>
         </div>
         <div class="square-card" style="background-image:url('https://picsum.photos/200/200?random=8');">
             <div class="card-text">
                 <h3>Notizia 6</h3>
-                <p>Descrizione breve della notizia 6.</p>
+                <span class="metascore-badge metascore-bad">30</span>
             </div>
         </div>
     </div>
 
-    <!-- Sezione Locandine con 5 locandine -->
+    <!-- Sezione Locandine con badge -->
     <section class="latest-posters">
         <div class="section-bar"></div>
         <div class="posters-row">
@@ -359,35 +341,35 @@ main {
                 <div class="poster-image" style="background-image:url('https://picsum.photos/200/200?random=12');"></div>
                 <div class="poster-info">
                     <h3>Locandina 1</h3>
-                    <span class="rating good">8.5</span>
+                    <span class="metascore-badge metascore-good">88</span>
                 </div>
             </div>
             <div class="poster-card">
                 <div class="poster-image" style="background-image:url('https://picsum.photos/200/200?random=13');"></div>
                 <div class="poster-info">
                     <h3>Locandina 2</h3>
-                    <span class="rating medium">5.3</span>
+                    <span class="metascore-badge metascore-medium">55</span>
                 </div>
             </div>
             <div class="poster-card">
                 <div class="poster-image" style="background-image:url('https://picsum.photos/200/200?random=14');"></div>
                 <div class="poster-info">
                     <h3>Locandina 3</h3>
-                    <span class="rating bad">2.7</span>
+                    <span class="metascore-badge metascore-bad">35</span>
                 </div>
             </div>
             <div class="poster-card">
                 <div class="poster-image" style="background-image:url('https://picsum.photos/200/200?random=15');"></div>
                 <div class="poster-info">
                     <h3>Locandina 4</h3>
-                    <span class="rating good">7.8</span>
+                    <span class="metascore-badge metascore-good">77</span>
                 </div>
             </div>
             <div class="poster-card">
                 <div class="poster-image" style="background-image:url('https://picsum.photos/200/200?random=16');"></div>
                 <div class="poster-info">
                     <h3>Locandina 5</h3>
-                    <span class="rating medium">6.1</span>
+                    <span class="metascore-badge metascore-medium">62</span>
                 </div>
             </div>
         </div>
