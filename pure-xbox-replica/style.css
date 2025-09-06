@@ -1,4 +1,4 @@
-/* Reset di base */
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -41,7 +41,7 @@ header .search input {
   font-size: 1rem;
 }
 
-/* Hero Section */
+/* Hero */
 .hero {
   position: relative;
   text-align: center;
