@@ -28,13 +28,7 @@
         gap: 1rem;
     }
 
-    /* Riga superiore */
-    .top-row {
-        display: flex;
-        gap: 1rem;
-        flex-wrap: wrap;
-    }
-
+    /* Slide container */
     .highlight-card {
         background-color: #fff;
         flex: 2;
@@ -45,6 +39,45 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding: 1rem;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+    }
+
+    .slide.active {
+        opacity: 1;
+    }
+
+    /* Indicatori a pallini */
+    .dots {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        display: flex;
+        gap: 10px;
+    }
+
+    .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #bbb;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .dot.active {
+        background-color: #717171;
     }
 
     .right-column {
@@ -67,14 +100,14 @@
     .bottom-row {
         display: flex;
         gap: 1rem;
-        width: 66.666%; /* stessa larghezza della notizia principale */
-        margin-left: 0; /* allineata a sinistra */
+        width: 66.666%;
+        margin-left: 0;
     }
 
     .square-card {
         background-color: #fff;
         flex: 1;
-        min-height: 250px; /* aumentata altezza */
+        min-height: 250px;
         border-radius: 10px;
         padding: 1rem;
         box-shadow: 0 2px 6px rgba(0,0,0,0.1);
@@ -111,12 +144,26 @@
 </header>
 
 <main>
-    <!-- Riga superiore: Highlight + colonna di due rettangoli -->
+    <!-- Riga superiore: Slide + colonna di due rettangoli -->
     <div class="top-row">
-        <div class="highlight-card">
-            <h2>Notizia Principale</h2>
-            <p>Questa è la notizia in evidenza. Occupa più spazio rispetto alle altre card.</p>
+        <div class="highlight-card" id="highlightCard">
+            <!-- Indicatori a pallini -->
+            <div class="dots" id="dots"></div>
+            <!-- Slides -->
+            <div class="slide active">
+                <h2>Notizia Principale 1</h2>
+                <p>Questa è la prima notizia in evidenza.</p>
+            </div>
+            <div class="slide">
+                <h2>Notizia Principale 2</h2>
+                <p>Questa è la seconda notizia in evidenza.</p>
+            </div>
+            <div class="slide">
+                <h2>Notizia Principale 3</h2>
+                <p>Questa è la terza notizia in evidenza.</p>
+            </div>
         </div>
+
         <div class="right-column">
             <div class="side-card">
                 <h2>Notizia 2</h2>
@@ -129,7 +176,7 @@
         </div>
     </div>
 
-    <!-- Riga inferiore: 3 quadrati sotto la notizia principale -->
+    <!-- Riga inferiore: 3 quadrati sotto la grande -->
     <div class="bottom-row">
         <div class="square-card">
             <h2>Notizia 4</h2>
@@ -145,6 +192,38 @@
         </div>
     </div>
 </main>
+
+<script>
+    // Slide automatiche
+    const slides = document.querySelectorAll('.slide');
+    const dotsContainer = document.getElementById('dots');
+    let currentSlide = 0;
+
+    // Crea i pallini dinamicamente
+    slides.forEach((_, index) => {
+        const dot = document.createElement('span');
+        dot.classList.add('dot');
+        dot.addEventListener('click', () => showSlide(index));
+        dotsContainer.appendChild(dot);
+    });
+
+    const dots = document.querySelectorAll('.dot');
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === index);
+            dots[i].classList.toggle('active', i === index);
+        });
+        currentSlide = index;
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
+
+    setInterval(nextSlide, 5000); // cambia slide ogni 5 secondi
+</script>
 
 </body>
 </html>
