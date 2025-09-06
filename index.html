@@ -28,7 +28,7 @@
         gap: 1rem;
     }
 
-    /* Contenitore principale */
+    /* Riga superiore */
     .top-row {
         display: flex;
         gap: 1rem;
@@ -47,7 +47,6 @@
         justify-content: space-between;
     }
 
-    /* Contenitore per i due rettangoli a destra */
     .right-column {
         display: flex;
         flex-direction: column;
@@ -68,12 +67,14 @@
     .bottom-row {
         display: flex;
         gap: 1rem;
+        width: 66.666%; /* stessa larghezza della notizia principale */
+        margin-left: 0; /* allineata a sinistra */
     }
 
     .square-card {
         background-color: #fff;
         flex: 1;
-        min-height: 200px;
+        min-height: 100px;
         border-radius: 10px;
         padding: 1rem;
         box-shadow: 0 2px 6px rgba(0,0,0,0.1);
@@ -98,6 +99,7 @@
         }
         .bottom-row {
             flex-direction: column;
+            width: 100%;
         }
     }
 </style>
@@ -146,3 +148,5 @@
 
 </body>
 </html>
+
+
