@@ -1,61 +1,135 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pure Xbox Replica</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pure Xbox Clone</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #1c1c1c;
+            padding: 20px;
+        }
+
+        header h1 {
+            color: #00ff00;
+        }
+
+        nav {
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-right: 20px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #00ff00;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #1c1c1c;
+            padding: 15px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.03);
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .card h2 {
+            color: #00ff00;
+            margin: 10px 0;
+        }
+
+        .card p {
+            color: #ccc;
+        }
+
+        footer {
+            background-color: #1c1c1c;
+            text-align: center;
+            padding: 15px;
+            margin-top: 40px;
+            color: #888;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="logo">Pure Xbox</div>
-    <nav>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Notizie</a></li>
-        <li><a href="#">Recensioni</a></li>
-        <li><a href="#">Guide</a></li>
-        <li><a href="#">Video</a></li>
-      </ul>
-    </nav>
-    <div class="search">
-      <input type="text" placeholder="Cerca...">
+    <header>
+        <h1>Pure Xbox Clone</h1>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Notizie</a>
+            <a href="#">Recensioni</a>
+            <a href="#">Guide</a>
+            <a href="#">Video</a>
+            <a href="#">Forum</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="grid">
+            <div class="card">
+                <img src="https://via.placeholder.com/400x200.png?text=Gioco+1" alt="Gioco 1">
+                <h2>Notizia 1</h2>
+                <p>Breve descrizione della notizia o recensione. Aggiornamenti recenti sui giochi Xbox.</p>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/400x200.png?text=Gioco+2" alt="Gioco 2">
+                <h2>Recensione 1</h2>
+                <p>Breve descrizione della recensione. Punteggio, commenti e dettagli sul gioco.</p>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/400x200.png?text=Gioco+3" alt="Gioco 3">
+                <h2>Guida 1</h2>
+                <p>Breve guida o suggerimento per il gioco. Trucchi, consigli e strategie.</p>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/400x200.png?text=Gioco+4" alt="Gioco 4">
+                <h2>Video 1</h2>
+                <p>Anteprima o gameplay video dei giochi Xbox più recenti.</p>
+            </div>
+        </div>
     </div>
-  </header>
 
-  <section class="hero">
-    <img src="https://via.placeholder.com/1200x400" alt="Hero Image">
-    <div class="hero-text">
-      <h1>Ultime Novità su Xbox</h1>
-      <p>Scopri le ultime notizie, recensioni e guide sul mondo Xbox.</p>
-    </div>
-  </section>
-
-  <main>
-    <section class="articles">
-      <article>
-        <img src="https://via.placeholder.com/300x200" alt="Articolo 1">
-        <h2>Nuovo Aggiornamento Xbox</h2>
-        <p>Scopri le novità dell'ultimo aggiornamento del sistema Xbox.</p>
-      </article>
-      <article>
-        <img src="https://via.placeholder.com/300x200" alt="Articolo 2">
-        <h2>Recensione di Halo Infinite</h2>
-        <p>Leggi la nostra recensione completa di Halo Infinite.</p>
-      </article>
-      <article>
-        <img src="https://via.placeholder.com/300x200" alt="Articolo 3">
-        <h2>Guida ai Migliori Giochi Game Pass</h2>
-        <p>Esplora i migliori giochi disponibili su Xbox Game Pass.</p>
-      </article>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 Pure Xbox Replica</p>
-  </footer>
-
-  <script src="scripts.js"></script>
+    <footer>
+        &copy; 2025 Pure Xbox Clone. Tutti i diritti riservati.
+    </footer>
 </body>
 </html>
