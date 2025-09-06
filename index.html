@@ -28,6 +28,13 @@
         gap: 1rem;
     }
 
+    /* Riga superiore */
+    .top-row {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
     /* Slide container */
     .highlight-card {
         background-color: #fff;
@@ -36,9 +43,6 @@
         border-radius: 10px;
         padding: 1rem;
         box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
         position: relative;
         overflow: hidden;
     }
@@ -58,13 +62,14 @@
         opacity: 1;
     }
 
-    /* Indicatori a pallini */
+    /* Pallini in alto a sinistra */
     .dots {
         position: absolute;
         top: 10px;
         left: 10px;
         display: flex;
         gap: 10px;
+        z-index: 10;
     }
 
     .dot {
@@ -144,11 +149,11 @@
 </header>
 
 <main>
-    <!-- Riga superiore: Slide + colonna di due rettangoli -->
     <div class="top-row">
         <div class="highlight-card" id="highlightCard">
-            <!-- Indicatori a pallini -->
+            <!-- Pallini -->
             <div class="dots" id="dots"></div>
+
             <!-- Slides -->
             <div class="slide active">
                 <h2>Notizia Principale 1</h2>
@@ -176,7 +181,6 @@
         </div>
     </div>
 
-    <!-- Riga inferiore: 3 quadrati sotto la grande -->
     <div class="bottom-row">
         <div class="square-card">
             <h2>Notizia 4</h2>
@@ -194,12 +198,10 @@
 </main>
 
 <script>
-    // Slide automatiche
     const slides = document.querySelectorAll('.slide');
     const dotsContainer = document.getElementById('dots');
     let currentSlide = 0;
 
-    // Crea i pallini dinamicamente
     slides.forEach((_, index) => {
         const dot = document.createElement('span');
         dot.classList.add('dot');
@@ -222,7 +224,10 @@
         showSlide(currentSlide);
     }
 
-    setInterval(nextSlide, 5000); // cambia slide ogni 5 secondi
+    setInterval(nextSlide, 5000); // autoplay ogni 5 secondi
+
+    // inizializza pallini
+    showSlide(0);
 </script>
 
 </body>
