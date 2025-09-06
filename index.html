@@ -3,12 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pure Xbox Clone Full Autoplay</title>
+<title>Pure Xbox Clone</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <style>
   * {margin:0;padding:0;box-sizing:border-box;}
   body {font-family:'Roboto',sans-serif;background:#121212;color:#fff;line-height:1.6;scroll-behavior:smooth;}
 
+  /* Header */
   header {display:flex;justify-content:space-between;align-items:center;padding:20px;background:#1c1c1c;position:sticky;top:0;z-index:1000;transition:background 0.3s;}
   header.sticky {background:#111;}
   header .logo img{width:150px;}
@@ -17,69 +18,43 @@
   nav ul li a{color:#fff;text-decoration:none;font-weight:bold;transition:color 0.3s;}
   nav ul li a.active, nav ul li a:hover{color:#00ff00;}
 
+  /* Container */
   .container {width:90%;max-width:1200px;margin:20px auto;}
-  .search-bar {margin-bottom:20px;display:flex;}
-  .search-bar input {flex:1;padding:10px;border-radius:5px;border:none;margin-right:5px;}
-  .search-bar button {padding:10px 20px;border:none;border-radius:5px;background:#00ff00;color:#000;cursor:pointer;transition:all 0.3s;}
-  .search-bar button:hover {background:#ff0000;color:#fff;}
 
-  /* Slider Notizie */
-  .slider {position:relative;margin:20px 0;overflow:hidden;border-radius:10px;}
-  .slides {display:flex;transition:transform 0.7s ease-in-out;touch-action: pan-y;}
-  .slides img {width:100%;border-radius:10px;transition:transform 0.5s;}
-  .slides img:hover {transform:scale(1.02);}
-  .slider-buttons {position:absolute;top:50%;width:100%;display:flex;justify-content:space-between;transform:translateY(-50%);}
-  .slider-buttons button {background:rgba(0,0,0,0.5);border:none;color:#fff;padding:10px;cursor:pointer;font-size:18px;border-radius:50%;transition:all 0.3s;}
-  .slider-buttons button:hover {background:#00ff00;color:#000;}
-  .thumbnails {display:flex;justify-content:center;margin-top:10px;gap:5px;overflow-x:auto;}
-  .thumbnails img {width:100px;height:60px;object-fit:cover;cursor:pointer;border:2px solid #1c1c1c;border-radius:5px;transition:all 0.3s;}
-  .thumbnails img.active {border-color:#00ff00;}
+  /* Hero Slider */
+  .hero-slider {position:relative;overflow:hidden;border-radius:10px;margin-bottom:30px;}
+  .hero-slides {display:flex;transition:transform 0.7s ease-in-out;}
+  .hero-slides img {width:100%;border-radius:10px;object-fit:cover;}
+  .hero-buttons {position:absolute;top:50%;width:100%;display:flex;justify-content:space-between;transform:translateY(-50%);}
+  .hero-buttons button {background:rgba(0,0,0,0.5);border:none;color:#fff;padding:10px;cursor:pointer;font-size:18px;border-radius:50%;transition:all 0.3s;}
+  .hero-buttons button:hover {background:#00ff00;color:#000;}
 
-  /* Grid Top News */
-  .grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:20px;}
+  /* Griglie notizie/recensioni/guides */
+  .section {margin-bottom:40px;}
+  .section h2 {color:#00ff00;margin-bottom:20px;}
+  .grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;}
   .card {background:#1c1c1c;padding:15px;border-radius:10px;transition:transform 0.4s,opacity 0.5s;position:relative;opacity:0;transform:translateY(50px);}
   .card.visible {opacity:1;transform:translateY(0);}
   .card img {width:100%;border-radius:10px;}
-  .card h2 {color:#00ff00;margin:10px 0;}
+  .card h3 {margin:10px 0;color:#00ff00;}
   .card p {color:#ccc;}
-  .like-btn {position:absolute;top:10px;right:10px;background:#00ff00;border:none;color:#000;padding:5px 10px;border-radius:5px;cursor:pointer;transition:all 0.3s;}
-  .like-btn.liked {background:#ff0000;color:#fff;}
+  
+  /* Sidebar */
+  .main-content {display:flex;gap:20px;}
+  .sidebar {width:300px;flex-shrink:0;}
+  .widget {background:#1c1c1c;padding:15px;border-radius:10px;margin-bottom:20px;}
+  .widget h4 {color:#00ff00;margin-bottom:10px;}
+  .widget ul {list-style:none;}
+  .widget ul li{margin-bottom:10px;color:#ccc;cursor:pointer;}
+  .widget ul li:hover{color:#00ff00;}
 
-  .comments-section {margin-top:15px;}
-  .comments-list {margin-bottom:10px;}
-  .comments-list p {background:#2a2a2a;padding:5px 10px;border-radius:5px;margin-bottom:5px;color:#ccc;transition:all 0.3s;}
-  .comment-input {width:70%;padding:5px;border-radius:5px;border:none;margin-right:5px;}
-  .comment-btn {padding:5px 10px;border:none;border-radius:5px;background:#00ff00;color:#000;cursor:pointer;transition:all 0.3s;}
-  .comment-btn:hover {background:#ff0000;color:#fff;}
-
-  /* Slider Video */
-  .video-section {margin-top:40px;}
-  .video-section h2 {color:#00ff00;margin-bottom:20px;}
-  .video-slider {position:relative;overflow:hidden;border-radius:10px;}
-  .video-slides {display:flex;transition:transform 0.7s ease-in-out;touch-action: pan-y;}
-  .video-card {min-width:300px;margin-right:10px;transition:transform 0.5s;position:relative;overflow:hidden;}
-  .video-card:hover {transform:scale(1.03);}
-  .video-card iframe {width:100%;height:160px;border-radius:10px;pointer-events:none;}
-  .video-card .thumbnail {
-    position:absolute;top:0;left:0;width:100%;height:100%;background-size:cover;background-position:center;transition:opacity 0.5s ease-in-out;z-index:2;
-  }
-  .video-card.playing .thumbnail {opacity:0;}
-
-  .video-slider-buttons {position:absolute;top:50%;width:100%;display:flex;justify-content:space-between;transform:translateY(-50%);}
-  .video-slider-buttons button {background:rgba(0,0,0,0.5);border:none;color:#fff;padding:10px;cursor:pointer;font-size:18px;border-radius:50%;transition:all 0.3s;}
-  .video-slider-buttons button:hover {background:#00ff00;color:#000;}
-
+  /* Footer */
   footer {text-align:center;padding:20px;background:#1c1c1c;margin-top:40px;color:#888;}
   footer a {color:#00ff00;text-decoration:none;margin:0 10px;}
   footer a:hover {text-decoration:underline;}
 
-  @media(max-width:768px){
-    header{flex-direction:column;align-items:flex-start;}
-    nav ul{flex-direction:column;width:100%;}
-    nav ul li{margin:10px 0;}
-    .thumbnails img {width:80px;height:50px;}
-    .video-card {min-width:220px;}
-  }
+  /* Responsive */
+  @media(max-width:1024px){.main-content{flex-direction:column;}.sidebar{width:100%;}}
 </style>
 </head>
 <body>
@@ -88,86 +63,103 @@
   <div class="logo"><img src="https://via.placeholder.com/150x50.png?text=Pure+Xbox" alt="Logo"></div>
   <nav>
     <ul>
-      <li><a href="#top-news" class="nav-link active">Notizie</a></li>
-      <li><a href="#video-section" class="nav-link">Video</a></li>
+      <li><a href="#news" class="nav-link active">Notizie</a></li>
+      <li><a href="#reviews" class="nav-link">Recensioni</a></li>
+      <li><a href="#guides" class="nav-link">Guide</a></li>
+      <li><a href="#videos" class="nav-link">Video</a></li>
     </ul>
   </nav>
 </header>
 
 <div class="container">
-  <div class="search-bar">
-    <input type="text" id="search-input" placeholder="Cerca articoli...">
-    <button id="search-btn">Cerca</button>
-  </div>
-
-  <!-- Slider Notizie -->
-  <div class="slider" id="news-slider">
-    <div class="slides">
-      <img src="https://via.placeholder.com/1200x400.png?text=Notizia+1" alt="1">
-      <img src="https://via.placeholder.com/1200x400.png?text=Notizia+2" alt="2">
-      <img src="https://via.placeholder.com/1200x400.png?text=Notizia+3" alt="3">
+  <!-- Hero Slider -->
+  <div class="hero-slider">
+    <div class="hero-slides">
+      <img src="https://via.placeholder.com/1200x400.png?text=Notizia+1" alt="Slide 1">
+      <img src="https://via.placeholder.com/1200x400.png?text=Notizia+2" alt="Slide 2">
+      <img src="https://via.placeholder.com/1200x400.png?text=Notizia+3" alt="Slide 3">
     </div>
-    <div class="slider-buttons">
-      <button id="news-prev">&#10094;</button>
-      <button id="news-next">&#10095;</button>
-    </div>
-    <div class="thumbnails">
-      <img src="https://via.placeholder.com/150x80.png?text=1" class="active">
-      <img src="https://via.placeholder.com/150x80.png?text=2">
-      <img src="https://via.placeholder.com/150x80.png?text=3">
+    <div class="hero-buttons">
+      <button id="hero-prev">&#10094;</button>
+      <button id="hero-next">&#10095;</button>
     </div>
   </div>
 
-  <!-- Top News Grid -->
-  <h2 id="top-news" style="color:#00ff00;margin-top:30px;">Top News</h2>
-  <div class="grid" id="articles-grid">
-    <div class="card">
-      <img src="https://via.placeholder.com/400x200.png?text=Gioco+1" alt="Gioco 1">
-      <h2>Notizia 1</h2>
-      <p>Ultime novità sul mondo Xbox, aggiornamenti, patch e nuove uscite.</p>
-      <button class="like-btn">Like</button>
-      <div class="comments-section">
-        <h3 style="color:#00ff00;margin-top:10px;">Commenti (<span class="comment-count">0</span>)</h3>
-        <div class="comments-list"></div>
-        <input type="text" class="comment-input" placeholder="Scrivi un commento...">
-        <button class="comment-btn">Invia</button>
+  <div class="main-content">
+    <!-- Main Sections -->
+    <div class="sections" style="flex:1;">
+      <div class="section" id="news">
+        <h2>Ultime Notizie</h2>
+        <div class="grid">
+          <div class="card">
+            <img src="https://via.placeholder.com/400x200.png?text=Notizia+1" alt="Notizia 1">
+            <h3>Notizia 1</h3>
+            <p>Descrizione breve della notizia.</p>
+          </div>
+          <div class="card">
+            <img src="https://via.placeholder.com/400x200.png?text=Notizia+2" alt="Notizia 2">
+            <h3>Notizia 2</h3>
+            <p>Descrizione breve della notizia.</p>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="card">
-      <img src="https://via.placeholder.com/400x200.png?text=Gioco+2" alt="Gioco 2">
-      <h2>Recensione 1</h2>
-      <p>Valutazione del gioco con dettagli su gameplay, grafica e contenuti.</p>
-      <button class="like-btn">Like</button>
-      <div class="comments-section">
-        <h3 style="color:#00ff00;margin-top:10px;">Commenti (<span class="comment-count">0</span>)</h3>
-        <div class="comments-list"></div>
-        <input type="text" class="comment-input" placeholder="Scrivi un commento...">
-        <button class="comment-btn">Invia</button>
-      </div>
-    </div>
-  </div>
 
-  <!-- Slider Video -->
-  <div class="video-section" id="video-section">
-    <h2>Video Recenti</h2>
-    <div class="video-slider">
-      <div class="video-slides">
-        <div class="video-card">
-          <div class="thumbnail" style="background-image:url('https://via.placeholder.com/300x160.png?text=Video+1');"></div>
-          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1" allowfullscreen></iframe>
-        </div>
-        <div class="video-card">
-          <div class="thumbnail" style="background-image:url('https://via.placeholder.com/300x160.png?text=Video+2');"></div>
-          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1" allowfullscreen></iframe>
-        </div>
-        <div class="video-card">
-          <div class="thumbnail" style="background-image:url('https://via.placeholder.com/300x160.png?text=Video+3');"></div>
-          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1" allowfullscreen></iframe>
+      <div class="section" id="reviews">
+        <h2>Recensioni</h2>
+        <div class="grid">
+          <div class="card">
+            <img src="https://via.placeholder.com/400x200.png?text=Recensione+1" alt="Recensione 1">
+            <h3>Recensione 1</h3>
+            <p>Breve descrizione della recensione.</p>
+          </div>
         </div>
       </div>
-      <div class="video-slider-buttons">
-        <button id="video-prev">&#10094;</button>
-        <button id="video-next">&#10095;</button>
+
+      <div class="section" id="guides">
+        <h2>Guide</h2>
+        <div class="grid">
+          <div class="card">
+            <img src="https://via.placeholder.com/400x200.png?text=Guida+1" alt="Guida 1">
+            <h3>Guida 1</h3>
+            <p>Breve descrizione della guida.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" id="videos">
+        <h2>Video</h2>
+        <div class="grid">
+          <div class="card">
+            <iframe width="100%" height="200" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="widget">
+        <h4>Contenuti Popolari</h4>
+        <ul>
+          <li>Articolo Popolare 1</li>
+          <li>Articolo Popolare 2</li>
+        </ul>
+      </div>
+      <div class="widget">
+        <h4>Commenti Recenti</h4>
+        <ul>
+          <li>Utente1 su Notizia 1</li>
+          <li>Utente2 su Recensione 1</li>
+        </ul>
+      </div>
+      <div class="widget">
+        <h4>Sondaggio</h4>
+        <p>Qual è il tuo gioco preferito?</p>
+        <ul>
+          <li>GTA</li>
+          <li>Halo</li>
+          <li>Forza Horizon</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -179,97 +171,29 @@
 </footer>
 
 <script>
-  // Sticky header
-  const header=document.getElementById('header');
-  window.addEventListener('scroll',()=>header.classList.toggle('sticky',window.scrollY>50));
+  // Hero Slider
+  const heroSlides=document.querySelector('.hero-slides');
+  const heroImages=document.querySelectorAll('.hero-slides img');
+  const heroPrev=document.getElementById('hero-prev');
+  const heroNext=document.getElementById('hero-next');
+  let heroIndex=0;
+  function showHeroSlide(i){
+    heroIndex=i;
+    heroSlides.style.transform=`translateX(${-i*100}%)`;
+  }
+  heroNext.addEventListener('click',()=>showHeroSlide((heroIndex+1)%heroImages.length));
+  heroPrev.addEventListener('click',()=>showHeroSlide((heroIndex-1+heroImages.length)%heroImages.length));
+  setInterval(()=>showHeroSlide((heroIndex+1)%heroImages.length),5000);
 
-  // Cards fade-in
+  // Fade-in cards
   const cards=document.querySelectorAll('.card');
-  const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');}});},{threshold:0.2});
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){entry.target.classList.add('visible');}
+    });
+  },{threshold:0.2});
   cards.forEach(card=>observer.observe(card));
-
-  // Slider Notizie
-  const newsSlides=document.querySelector('#news-slider .slides');
-  const newsImages=document.querySelectorAll('#news-slider .slides img');
-  const newsPrev=document.getElementById('news-prev');
-  const newsNext=document.getElementById('news-next');
-  const newsThumbs=document.querySelectorAll('#news-slider .thumbnails img');
-  let newsIndex=0;
-  function showNewsSlide(i){newsIndex=i;newsSlides.style.transform=`translateX(${-i*100}%)`;newsThumbs.forEach(t=>t.classList.remove('active'));newsThumbs[i].classList.add('active');}
-  newsNext.addEventListener('click',()=>showNewsSlide((newsIndex+1)%newsImages.length));
-  newsPrev.addEventListener('click',()=>showNewsSlide((newsIndex-1+newsImages.length)%newsImages.length));
-  newsThumbs.forEach((t,i)=>t.addEventListener('click',()=>showNewsSlide(i)));
-  setInterval(()=>showNewsSlide((newsIndex+1)%newsImages.length),5000);
-  let startX=0,endX=0;
-  newsSlides.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;});
-  newsSlides.addEventListener('touchend',e=>{endX=e.changedTouches[0].clientX;if(endX-startX>50) showNewsSlide((newsIndex-1+newsImages.length)%newsImages.length); else if(startX-endX>50) showNewsSlide((newsIndex+1)%newsImages.length);});
-
-  // Slider Video
-  const videoSlides=document.querySelector('.video-slides');
-  const videoCards=document.querySelectorAll('.video-card');
-  const videoPrev=document.getElementById('video-prev');
-  const videoNext=document.getElementById('video-next');
-  let videoIndex=0;
-  function showVideoSlide(i){const cardWidth=videoCards[0].offsetWidth+10;videoIndex=i;videoSlides.style.transform=`translateX(${-i*cardWidth}px)`;}
-  videoNext.addEventListener('click',()=>showVideoSlide(Math.min(videoIndex+1,videoCards.length-3)));
-  videoPrev.addEventListener('click',()=>showVideoSlide(Math.max(videoIndex-1,0)));
-  let vStartX=0,vEndX=0;
-  videoSlides.addEventListener('touchstart',e=>{vStartX=e.touches[0].clientX;});
-  videoSlides.addEventListener('touchend',e=>{vEndX=e.changedTouches[0].clientX;if(vEndX-vStartX>50) showVideoSlide(Math.max(videoIndex-1,0)); else if(vStartX-vEndX>50) showVideoSlide(Math.min(videoIndex+1,videoCards.length-3));});
-
-  // Like buttons
-  document.querySelectorAll('.like-btn').forEach(btn=>btn.addEventListener('click',()=>{btn.classList.toggle('liked');btn.textContent=btn.classList.contains('liked')?'Liked':'Like';}));
-
-  // Commenti
-  document.querySelectorAll('.card').forEach(card=>{
-    const commentBtn=card.querySelector('.comment-btn');
-    const commentInput=card.querySelector('.comment-input');
-    const commentsList=card.querySelector('.comments-list');
-    const commentCount=card.querySelector('.comment-count');
-    commentBtn.addEventListener('click',()=>{
-      const text=commentInput.value.trim();
-      if(text!==''){const p=document.createElement('p');p.textContent=text;commentsList.appendChild(p);commentInput.value='';commentCount.textContent=commentsList.querySelectorAll('p').length;}
-    });
-  });
-
-  // Search
-  const searchBtn=document.getElementById('search-btn');
-  const searchInput=document.getElementById('search-input');
-  const articlesGrid=document.getElementById('articles-grid');
-  searchBtn.addEventListener('click',()=>{
-    const q=searchInput.value.toLowerCase();
-    articlesGrid.querySelectorAll('.card').forEach(card=>{
-      const title=card.querySelector('h2').textContent.toLowerCase();
-      const text=card.querySelector('p').textContent.toLowerCase();
-      card.style.display=(title.includes(q)||text.includes(q))?'block':'none';
-    });
-  });
-
-  // Navbar active
-  const sections={'top-news':document.querySelector('#top-news'),'video-section':document.querySelector('#video-section')};
-  const navLinks=document.querySelectorAll('.nav-link');
-  window.addEventListener('scroll',()=>{
-    const scrollPos=window.scrollY+150;
-    for(const id in sections){const s=sections[id];if(scrollPos>=s.offsetTop && scrollPos<s.offsetTop+s.offsetHeight){navLinks.forEach(l=>l.classList.remove('active'));document.querySelector(`.nav-link[href="#${id}"]`).classList.add('active');}}
-  });
-
-  // YouTube API for autoplay + thumbnail
-  let tag=document.createElement('script');tag.src="https://www.youtube.com/iframe_api";document.body.appendChild(tag);
-  window.onYouTubeIframeAPIReady=function(){
-    videoCards.forEach(card=>{
-      const iframe=card.querySelector('iframe');
-      const player=new YT.Player(iframe,{
-        events:{
-          'onStateChange': e=>{
-            if(e.data==YT.PlayerState.PLAYING) card.classList.add('playing');
-            else card.classList.remove('playing');
-          }
-        }
-      });
-      card.addEventListener('mouseenter', ()=>player.pauseVideo());
-      card.addEventListener('mouseleave', ()=>player.playVideo());
-    });
-  };
 </script>
+
 </body>
 </html>
