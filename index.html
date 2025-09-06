@@ -1,220 +1,145 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GameScore Avanzato</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background-color: #f5f5f5;
-      color: #333;
-    }
-    header {
-      background-color: #222;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-    nav ul {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .search {
-      text-align: center;
-      margin: 20px 0;
-      gap: 10px;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    #games-list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      padding: 20px;
-    }
-    .game-card {
-      background-color: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      width: 250px;
-      padding: 15px;
-    }
-    .game-card h2 {
-      font-size: 1.2em;
-    }
-    .game-card p {
-      margin: 5px 0;
-    }
-    #add-review {
-      background-color: #fff;
-      padding: 20px;
-      margin: 20px auto;
-      width: 80%;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    #add-review input, #add-review textarea, #add-review select, #add-review button {
-      display: block;
-      width: 100%;
-      margin: 10px 0;
-      padding: 8px;
-      border-radius: 5px;
-    }
-    button {
-      cursor: pointer;
-      background-color: #222;
-      color: white;
-      border: none;
-    }
-    footer {
-      text-align: center;
-      padding: 15px;
-      background-color: #222;
-      color: white;
-      margin-top: 20px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiniMetacritic</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: #111;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding: 2rem;
+            justify-content: center;
+        }
+
+        .product-card {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            width: 200px;
+            text-align: center;
+        }
+
+        .product-card h2 {
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+        }
+
+        .metacritic-score {
+            font-weight: bold;
+            font-size: 1.2rem;
+            padding: 0.3rem 0.6rem;
+            border-radius: 5px;
+            color: white;
+        }
+
+        .score-high {
+            background-color: green;
+        }
+
+        .score-medium {
+            background-color: orange;
+        }
+
+        .score-low {
+            background-color: red;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #111;
+            color: white;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>GameScore</h1>
-    <nav>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Giochi</a></li>
-        <li><a href="#">Classifica</a></li>
-        <li><a href="#">Login</a></li>
-      </ul>
-    </nav>
-  </header>
+    <header>
+        <h1>MiniMetacritic</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Film</a></li>
+                <li><a href="#">Giochi</a></li>
+                <li><a href="#">Musica</a></li>
+                <li><a href="#">TV</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <main>
-    <section class="search">
-      <input type="text" id="searchBox" placeholder="Cerca un gioco...">
-      <button onclick="searchGame()">Cerca</button>
-      <select id="filterScore" onchange="filterGames()">
-        <option value="all">Tutti i punteggi</option>
-        <option value="90">>= 90</option>
-        <option value="80">>= 80</option>
-        <option value="70">>= 70</option>
-      </select>
-    </section>
+    <main>
+        <section class="product-list" id="productList">
+            <!-- Prodotti caricati da JS -->
+        </section>
+    </main>
 
-    <section id="games-list">
-      <!-- Lista dei giochi -->
-    </section>
+    <footer>
+        <p>&copy; 2025 MiniMetacritic</p>
+    </footer>
 
-    <section id="add-review">
-      <h2>Aggiungi una recensione</h2>
-      <input type="text" id="gameTitle" placeholder="Titolo gioco">
-      <select id="reviewType">
-        <option value="Utente">Utente</option>
-        <option value="Critico">Critico</option>
-      </select>
-      <textarea id="reviewText" placeholder="Scrivi la recensione..."></textarea>
-      <input type="number" id="reviewScore" placeholder="Punteggio (0-100)" min="0" max="100">
-      <button onclick="addReview()">Aggiungi Recensione</button>
-    </section>
-  </main>
+    <script>
+        const products = [
+            { title: "Film A", category: "Film", score: 88 },
+            { title: "Gioco B", category: "Giochi", score: 72 },
+            { title: "Serie C", category: "TV", score: 54 },
+            { title: "Album D", category: "Musica", score: 91 }
+        ];
 
-  <footer>
-    <p>&copy; 2025 GameScore. Tutti i diritti riservati.</p>
-  </footer>
+        function getScoreClass(score) {
+            if (score >= 75) return 'score-high';
+            if (score >= 50) return 'score-medium';
+            return 'score-low';
+        }
 
-  <script>
-    let games = [
-      {
-        title: "The Legend of Zelda: Breath of the Wild",
-        score: 97,
-        reviews: [
-          { type: "Critico", text: "Un capolavoro assoluto!" },
-          { type: "Utente", text: "Mi ha cambiato la vita!" }
-        ]
-      },
-      {
-        title: "Elden Ring",
-        score: 95,
-        reviews: [
-          { type: "Critico", text: "Un mondo aperto incredibile e sfidante." },
-          { type: "Utente", text: "Difficile ma gratificante!" }
-        ]
-      }
-    ];
+        function displayProducts() {
+            const productList = document.getElementById('productList');
+            products.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <h2>${product.title}</h2>
+                    <p>Categoria: ${product.category}</p>
+                    <div class="metacritic-score ${getScoreClass(product.score)}">${product.score}</div>
+                `;
+                productList.appendChild(card);
+            });
+        }
 
-    function displayGames(list) {
-      const container = document.getElementById("games-list");
-      container.innerHTML = "";
-      list.forEach(game => {
-        const card = document.createElement("div");
-        card.className = "game-card";
-        card.innerHTML = `
-          <h2>${game.title}</h2>
-          <p>Punteggio: ${game.score}</p>
-          <p>Recensioni:</p>
-          <ul>
-            ${game.reviews.map(r => `<li>${r.type}: ${r.text}</li>`).join("")}
-          </ul>
-        `;
-        container.appendChild(card);
-      });
-    }
-
-    function searchGame() {
-      const query = document.getElementById("searchBox").value.toLowerCase();
-      const filtered = games.filter(game => game.title.toLowerCase().includes(query));
-      displayGames(filtered);
-    }
-
-    function filterGames() {
-      const minScore = document.getElementById("filterScore").value;
-      if (minScore === "all") {
-        displayGames(games);
-      } else {
-        const filtered = games.filter(game => game.score >= parseInt(minScore));
-        displayGames(filtered);
-      }
-    }
-
-    function addReview() {
-      const title = document.getElementById("gameTitle").value;
-      const type = document.getElementById("reviewType").value;
-      const text = document.getElementById("reviewText").value;
-      const score = parseInt(document.getElementById("reviewScore").value);
-
-      if (!title || !text || isNaN(score)) {
-        alert("Compila tutti i campi correttamente!");
-        return;
-      }
-
-      let game = games.find(g => g.title.toLowerCase() === title.toLowerCase());
-      if (!game) {
-        game = { title, score, reviews: [] };
-        games.push(game);
-      } else {
-        game.score = Math.round((game.score * game.reviews.length + score) / (game.reviews.length + 1));
-      }
-
-      game.reviews.push({ type, text });
-      displayGames(games);
-
-      document.getElementById("gameTitle").value = "";
-      document.getElementById("reviewText").value = "";
-      document.getElementById("reviewScore").value = "";
-    }
-
-    displayGames(games);
-  </script>
+        displayProducts();
+    </script>
 </body>
 </html>
