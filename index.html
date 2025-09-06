@@ -3,55 +3,53 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pure Xbox Clone</title>
+<title>Pure Xbox Layout Clone</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  * {margin:0;padding:0;box-sizing:border-box;}
-  body {font-family:'Roboto',sans-serif;background:#121212;color:#fff;line-height:1.6;scroll-behavior:smooth;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Roboto',sans-serif;background:#121212;color:#fff;line-height:1.6;}
 
   /* Header */
-  header {display:flex;justify-content:space-between;align-items:center;padding:20px;background:#1c1c1c;position:sticky;top:0;z-index:1000;transition:background 0.3s;}
-  header.sticky {background:#111;}
-  header .logo img{width:150px;}
-  nav ul{list-style:none;display:flex;}
+  header{position:sticky;top:0;background:#1c1c1c;padding:15px 20px;display:flex;align-items:center;justify-content:space-between;z-index:1000;}
+  header .logo img{height:40px;}
+  nav ul{display:flex;list-style:none;}
   nav ul li{margin-left:20px;}
   nav ul li a{color:#fff;text-decoration:none;font-weight:bold;transition:color 0.3s;}
-  nav ul li a.active, nav ul li a:hover{color:#00ff00;}
+  nav ul li a:hover,a.active{color:#00ff00;}
 
-  /* Container */
-  .container {width:90%;max-width:1200px;margin:20px auto;}
+  /* Container principale */
+  .container{width:90%;max-width:1200px;margin:20px auto;}
 
-  /* Hero Slider */
-  .hero-slider {position:relative;overflow:hidden;border-radius:10px;margin-bottom:30px;}
-  .hero-slides {display:flex;transition:transform 0.7s ease-in-out;}
-  .hero-slides img {width:100%;border-radius:10px;object-fit:cover;}
-  .hero-buttons {position:absolute;top:50%;width:100%;display:flex;justify-content:space-between;transform:translateY(-50%);}
-  .hero-buttons button {background:rgba(0,0,0,0.5);border:none;color:#fff;padding:10px;cursor:pointer;font-size:18px;border-radius:50%;transition:all 0.3s;}
-  .hero-buttons button:hover {background:#00ff00;color:#000;}
+  /* Hero slider */
+  .hero-slider{position:relative;margin-bottom:30px;overflow:hidden;border-radius:10px;}
+  .hero-slides{display:flex;transition:transform 0.7s ease-in-out;}
+  .hero-slides img{width:100%;object-fit:cover;border-radius:10px;}
+  .hero-buttons{position:absolute;top:50%;width:100%;display:flex;justify-content:space-between;transform:translateY(-50%);}
+  .hero-buttons button{background:rgba(0,0,0,0.5);border:none;color:#fff;padding:10px;cursor:pointer;font-size:18px;border-radius:50%;}
+  .hero-buttons button:hover{background:#00ff00;color:#000;}
 
-  /* Griglie notizie/recensioni/guides */
-  .section {margin-bottom:40px;}
-  .section h2 {color:#00ff00;margin-bottom:20px;}
-  .grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;}
-  .card {background:#1c1c1c;padding:15px;border-radius:10px;transition:transform 0.4s,opacity 0.5s;position:relative;opacity:0;transform:translateY(50px);}
-  .card.visible {opacity:1;transform:translateY(0);}
-  .card img {width:100%;border-radius:10px;}
-  .card h3 {margin:10px 0;color:#00ff00;}
-  .card p {color:#ccc;}
+  /* Main layout */
+  .main-content{display:flex;gap:20px;}
+  .sections{flex:1;display:flex;flex-direction:column;gap:40px;}
+  .section h2{color:#00ff00;margin-bottom:15px;}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;}
+  .card{background:#1c1c1c;padding:10px;border-radius:10px;transition:transform 0.3s;}
+  .card img{width:100%;border-radius:10px;}
+  .card h3{margin:10px 0;color:#00ff00;}
+  .card p{color:#ccc;}
   
   /* Sidebar */
-  .main-content {display:flex;gap:20px;}
-  .sidebar {width:300px;flex-shrink:0;}
-  .widget {background:#1c1c1c;padding:15px;border-radius:10px;margin-bottom:20px;}
-  .widget h4 {color:#00ff00;margin-bottom:10px;}
-  .widget ul {list-style:none;}
-  .widget ul li{margin-bottom:10px;color:#ccc;cursor:pointer;}
+  .sidebar{width:300px;flex-shrink:0;display:flex;flex-direction:column;gap:20px;}
+  .widget{background:#1c1c1c;padding:15px;border-radius:10px;}
+  .widget h4{color:#00ff00;margin-bottom:10px;}
+  .widget ul{list-style:none;}
+  .widget ul li{margin-bottom:10px;cursor:pointer;color:#ccc;}
   .widget ul li:hover{color:#00ff00;}
 
   /* Footer */
-  footer {text-align:center;padding:20px;background:#1c1c1c;margin-top:40px;color:#888;}
-  footer a {color:#00ff00;text-decoration:none;margin:0 10px;}
-  footer a:hover {text-decoration:underline;}
+  footer{text-align:center;padding:20px;background:#1c1c1c;margin-top:40px;color:#888;}
+  footer a{color:#00ff00;text-decoration:none;margin:0 10px;}
+  footer a:hover{text-decoration:underline;}
 
   /* Responsive */
   @media(max-width:1024px){.main-content{flex-direction:column;}.sidebar{width:100%;}}
@@ -59,25 +57,25 @@
 </head>
 <body>
 
-<header id="header">
+<header>
   <div class="logo"><img src="https://via.placeholder.com/150x50.png?text=Pure+Xbox" alt="Logo"></div>
   <nav>
     <ul>
-      <li><a href="#news" class="nav-link active">Notizie</a></li>
-      <li><a href="#reviews" class="nav-link">Recensioni</a></li>
-      <li><a href="#guides" class="nav-link">Guide</a></li>
-      <li><a href="#videos" class="nav-link">Video</a></li>
+      <li><a href="#news" class="active">Notizie</a></li>
+      <li><a href="#reviews">Recensioni</a></li>
+      <li><a href="#guides">Guide</a></li>
+      <li><a href="#videos">Video</a></li>
     </ul>
   </nav>
 </header>
 
 <div class="container">
-  <!-- Hero Slider -->
+  <!-- Hero slider -->
   <div class="hero-slider">
     <div class="hero-slides">
-      <img src="https://via.placeholder.com/1200x400.png?text=Notizia+1" alt="Slide 1">
-      <img src="https://via.placeholder.com/1200x400.png?text=Notizia+2" alt="Slide 2">
-      <img src="https://via.placeholder.com/1200x400.png?text=Notizia+3" alt="Slide 3">
+      <img src="https://via.placeholder.com/1200x400.png?text=Notizia+1" alt="Notizia 1">
+      <img src="https://via.placeholder.com/1200x400.png?text=Notizia+2" alt="Notizia 2">
+      <img src="https://via.placeholder.com/1200x400.png?text=Notizia+3" alt="Notizia 3">
     </div>
     <div class="hero-buttons">
       <button id="hero-prev">&#10094;</button>
@@ -86,8 +84,8 @@
   </div>
 
   <div class="main-content">
-    <!-- Main Sections -->
-    <div class="sections" style="flex:1;">
+    <div class="sections">
+      <!-- Notizie -->
       <div class="section" id="news">
         <h2>Ultime Notizie</h2>
         <div class="grid">
@@ -104,6 +102,7 @@
         </div>
       </div>
 
+      <!-- Recensioni -->
       <div class="section" id="reviews">
         <h2>Recensioni</h2>
         <div class="grid">
@@ -115,6 +114,7 @@
         </div>
       </div>
 
+      <!-- Guide -->
       <div class="section" id="guides">
         <h2>Guide</h2>
         <div class="grid">
@@ -126,6 +126,7 @@
         </div>
       </div>
 
+      <!-- Video -->
       <div class="section" id="videos">
         <h2>Video</h2>
         <div class="grid">
@@ -171,28 +172,16 @@
 </footer>
 
 <script>
-  // Hero Slider
+  // Hero slider JS
   const heroSlides=document.querySelector('.hero-slides');
   const heroImages=document.querySelectorAll('.hero-slides img');
   const heroPrev=document.getElementById('hero-prev');
   const heroNext=document.getElementById('hero-next');
   let heroIndex=0;
-  function showHeroSlide(i){
-    heroIndex=i;
-    heroSlides.style.transform=`translateX(${-i*100}%)`;
-  }
+  function showHeroSlide(i){heroIndex=i;heroSlides.style.transform=`translateX(${-i*100}%)`;}
   heroNext.addEventListener('click',()=>showHeroSlide((heroIndex+1)%heroImages.length));
   heroPrev.addEventListener('click',()=>showHeroSlide((heroIndex-1+heroImages.length)%heroImages.length));
   setInterval(()=>showHeroSlide((heroIndex+1)%heroImages.length),5000);
-
-  // Fade-in cards
-  const cards=document.querySelectorAll('.card');
-  const observer=new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting){entry.target.classList.add('visible');}
-    });
-  },{threshold:0.2});
-  cards.forEach(card=>observer.observe(card));
 </script>
 
 </body>
