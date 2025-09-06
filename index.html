@@ -176,64 +176,70 @@ main {
     background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
 }
 
-/* Sezione Ultime Notizie */
-.latest-news {
-    margin-top: 1rem;
+/* Sezione Locandine */
+.latest-posters {
+    margin-top: 2rem;
     width: 66.666%;
-}
-
-.latest-news h2 {
-    margin: 0 0 10px 0;
-    font-size: 1.2rem;
-    color: #111;
-}
-
-.latest-news-row {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
-/* Card ultime notizie */
-.latest-news-card {
+.section-bar {
+    width: 100%;
+    height: 5px;
+    background-color: #111; /* barra lunga sopra le locandine */
+    margin-bottom: 10px;
+}
+
+.posters-row {
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    height: 150px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    gap: 15px; /* spazio tra immagine e descrizione */
+    gap: 1rem;
 }
 
-/* Contenitore immagine quadrata più piccola */
-.latest-news-card .news-left {
-    width: 150px;
-    height: 150px;
-    background-size: 80% auto; /* immagine più piccola rispetto al contenitore */
-    background-position: center;
-    background-repeat: no-repeat;
-    flex-shrink: 0;
-}
-
-/* Contenitore testo a destra */
-.latest-news-card .news-right {
+.poster-card {
     flex: 1;
-    padding: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    background: none; /* senza sfondo */
+    align-items: center;
+    gap: 5px;
 }
 
-.latest-news-card .news-right h3 {
-    margin: 0 0 5px 0;
-    font-size: 1rem;
-    color: #111;
+.poster-image {
+    width: 100%;
+    height: 300px;
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
 }
 
-.latest-news-card .news-right p {
+.poster-info {
+    width: 100%;
+    text-align: center;
+}
+
+.poster-info h3 {
     margin: 0;
-    font-size: 0.85rem;
-    color: #555;
+    padding-bottom: 3px;
+    border-bottom: 2px solid #111; /* titolo sottolineato */
+}
+
+.rating {
+    display: block;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+.rating.good {
+    color: green;
+}
+
+.rating.medium {
+    color: orange;
+}
+
+.rating.bad {
+    color: red;
 }
 
 @media (max-width: 800px) {
@@ -248,18 +254,9 @@ main {
         flex: 1;
         min-height: 150px;
     }
-    .bottom-row, .latest-news {
+    .bottom-row, .latest-posters {
         flex-direction: column;
         width: 100%;
-    }
-    .latest-news-card {
-        flex-direction: column;
-        height: auto;
-    }
-    .latest-news-card .news-left {
-        width: 100%;
-        height: 150px;
-        background-size: cover;
     }
 }
 </style>
@@ -338,29 +335,29 @@ main {
         </div>
     </div>
 
-    <!-- Ultime Notizie -->
-    <section class="latest-news">
-        <h2>Ultime Notizie</h2>
-        <div class="latest-news-row">
-            <div class="latest-news-card">
-                <div class="news-left" style="background-image:url('https://picsum.photos/200/200?random=9');"></div>
-                <div class="news-right">
-                    <h3>Ultima Notizia 1</h3>
-                    <p>Descrizione breve dell'ultima notizia 1.</p>
+    <!-- Sezione Locandine -->
+    <section class="latest-posters">
+        <div class="section-bar"></div>
+        <div class="posters-row">
+            <div class="poster-card">
+                <div class="poster-image" style="background-image:url('https://picsum.photos/200/300?random=12');"></div>
+                <div class="poster-info">
+                    <h3>Locandina 1</h3>
+                    <span class="rating good">8/10</span>
                 </div>
             </div>
-            <div class="latest-news-card">
-                <div class="news-left" style="background-image:url('https://picsum.photos/200/200?random=10');"></div>
-                <div class="news-right">
-                    <h3>Ultima Notizia 2</h3>
-                    <p>Descrizione breve dell'ultima notizia 2.</p>
+            <div class="poster-card">
+                <div class="poster-image" style="background-image:url('https://picsum.photos/200/300?random=13');"></div>
+                <div class="poster-info">
+                    <h3>Locandina 2</h3>
+                    <span class="rating medium">5/10</span>
                 </div>
             </div>
-            <div class="latest-news-card">
-                <div class="news-left" style="background-image:url('https://picsum.photos/200/200?random=11');"></div>
-                <div class="news-right">
-                    <h3>Ultima Notizia 3</h3>
-                    <p>Descrizione breve dell'ultima notizia 3.</p>
+            <div class="poster-card">
+                <div class="poster-image" style="background-image:url('https://picsum.photos/200/300?random=14');"></div>
+                <div class="poster-info">
+                    <h3>Locandina 3</h3>
+                    <span class="rating bad">2/10</span>
                 </div>
             </div>
         </div>
