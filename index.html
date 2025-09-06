@@ -28,14 +28,12 @@
         gap: 1rem;
     }
 
-    /* Riga superiore */
     .top-row {
         display: flex;
         gap: 1rem;
         flex-wrap: wrap;
     }
 
-    /* Slide container */
     .highlight-card {
         flex: 2;
         min-height: 300px;
@@ -59,8 +57,8 @@
         justify-content: flex-end;
         align-items: flex-start;
 
-        padding-left: 15px;
-        padding-bottom: 15px;
+        padding-left: 0; 
+        padding-bottom: 0; 
 
         color: white;
         background-size: cover;
@@ -72,12 +70,18 @@
     }
 
     .slide-text {
-        background-color: rgba(0, 0, 0, 0.5); /* sfondo semitrasparente */
-        padding: 10px;
-        border-radius: 5px;
+        background-color: rgba(0, 0, 0, 0.4); /* sfondo semitrasparente più piccolo */
+        padding: 5px; /* padding ridotto */
+        border-radius: 3px;
+        margin: 0;
+        font-size: 0.9rem; /* testo più piccolo */
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        margin-bottom: 5px;
+        margin-left: 5px;
     }
 
-    /* Pallini in alto a sinistra */
     .dots {
         position: absolute;
         top: 10px;
@@ -120,15 +124,20 @@
         flex-direction: column;
         justify-content: flex-end;
         align-items: flex-start;
-        padding-left: 15px;
-        padding-bottom: 15px;
+        padding: 0;
     }
 
     .side-card .card-text,
     .square-card .card-text {
-        background-color: rgba(0,0,0,0.5);
-        padding: 10px;
-        border-radius: 5px;
+        background-color: rgba(0,0,0,0.4);
+        padding: 5px;
+        border-radius: 3px;
+        font-size: 0.9rem;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        margin-bottom: 5px;
+        margin-left: 5px;
     }
 
     .bottom-row {
@@ -145,9 +154,14 @@
 
     h2 {
         margin: 0;
+        font-size: 1rem; /* titolo più piccolo */
     }
 
-    /* Responsive */
+    p {
+        margin: 0;
+        font-size: 0.8rem; /* testo più piccolo */
+    }
+
     @media (max-width: 800px) {
         .top-row {
             flex-direction: column;
@@ -176,10 +190,8 @@
 <main>
     <div class="top-row">
         <div class="highlight-card" id="highlightCard">
-            <!-- Pallini -->
             <div class="dots" id="dots"></div>
 
-            <!-- Slides con immagini -->
             <div class="slide active" style="background-image:url('https://picsum.photos/id/1015/800/400')">
                 <div class="slide-text">
                     <h2>Notizia Principale 1</h2>
@@ -265,9 +277,8 @@
         showSlide(currentSlide);
     }
 
-    setInterval(nextSlide, 5000); // autoplay ogni 5 secondi
-
-    showSlide(0); // inizializza pallini
+    setInterval(nextSlide, 5000);
+    showSlide(0);
 </script>
 
 </body>
