@@ -39,7 +39,7 @@ main {
     min-height: 300px;
     border-radius: 10px;
     position: relative;
-    overflow: hidden; /* impedisce alla sfumatura di uscire */
+    overflow: hidden; 
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
@@ -66,16 +66,17 @@ main {
     opacity: 1;
 }
 
-/* sfumatura limitata alla card */
+/* sfumatura verticale limitata e testo in basso */
 .slide-text {
+    width: 100%;
     padding: 10px;
     font-size: 0.9rem;
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0)); 
-    max-height: 80px; /* limita la sfumatura */
+    background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
+    max-height: 80px;
     overflow: hidden;
 }
 
@@ -114,21 +115,21 @@ main {
     flex: 1;
 }
 
-.side-card, .square-card {
+.side-card {
     background-size: cover;
     background-position: center;
     color: white;
     border-radius: 10px;
     position: relative;
-    min-height: 145px;
+    min-height: 180px; /* leggermente più alta */
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: flex-end; 
     align-items: flex-start;
     padding: 0;
-    overflow: hidden; /* impedisce alla sfumatura di uscire */
+    overflow: hidden; 
 }
 
 .side-card .card-text,
@@ -141,7 +142,7 @@ main {
     left: 0;
     right: 0;
     background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
-    max-height: 80px; /* limita la sfumatura */
+    max-height: 80px;
     overflow: hidden;
 }
 
