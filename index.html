@@ -9,15 +9,25 @@
 body {
     font-family: 'Lato', sans-serif;
     margin: 0;
-    background-color: #000;
-    color: #333;
+    background: linear-gradient(120deg, #0a0a0a, #1a1a1a);
+    color: #e0e0e0;
 }
 
 header {
-    background-color: #111;
-    color: white;
+    background-color: #111111;
+    color: #ff00ff;
     padding: 1rem 2rem;
     text-align: center;
+    font-size: 2rem;
+    text-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
+    animation: glowHeader 2s infinite alternate;
+    position: relative;
+    overflow: hidden;
+}
+
+@keyframes glowHeader {
+    0% { text-shadow: 0 0 8px #ff00ff, 0 0 12px #00ffff; }
+    100% { text-shadow: 0 0 20px #ff00ff, 0 0 30px #00ffff; }
 }
 
 main {
@@ -27,7 +37,9 @@ main {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    background-color: #f4f4f4;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255,0,255,0.3), 0 0 15px rgba(0,255,255,0.3);
 }
 
 .top-row {
@@ -36,13 +48,17 @@ main {
     flex-wrap: wrap;
 }
 
-.highlight-card {
-    flex: 2;
-    min-height: 300px;
+.highlight-card, .side-card, .square-card {
     border-radius: 10px;
-    position: relative;
     overflow: hidden;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    border: 2px solid #ff00ff;
+    box-shadow: 0 0 10px #ff00ff, 0 0 10px #00ffff;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.highlight-card:hover, .side-card:hover, .square-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 25px #ff00ff, 0 0 25px #00ffff;
 }
 
 .slide {
@@ -60,28 +76,28 @@ main {
     color: white;
     background-size: cover;
     background-position: center;
+    animation: slideGlow 3s infinite alternate;
 }
 
 .slide.active {
     opacity: 1;
 }
 
-.slide-text {
-    width: 100%;
-    padding: 10px;
-    font-size: 0.9rem;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    border-radius: 0 0 10px 10px;
-    background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
+@keyframes slideGlow {
+    0% { box-shadow: inset 0 0 10px #ff00ff; }
+    50% { box-shadow: inset 0 0 20px #00ffff; }
+    100% { box-shadow: inset 0 0 10px #ff00ff; }
 }
 
-.slide-text h2, .slide-text p {
+.slide-text, .side-card .card-text, .square-card .card-text {
+    background: linear-gradient(to top, rgba(255,0,255,0.8), rgba(0,0,0,0));
+    color: #fff;
+    text-shadow: 0 0 6px #ff00ff;
+}
+
+.slide-text h2, .slide-text p, .side-card .card-text h3, .square-card .card-text h3 {
     margin: 0;
-    padding-left: 5px;
-    padding-right: 5px;
+    padding: 0 5px;
 }
 
 .right-column {
@@ -91,67 +107,12 @@ main {
     flex: 1;
 }
 
-.side-card {
-    background-size: cover;
-    background-position: center;
-    color: white;
-    border-radius: 10px;
-    position: relative;
-    min-height: 200px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end; 
-    align-items: flex-start;
-    overflow: hidden; 
-}
-
-.side-card .card-text {
-    width: 100%;
-    padding: 10px;
-    font-size: 0.9rem;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    border-radius: 0 0 10px 10px;
-    background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
-}
-
 .bottom-row {
     display: flex;
     gap: 1rem;
     width: 66.666%;
 }
 
-.square-card {
-    flex: 1;
-    min-height: 180px;
-    position: relative;
-    border-radius: 10px;
-    overflow: hidden;
-    background-size: cover;
-    background-position: center;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-start;
-}
-
-.square-card .card-text {
-    width: 100%;
-    padding: 10px;
-    font-size: 0.9rem;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    border-radius: 0 0 10px 10px;
-    background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
-}
-
-/* Sezione Locandine */
 .latest-posters {
     margin-top: 2rem;
     width: 66.666%;
@@ -165,72 +126,58 @@ main {
     font-size: 1.5rem;
     font-weight: 900; 
     padding-left: 5px;
-    color: #111;
+    color: #ff00ff;
+    text-shadow: 0 0 8px #ff00ff, 0 0 10px #00ffff;
     margin-bottom: 2px;
+    animation: glowTitle 2s infinite alternate;
+    position: relative;
+    overflow: hidden;
+}
+
+@keyframes glowTitle {
+    0% { text-shadow: 0 0 4px #ff00ff, 0 0 8px #00ffff; }
+    100% { text-shadow: 0 0 12px #ff00ff, 0 0 20px #00ffff; }
 }
 
 .section-bar {
     width: 100%;
-    height: 1px; 
-    background-color: #111;
+    height: 2px; 
+    background: linear-gradient(90deg, #ff00ff, #00ffff);
     margin-bottom: 10px;
 }
 
-.posters-row {
-    display: flex;
-    gap: 0.5rem;
-    position: relative;
+.poster-card .poster-image {
+    border: 2px solid #ff00ff;
+    box-shadow: 0 0 8px #ff00ff, 0 0 8px #00ffff;
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: posterGlow 3s infinite alternate;
 }
 
-.poster-card {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 5px;
-    position: relative;
+.poster-card .poster-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #ff00ff, 0 0 20px #00ffff;
 }
 
-.poster-image {
-    width: 170px;   
-    height: 255px;  
-    border-radius: 10px;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-}
-
-.poster-info {
-    width: 100%;
-    text-align: left;
-    padding-left: 5px;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-}
-
-.poster-info h3 {
-    margin: 0;
-    padding: 0;
-    display: block;
-    border-bottom: 1px solid #111; 
-    padding-bottom: 1px;
-    font-size: 0.72rem; 
+@keyframes posterGlow {
+    0% { box-shadow: 0 0 8px #ff00ff, 0 0 8px #00ffff; }
+    50% { box-shadow: 0 0 16px #ff00ff, 0 0 16px #00ffff; }
+    100% { box-shadow: 0 0 8px #ff00ff, 0 0 8px #00ffff; }
 }
 
 .poster-label {
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    background-color: rgba(0,0,0,0.7);
-    color: white;
+    background: linear-gradient(90deg, #ff00ff, #00ffff);
+    color: #000;
+    font-weight: bold;
     padding: 2px 6px;
-    font-size: 0.7rem;
     border-radius: 3px;
-    z-index: 2;
+    animation: labelGlow 2s infinite alternate;
 }
 
-/* voto dentro l'immagine, in basso a destra con X trasparente */
+@keyframes labelGlow {
+    0% { box-shadow: 0 0 4px #ff00ff, 0 0 4px #00ffff; }
+    100% { box-shadow: 0 0 12px #ff00ff, 0 0 12px #00ffff; }
+}
+
 .score-badge {
     position: absolute;
     bottom: 5px;
@@ -239,31 +186,33 @@ main {
     height: 28px;
     font-size: 0.8rem;
     font-weight: bold;
-    color: white; /* voto in bianco */
+    color: #fff;
     text-align: center;
     line-height: 28px;
-    background-color: transparent;
-    border: none;
-    box-shadow: none;
-    font-family: 'Lato', sans-serif;
-    z-index: 1;
+    animation: pulseBadge 1.5s infinite alternate;
 }
 
-.score-badge::before {
-    content: "✕"; 
+@keyframes pulseBadge {
+    0% { text-shadow: 0 0 4px #ff00ff, 0 0 4px #00ffff; }
+    50% { text-shadow: 0 0 12px #ff00ff, 0 0 12px #00ffff; }
+    100% { text-shadow: 0 0 8px #ff00ff, 0 0 8px #00ffff; }
+}
+
+/* SCIA NEON */
+.neon-trail {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: rgba(0,0,0,0.2); /* X grigia trasparente */
-    text-align: center;
-    line-height: 28px;
-    z-index: -1;
+    pointer-events: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, #ff00ff, #00ffff);
+    filter: blur(8px);
+    opacity: 0.8;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease-out;
 }
 
+/* MEDIA QUERIES */
 @media (max-width: 800px) {
     .top-row { flex-direction: column; }
     .right-column { flex-direction: row; gap: 1rem; }
@@ -310,7 +259,6 @@ main {
         </div>
     </div>
 
-    <!-- Sezione Locandine -->
     <section class="latest-posters">
         <h2 class="section-title">Giochi</h2>
         <div class="section-bar"></div>
@@ -365,6 +313,7 @@ main {
 </main>
 
 <script>
+// --- SLIDE ---
 let currentSlide = 0;
 const slides = document.querySelectorAll('.slide');
 
@@ -380,7 +329,25 @@ function nextSlide() {
 
 setInterval(nextSlide, 5000);
 showSlide(0);
+
+// --- SCIA NEON ---
+const header = document.querySelector('header');
+const titles = document.querySelectorAll('.section-title');
+
+function createTrail(e, element) {
+    const trail = document.createElement('div');
+    trail.className = 'neon-trail';
+    element.appendChild(trail);
+    const rect = element.getBoundingClientRect();
+    trail.style.left = (e.clientX - rect.left) + 'px';
+    trail.style.top = (e.clientY - rect.top) + 'px';
+    setTimeout(() => trail.remove(), 500);
+}
+
+header.addEventListener('mousemove', e => createTrail(e, header));
+titles.forEach(title => title.addEventListener('mousemove', e => createTrail(e, title)));
 </script>
 
 </body>
 </html>
+
