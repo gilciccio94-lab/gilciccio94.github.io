@@ -10,40 +10,40 @@
   header a { color:white; text-decoration:none; margin-left:1rem; font-weight:bold; }
   main { padding:2rem; max-width:1200px; margin:auto; }
 
-  /* Slider moderno */
-  .slider-container { position: relative; margin-bottom: 1rem; }
-  .slider-container::before,
-  .slider-container::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    width: 50px;
-    height: 100%;
-    z-index: 5;
-    pointer-events: none;
+  /* Slider centrale */
+  .slider-container {
+    position: relative;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center; /* centra la slide */
+    align-items: center;
   }
-  .slider-container::before {
-    left: 0;
-    background: linear-gradient(to right, rgba(240,242,245,var(--left-shadow,1)), rgba(240,242,245,0));
+  .slider {
+    display: flex;
+    overflow: hidden; /* nasconde le altre slide */
+    width: 50%; /* metà del contenitore principale */
+    transition: transform 0.5s ease;
   }
-  .slider-container::after {
-    right: 0;
-    background: linear-gradient(to left, rgba(240,242,245,var(--right-shadow,1)), rgba(240,242,245,0));
+  .slide {
+    min-width: 100%; /* occupa tutta la larghezza dello slider */
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: transform 0.3s;
   }
-  .slider { display:flex; overflow-x:auto; gap:1rem; scroll-behavior:smooth; scroll-snap-type:x mandatory; padding-bottom:0.5rem; }
-  .slide { min-width:300px; border-radius:10px; overflow:hidden; position:relative; cursor:pointer; flex-shrink:0; transition: transform 0.3s; scroll-snap-align:start; }
-  .slide:hover { transform: scale(1.05); }
   .slide img { width:100%; height:180px; object-fit:cover; display:block; }
   .slide .slide-info { position:absolute; bottom:0; left:0; right:0; background:rgba(0,0,0,0.5); color:white; padding:0.5rem; }
   .slide .slide-info h3 { margin:0; font-size:1.1rem; }
   .slide .slide-info small { font-size:0.8rem; color:#ddd; }
-  .slider::-webkit-scrollbar { display:none; }
+
   .slider-arrow { position:absolute; top:50%; transform:translateY(-50%); background:rgba(0,0,0,0.5); color:white; border:none; border-radius:50%; width:35px; height:35px; cursor:pointer; font-size:1.5rem; z-index:10; }
-  .slider-arrow.left { left:5px; }
-  .slider-arrow.right { right:5px; }
+  .slider-arrow.left { left:calc(25% - 50px); }
+  .slider-arrow.right { right:calc(25% - 50px); }
 
   /* Filtri categorie */
-  .categories { margin-bottom:1rem; }
+  .categories { margin-bottom:1rem; text-align:center; }
   .categories button { padding:0.5rem 1rem; margin-right:0.5rem; border:none; border-radius:5px; cursor:pointer; color:white; font-weight:bold; transition:0.3s; }
   .categories button:hover { opacity:0.8; }
   .categories button.Generale { background:#e67e22; }
@@ -70,7 +70,7 @@
   @media(max-width:768px){
     .articolo { flex-direction:column; }
     .articolo img { width:100%; height:auto; margin-bottom:0.5rem; }
-    .slide { min-width:250px; }
+    .slider { width:90%; }
   }
 </style>
 </head>
@@ -93,6 +93,7 @@ const articoli = [
 ];
 
 let categoriaSelezionata = '';
+let currentSlide = 0;
 const mainContent = document.getElementById('main-content');
 
 function showHome() {
@@ -141,7 +142,7 @@ function renderCategories() {
 function renderSlider() {
   const slider = document.getElementById('slider');
   slider.innerHTML = '';
-  articoli.slice(0,3).forEach(a => {
+  articoli.forEach(a => {
     const div = document.createElement('div');
     div.className = 'slide';
     div.innerHTML = `
@@ -157,20 +158,22 @@ function renderSlider() {
 
   const prevBtn = document.getElementById('prevSlide');
   const nextBtn = document.getElementById('nextSlide');
-  prevBtn.onclick = () => slider.scrollBy({ left: -320, behavior: 'smooth' });
-  nextBtn.onclick = () => slider.scrollBy({ left: 320, behavior: 'smooth' });
 
-  const container = document.querySelector('.slider-container');
-  function updateSliderShadows() {
-    const scrollLeft = slider.scrollLeft;
-    const maxScroll = slider.scrollWidth - slider.clientWidth;
-    const leftOpacity = Math.min(scrollLeft / 50, 1);
-    const rightOpacity = Math.min((maxScroll - scrollLeft) / 50, 1);
-    container.style.setProperty('--left-shadow', leftOpacity);
-    container.style.setProperty('--right-shadow', rightOpacity);
+  function updateSlide() {
+    slider.style.transform = `translateX(-${currentSlide * 100}%)`;
   }
-  slider.addEventListener('scroll', updateSliderShadows);
-  window.addEventListener('load', updateSliderShadows);
+
+  prevBtn.onclick = () => {
+    currentSlide = (currentSlide > 0) ? currentSlide - 1 : articoli.length - 1;
+    updateSlide();
+  };
+
+  nextBtn.onclick = () => {
+    currentSlide = (currentSlide < articoli.length - 1) ? currentSlide + 1 : 0;
+    updateSlide();
+  };
+
+  updateSlide();
 }
 
 function renderArticoli(filtro='') {
