@@ -11,27 +11,13 @@ header a { color:white; text-decoration:none; margin-left:1rem; font-weight:bold
 main { padding:2rem; max-width:1400px; margin:auto; display:flex; gap:2rem; flex-wrap:wrap; }
 .login input, .search input { padding:0.5rem; width:100%; margin-bottom:1rem; border-radius:5px; border:1px solid #ccc; }
 .login button { padding:0.5rem 1rem; border:none; border-radius:5px; background:#2980b9; color:white; cursor:pointer; }
-.categories {
-  display: flex;             /* in orizzontale */
-  gap: 0.5rem;               /* spazio tra i bottoni */
-  margin: 1rem 0;            /* distanza sopra e sotto */
-  flex-wrap: wrap;            /* va a capo su schermi piccoli */
-  justify-content: flex-start; /* allineati a sinistra */
-}
-.categories button {
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: 0.3s;
-  color: white;
-}
+.categories { display:flex; justify-content:center; gap:1rem; margin-bottom:2rem; flex-wrap:wrap; }
+.categories button { padding:0.5rem 1rem; border:none; border-radius:5px; cursor:pointer; font-weight:bold; transition:0.3s; color:white; }
+.categories button:hover { opacity:0.8; }
 .categories button.Generale { background:#e67e22; }
 .categories button.Sport { background:#27ae60; }
 .categories button.Tecnologia { background:#2980b9; }
 .categories button.active { outline:3px solid #333; }
-
 .slider-container { position:relative; margin-bottom:2rem; overflow:hidden; border-radius:10px; }
 .slider { display:flex; transition:transform 0.5s ease; }
 .slide { min-width:100%; position:relative; cursor:pointer; }
@@ -41,14 +27,12 @@ main { padding:2rem; max-width:1400px; margin:auto; display:flex; gap:2rem; flex
 .slider-btn { position:absolute; top:50%; transform:translateY(-50%); background:rgba(0,0,0,0.5); color:white; border:none; font-size:2rem; padding:0.2rem 0.5rem; cursor:pointer; border-radius:5px; }
 .slider-btn.left { left:10px; }
 .slider-btn.right { right:10px; }
-
-.headline { width:100%; background:white; border-radius:10px; overflow:hidden; box-shadow:0 2px 6px rgba(0,0,0,0.1); margin-bottom:1rem; transition:transform 0.3s; }
+.headline { width:100%; background:white; border-radius:10px; overflow:hidden; box-shadow:0 2px 6px rgba(0,0,0,0.1); margin-bottom:2rem; transition:transform 0.3s; }
 .headline:hover { transform:scale(1.01); }
 .headline img { width:100%; height:350px; object-fit:cover; }
 .headline .info { padding:1rem; }
 .headline h2 { margin:0.5rem 0; font-size:1.6rem; color:#2c3e50; }
 .headline small { color:#999; }
-
 .articoli-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:1.5rem; flex:3; }
 .articolo { background:white; border-radius:10px; overflow:hidden; box-shadow:0 2px 6px rgba(0,0,0,0.1); display:flex; flex-direction:column; transition:transform 0.3s, box-shadow 0.3s; cursor:pointer; }
 .articolo:hover { transform:scale(1.02); box-shadow:0 4px 12px rgba(0,0,0,0.2); }
@@ -60,26 +44,21 @@ main { padding:2rem; max-width:1400px; margin:auto; display:flex; gap:2rem; flex
 .articolo p { color:#555; flex:1; }
 .articolo a { color:#2980b9; text-decoration:none; margin-top:0.5rem; }
 .articolo a:hover { text-decoration:underline; }
-
 .categoria { font-weight:bold; padding:2px 6px; border-radius:4px; color:white; font-size:0.8rem; }
 .categoria.Generale { background:#e67e22; }
 .categoria.Sport { background:#27ae60; }
 .categoria.Tecnologia { background:#2980b9; }
-
 .sidebar { flex:1; min-width:250px; }
 .sidebar h3 { margin-top:0; color:#2c3e50; border-bottom:1px solid #ccc; padding-bottom:0.3rem; }
 .sidebar ul { list-style:none; padding-left:0; }
 .sidebar li { margin-bottom:0.5rem; }
 .sidebar li a { text-decoration:none; color:#2980b9; }
 .sidebar li a:hover { text-decoration:underline; }
-
 .back { margin-bottom:1rem; display:inline-block; color:#2980b9; text-decoration:none; }
 .back:hover { text-decoration:underline; }
-
 .commenti { margin-top:1rem; }
 .commento { background:#f5f5f5; padding:0.5rem; border-radius:5px; margin-bottom:0.5rem; display:flex; justify-content:space-between; align-items:center; }
 .like-btn { cursor:pointer; color:#2980b9; margin-left:0.5rem; }
-
 @media(max-width:900px){ .articoli-grid { grid-template-columns:1fr; } .headline img { height:250px; } .slide img { height:200px; } }
 </style>
 </head>
@@ -106,8 +85,11 @@ function showHome(){
 mainContent.innerHTML=`
 <div class="login" id="loginSection"></div>
 <div class="search"><input type="text" id="search" placeholder="Cerca articoli per titolo o categoria..."></div>
+<div class="categories" id="categories"></div>
+<div class="slider-container"><div class="slider" id="slider"></div>
+<button class="slider-btn left" onclick="prevSlide()">&#10094;</button>
+<button class="slider-btn right" onclick="nextSlide()">&#10095;</button></div>
 <div class="headline" id="headline"></div>
-<div class="categories" id="categories"></div> <!-- FILTRI ORIZZONTALI -->
 <div class="articoli-grid" id="articoli"></div>
 <div class="sidebar">
 <h3>Notizie Recenti</h3><ul id="recenti"></ul>
@@ -117,36 +99,30 @@ renderLogin(); renderCategories(); renderSlider(); renderHeadline(); renderArtic
 document.getElementById('search').addEventListener('input',()=>{renderArticoli(document.getElementById('search').value);});
 }
 
-// Login e logout
 function renderLogin(){ const loginSection=document.getElementById('loginSection'); if(utenteLoggato){ loginSection.innerHTML=`<p>Benvenuto, <strong>${utenteLoggato}</strong>! <button onclick="logout()">Logout</button></p>`;} else{ loginSection.innerHTML=`<input type="text" id="username" placeholder="Nome utente"><button onclick="login()">Login</button>`;}}
 function login(){ const input=document.getElementById('username'); if(input.value.trim()){ utenteLoggato=input.value.trim(); renderLogin();}}
 function logout(){ utenteLoggato=null; renderLogin();}
 
-// Categorie
 function renderCategories(){
 const container=document.getElementById('categories'); const categorieUniche=[...new Set(articoli.map(a=>a.categoria))]; container.innerHTML=''; categorieUniche.forEach(cat=>{ const btn=document.createElement('button'); btn.textContent=cat; btn.className=cat; if(categoriaSelezionata===cat) btn.classList.add('active'); btn.addEventListener('click',()=>{ categoriaSelezionata=(categoriaSelezionata===cat)?'':cat; renderCategories(); renderArticoli(document.getElementById('search').value); }); container.appendChild(btn);});}
 
-// Slider
 function renderSlider(){ const slider=document.getElementById('slider'); slider.innerHTML=''; articoli.slice(0,3).forEach(a=>{ const div=document.createElement('div'); div.className='slide'; div.innerHTML=`<img src="${a.immagine}" alt="${a.titolo}"><div class="slide-info"><h3>${a.titolo}</h3><small>${a.autore} - ${a.data}</small></div>`; div.addEventListener('click',()=>showArticolo(a.id)); slider.appendChild(div);}); currentSlide=0; updateSlider(); clearInterval(slideInterval); slideInterval=setInterval(nextSlide,5000);}
-function updateSlider(){ document.getElementById('slider')?.style.transform=`translateX(-${currentSlide*100}%)`; }
+function updateSlider(){ document.getElementById('slider').style.transform=`translateX(-${currentSlide*100}%)`; }
 function nextSlide(){ currentSlide=(currentSlide+1)%3; updateSlider(); }
 function prevSlide(){ currentSlide=(currentSlide+2)%3; updateSlider(); }
 
-// Headline
 function renderHeadline(){ const hl=document.getElementById('headline'); const a=articoli[0]; hl.innerHTML=`<img src="${a.immagine}"><div class="info"><h2>${a.titolo}</h2><small>${a.autore} - ${a.data} | <span class="categoria ${a.categoria}">${a.categoria}</span></small><p>${a.contenuto.substring(0,150)}...</p><a href="#" onclick="showArticolo(${a.id})">Leggi di più</a><span class="like-btn" onclick="likeArticolo(${a.id})"> 👍 ${a.likes}</span></div>`;}
 
-// Articoli
 function renderArticoli(filtro=''){
 const container=document.getElementById('articoli'); container.innerHTML='';
 let filtrati=articoli.slice(1).filter(a=>a.titolo.toLowerCase().includes(filtro.toLowerCase())||a.categoria.toLowerCase().includes(filtro.toLowerCase()));
 if(categoriaSelezionata) filtrati=filtrati.filter(a=>a.categoria===categoriaSelezionata);
 filtrati.forEach(a=>{ const div=document.createElement('div'); div.className='articolo'; div.innerHTML=`<img src="${a.immagine}" alt="${a.titolo}"><div class="info"><h2>${a.titolo}</h2><small>${a.autore} - ${a.data} | <span class="categoria ${a.categoria}">${a.categoria}</span></small><p>${a.contenuto.substring(0,120)}...</p><a href="#" onclick="showArticolo(${a.id})">Leggi di più</a><span class="like-btn" onclick="likeArticolo(${a.id})"> 👍 ${a.likes}</span></div>`; container.appendChild(div);});}
 
-// Like e sidebar
 function likeArticolo(id){ const a=articoli.find(x=>x.id===id); a.likes++; renderArticoli(document.getElementById('search').value); renderHeadline(); renderSidebar(); }
+
 function renderSidebar(){ const r=document.getElementById('recenti'); r.innerHTML=''; articoli.slice(0,5).forEach(a=>{ const li=document.createElement('li'); li.innerHTML=`<a href="#" onclick="showArticolo(${a.id})">${a.titolo}</a>`; r.appendChild(li);}); const p=document.getElementById('piuLetti'); p.innerHTML=''; articoli.sort((a,b)=>b.likes-a.likes).slice(0,5).forEach(a=>{ const li=document.createElement('li'); li.innerHTML=`<a href="#" onclick="showArticolo(${a.id})">${a.titolo} (${a.likes}👍)</a>`; p.appendChild(li);});}
 
-// Articolo singolo e commenti
 function showArticolo(id){ const a=articoli.find(x=>x.id===id); mainContent.innerHTML=`<a href="#" class="back" id="backLink">&laquo; Torna alla Home</a><div style="display:flex; gap:2rem; flex-wrap:wrap;"><div class="content" style="flex:3"><div class="articolo"><img src="${a.immagine}"><div class="info"><h2>${a.titolo}</h2><small>${a.autore} - ${a.data} | <span class="categoria ${a.categoria}">${a.categoria}</span></small><p>${a.contenuto}</p><span class="like-btn" onclick="likeArticolo(${a.id})"> 👍 ${a.likes}</span><div class="commenti"><h3>Commenti</h3><div id="listaCommenti"></div><div id="aggiungiCommento"></div></div></div></div></div><div class="sidebar"><h3>Notizie Recenti</h3><ul id="recenti"></ul><h3>Più Letti</h3><ul id="piuLetti"></ul></div></div>`; renderSidebar(); renderCommenti(id); document.getElementById('backLink').addEventListener('click',e=>{ e.preventDefault(); showHome(); }); }
 
 function renderCommenti(idArticolo){ const lista=document.getElementById('listaCommenti'); lista.innerHTML=''; const comm=commenti[idArticolo]||[]; if(comm.length===0) lista.innerHTML='<p>Nessun commento.</p>'; else comm.forEach((c,i)=>{ const div=document.createElement('div'); div.className='commento'; div.innerHTML=`<span>${c.utente}: ${c.text}</span><span class="like-btn" onclick="likeCommento(${idArticolo},${i})">👍 ${c.likes||0}</span>`; lista.appendChild(div);}); const aggiungi=document.getElementById('aggiungiCommento'); if(utenteLoggato){ aggiungi.innerHTML=`<input type="text" id="nuovoCommento" placeholder="Scrivi un commento..."><button onclick="inviaCommento(${idArticolo})">Invia</button>`;} else{aggiungi.innerHTML='<p>Effettua il login per commentare.</p>'; }}
