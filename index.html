@@ -9,7 +9,6 @@
   header { background:#2c3e50; color:white; padding:1rem; text-align:center; position:sticky; top:0; z-index:1000; }
   header a { color:white; text-decoration:none; margin-left:1rem; font-weight:bold; }
   main { padding:2rem; max-width:1200px; margin:auto; }
-  .search input { padding:0.5rem; width:100%; max-width:400px; margin-bottom:1rem; border-radius:5px; border:1px solid #ccc; }
 
   /* Slider moderno */
   .slider-container { position: relative; margin-bottom: 1rem; }
@@ -98,7 +97,9 @@ const mainContent = document.getElementById('main-content');
 
 function showHome() {
   mainContent.innerHTML = `
-    <div class="search"><input type="text" id="search" placeholder="Cerca articoli per titolo o categoria..."></div>
+    <div style="display:flex; justify-content:flex-end; margin-bottom:1rem;">
+      <input type="text" id="search" placeholder="Cerca articoli..." style="padding:0.5rem; border-radius:5px; border:1px solid #ccc; width:250px;">
+    </div>
 
     <div class="slider-container">
       <button class="slider-arrow left" id="prevSlide">&#8249;</button>
@@ -106,7 +107,7 @@ function showHome() {
       <button class="slider-arrow right" id="nextSlide">&#8250;</button>
     </div>
 
-    <div class="categories" id="categories"></div> <!-- Filtri sotto lo slider -->
+    <div class="categories" id="categories"></div>
 
     <div id="articoli"></div>
   `;
@@ -159,7 +160,6 @@ function renderSlider() {
   prevBtn.onclick = () => slider.scrollBy({ left: -320, behavior: 'smooth' });
   nextBtn.onclick = () => slider.scrollBy({ left: 320, behavior: 'smooth' });
 
-  // Ombre dinamiche
   const container = document.querySelector('.slider-container');
   function updateSliderShadows() {
     const scrollLeft = slider.scrollLeft;
