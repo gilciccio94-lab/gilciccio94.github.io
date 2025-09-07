@@ -163,10 +163,10 @@ main {
 .section-title {
     margin: 0;
     font-size: 1.5rem;
-    font-weight: 900; /* grassetto extra */
+    font-weight: 900; 
     padding-left: 5px;
     color: #111;
-    margin-bottom: 2px; /* più vicino alla linea */
+    margin-bottom: 2px;
 }
 
 .section-bar {
@@ -197,6 +197,7 @@ main {
     border-radius: 10px;
     background-size: cover;
     background-position: center;
+    position: relative;
 }
 
 .poster-info {
@@ -229,23 +230,39 @@ main {
     z-index: 2;
 }
 
-/* Badge aggiornati: colori più chiari e testo nero */
+/* voto dentro l'immagine, in basso a destra con X trasparente */
 .score-badge {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    border-radius: 0; 
-    font-size: 0.72rem;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 28px;
+    height: 28px;
+    font-size: 0.8rem;
     font-weight: bold;
-    color: black; /* testo dei voti in nero */
+    color: white; /* voto in bianco */
     text-align: center;
-    line-height: 20px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    line-height: 28px;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    font-family: 'Lato', sans-serif;
+    z-index: 1;
 }
 
-.score-good { background-color: #4caf70; }    /* verde chiaro */
-.score-medium { background-color: #ffcc33; }  /* giallo chiaro */
-.score-bad { background-color: #f46b6b; }     /* rosso chiaro */
+.score-badge::before {
+    content: "✕"; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: rgba(0,0,0,0.2); /* X grigia trasparente */
+    text-align: center;
+    line-height: 28px;
+    z-index: -1;
+}
 
 @media (max-width: 800px) {
     .top-row { flex-direction: column; }
@@ -300,42 +317,47 @@ main {
         <div class="posters-row">
             <div class="poster-card">
                 <span class="poster-label">Recensione</span>
-                <div class="poster-image" style="background-image:url('https://picsum.photos/170/255?random=12');"></div>
+                <div class="poster-image" style="background-image:url('https://picsum.photos/170/255?random=12');">
+                    <span class="score-badge">88</span>
+                </div>
                 <div class="poster-info">
                     <h3>Locandina 1</h3>
-                    <span class="score-badge score-good">88</span>
                 </div>
             </div>
             <div class="poster-card">
                 <span class="poster-label">Guida</span>
-                <div class="poster-image" style="background-image:url('https://picsum.photos/170/255?random=13');"></div>
+                <div class="poster-image" style="background-image:url('https://picsum.photos/170/255?random=13');">
+                    <span class="score-badge">55</span>
+                </div>
                 <div class="poster-info">
                     <h3>Locandina 2</h3>
-                    <span class="score-badge score-medium">55</span>
                 </div>
             </div>
             <div class="poster-card">
                 <span class="poster-label">Recensione</span>
-                <div class="poster-image" style="background-image:url('https://picsum.photos/170/255?random=14');"></div>
+                <div class="poster-image" style="background-image:url('https://picsum.photos/170/255?random=14');">
+                    <span class="score-badge">35</span>
+                </div>
                 <div class="poster-info">
                     <h3>Locandina 3</h3>
-                    <span class="score-badge score-bad">35</span>
                 </div>
             </div>
             <div class="poster-card">
                 <span class="poster-label">Guida</span>
-                <div class="poster-image" style="background-image:url('https://picsum.photos/170/255?random=15');"></div>
+                <div class="poster-image" style="background-image:url('https://picsum.photos/170/255?random=15');">
+                    <span class="score-badge">77</span>
+                </div>
                 <div class="poster-info">
                     <h3>Locandina 4</h3>
-                    <span class="score-badge score-good">77</span>
                 </div>
             </div>
             <div class="poster-card">
                 <span class="poster-label">Recensione</span>
-                <div class="poster-image" style="background-image:url('https://picsum.photos/170/255?random=16');"></div>
+                <div class="poster-image" style="background-image:url('https://picsum.photos/170/255?random=16');">
+                    <span class="score-badge">62</span>
+                </div>
                 <div class="poster-info">
                     <h3>Locandina 5</h3>
-                    <span class="score-badge score-medium">62</span>
                 </div>
             </div>
         </div>
