@@ -3,67 +3,128 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Griglia immagini stile Spiel</title>
+<title>Spiel Magazine Demo</title>
 <style>
+  /* Stile generale */
   body {
     font-family: Arial, sans-serif;
-    background-color: #f8f8f8;
     margin: 0;
-    padding: 20px;
+    padding: 0;
+    background-color: #f8f8f8;
   }
 
-  .grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  h1 {
+    text-align: center;
+    padding: 20px;
+    font-size: 2em;
+    color: #333;
+  }
+
+  /* Container principale */
+  .spiel-magazine {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  /* Sezioni */
+  .featured-articles {
+    flex: 1 1 60%;
+    display: flex;
+    flex-direction: column;
     gap: 20px;
   }
 
-  .grid-item {
-    overflow: hidden;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  .latest-articles {
+    flex: 1 1 35%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
 
-  .grid-item img {
-    width: 100%;
-    height: 200px; /* altezza uniforme */
-    object-fit: cover;
-    display: block;
+  /* Articoli */
+  .article {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
     transition: transform 0.3s ease;
   }
 
-  .grid-item img:hover {
-    transform: scale(1.05);
+  .article:hover {
+    transform: translateY(-5px);
   }
 
-  .caption {
-    padding: 10px;
-    text-align: center;
-    background-color: #fff;
-    font-weight: bold;
+  .article img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .article h2 {
+    font-size: 1.2em;
+    margin: 10px;
+    color: #333;
+  }
+
+  .article p {
+    font-size: 0.95em;
+    margin: 10px;
+    color: #555;
+  }
+
+  /* Responsive */
+  @media screen and (max-width: 900px) {
+    .spiel-magazine {
+      flex-direction: column;
+    }
+    .featured-articles, .latest-articles {
+      flex: 1 1 100%;
+    }
   }
 </style>
 </head>
 <body>
 
-<h1>Griglia immagini stile Spiel</h1>
+<h1>Spiel Magazine Demo</h1>
 
-<div class="grid-container">
-  <div class="grid-item">
-    <img src="https://via.placeholder.com/600x400.png?text=Immagine+1" alt="Immagine 1">
-    <div class="caption">Immagine 1</div>
+<div class="spiel-magazine">
+  <!-- Articoli in evidenza -->
+  <div class="featured-articles">
+    <article class="article">
+      <img src="https://via.placeholder.com/600x400.png?text=Articolo+1" alt="Articolo 1">
+      <h2>Articolo 1</h2>
+      <p>Breve descrizione dell'articolo in evidenza.</p>
+    </article>
+    <article class="article">
+      <img src="https://via.placeholder.com/600x400.png?text=Articolo+2" alt="Articolo 2">
+      <h2>Articolo 2</h2>
+      <p>Breve descrizione dell'articolo in evidenza.</p>
+    </article>
   </div>
-  <div class="grid-item">
-    <img src="https://via.placeholder.com/600x400.png?text=Immagine+2" alt="Immagine 2">
-    <div class="caption">Immagine 2</div>
-  </div>
-  <div class="grid-item">
-    <img src="https://via.placeholder.com/600x400.png?text=Immagine+3" alt="Immagine 3">
-    <div class="caption">Immagine 3</div>
-  </div>
-  <div class="grid-item">
-    <img src="https://via.placeholder.com/600x400.png?text=Immagine+4" alt="Immagine 4">
-    <div class="caption">Immagine 4</div>
+
+  <!-- Ultimi articoli -->
+  <div class="latest-articles">
+    <article class="article">
+      <img src="https://via.placeholder.com/600x400.png?text=Articolo+3" alt="Articolo 3">
+      <h2>Articolo 3</h2>
+      <p>Breve descrizione del nuovo articolo.</p>
+    </article>
+    <article class="article">
+      <img src="https://via.placeholder.com/600x400.png?text=Articolo+4" alt="Articolo 4">
+      <h2>Articolo 4</h2>
+      <p>Breve descrizione del nuovo articolo.</p>
+    </article>
+    <article class="article">
+      <img src="https://via.placeholder.com/600x400.png?text=Articolo+5" alt="Articolo 5">
+      <h2>Articolo 5</h2>
+      <p>Breve descrizione del nuovo articolo.</p>
+    </article>
   </div>
 </div>
 
