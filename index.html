@@ -1,89 +1,113 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>News Portal</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
-    header { background: #333; color: #fff; padding: 1rem; text-align: center; }
-    header a { color: #fff; margin-left: 1rem; text-decoration: none; }
-    main { padding: 1rem; }
-    .articolo { border-bottom: 1px solid #ccc; padding: 1rem 0; }
-    .articolo h2 { margin: 0; }
-    .search { margin-bottom: 1rem; }
-    input { padding: 0.5rem; width: 100%; max-width: 400px; margin-bottom: 1rem; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>News Portal</title>
+<style>
+  body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f5f5f5; }
+  header { background:#2c3e50; color:white; padding:1rem; text-align:center; }
+  header a { color:white; text-decoration:none; margin-left:1rem; font-weight:bold; }
+  main { padding:2rem; max-width:1000px; margin:auto; }
+  .search input { padding:0.5rem; width:100%; max-width:400px; margin-bottom:2rem; border-radius:5px; border:1px solid #ccc; }
+  .articolo { background:white; padding:1rem; margin-bottom:1rem; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1); display:flex; }
+  .articolo img { width:150px; height:100px; object-fit:cover; border-radius:5px; margin-right:1rem; }
+  .articolo h2 { margin:0; color:#2c3e50; }
+  .articolo p { margin:0.5rem 0; color:#555; }
+  .articolo small { color:#999; }
+  .articolo a { display:inline-block; margin-top:0.5rem; color:#2980b9; text-decoration:none; }
+  .articolo a:hover { text-decoration:underline; }
+  .categoria { font-weight:bold; color:#e67e22; }
+  .back { margin-bottom:1rem; display:inline-block; color:#2980b9; text-decoration:none; }
+  .back:hover { text-decoration:underline; }
+</style>
 </head>
 <body>
-  <header>
-    <h1>News Portal</h1>
-    <a href="#" id="homeLink">Home</a>
-  </header>
+<header>
+  <h1>News Portal</h1>
+  <a href="#" id="homeLink">Home</a>
+</header>
 
-  <main id="main-content">
-    <!-- Contenuto generato da JS -->
-  </main>
+<main id="main-content">
+  <!-- Contenuto generato da JS -->
+</main>
 
-  <script>
-    // Simuliamo dati articoli
-    const articoli = [
-      { id: 1, titolo: "Primo articolo", autore: "Admin", contenuto: "Contenuto completo del primo articolo." },
-      { id: 2, titolo: "Secondo articolo", autore: "Redazione", contenuto: "Contenuto completo del secondo articolo." },
-      { id: 3, titolo: "Terzo articolo", autore: "Admin", contenuto: "Contenuto completo del terzo articolo." }
-    ];
-
-    const mainContent = document.getElementById('main-content');
-
-    // Funzione per mostrare la home page con articoli
-    function showHome() {
-      mainContent.innerHTML = '<input type="text" id="search" placeholder="Cerca articoli...">';
-      const container = document.createElement('div');
-      container.id = 'articoli';
-      mainContent.appendChild(container);
-
-      const searchInput = document.getElementById('search');
-      searchInput.addEventListener('input', () => {
-        renderArticoli(searchInput.value);
-      });
-
-      renderArticoli();
+<script>
+  const articoli = [
+    { 
+      id:1, titolo:"Primo articolo", autore:"Admin", contenuto:"Contenuto completo del primo articolo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 
+      categoria:"Generale", data:"2025-09-07", immagine:"https://via.placeholder.com/150"
+    },
+    { 
+      id:2, titolo:"Secondo articolo", autore:"Redazione", contenuto:"Contenuto completo del secondo articolo. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", 
+      categoria:"Sport", data:"2025-09-06", immagine:"https://via.placeholder.com/150"
+    },
+    { 
+      id:3, titolo:"Terzo articolo", autore:"Admin", contenuto:"Contenuto completo del terzo articolo. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.", 
+      categoria:"Tecnologia", data:"2025-09-05", immagine:"https://via.placeholder.com/150"
     }
+  ];
 
-    function renderArticoli(filtro = '') {
-      const container = document.getElementById('articoli');
-      container.innerHTML = '';
-      const filtrati = articoli.filter(a => a.titolo.toLowerCase().includes(filtro.toLowerCase()));
-      filtrati.forEach(a => {
-        const div = document.createElement('div');
-        div.className = 'articolo';
-        div.innerHTML = `
+  const mainContent = document.getElementById('main-content');
+
+  function showHome() {
+    mainContent.innerHTML = '<div class="search"><input type="text" id="search" placeholder="Cerca articoli per titolo o categoria..."></div>';
+    const container = document.createElement('div');
+    container.id = 'articoli';
+    mainContent.appendChild(container);
+
+    const searchInput = document.getElementById('search');
+    searchInput.addEventListener('input', () => {
+      renderArticoli(searchInput.value);
+    });
+
+    renderArticoli();
+  }
+
+  function renderArticoli(filtro = '') {
+    const container = document.getElementById('articoli');
+    container.innerHTML = '';
+    const filtrati = articoli.filter(a => 
+      a.titolo.toLowerCase().includes(filtro.toLowerCase()) || 
+      a.categoria.toLowerCase().includes(filtro.toLowerCase())
+    );
+    filtrati.forEach(a => {
+      const div = document.createElement('div');
+      div.className = 'articolo';
+      div.innerHTML = `
+        <img src="${a.immagine}" alt="${a.titolo}">
+        <div>
           <h2>${a.titolo}</h2>
+          <small>${a.autore} - ${a.data} | <span class="categoria">${a.categoria}</span></small>
           <p>${a.contenuto.substring(0, 100)}...</p>
           <a href="#" onclick="showArticolo(${a.id})">Leggi di più</a>
-        `;
-        container.appendChild(div);
-      });
-    }
-
-    // Funzione per mostrare articolo singolo
-    function showArticolo(id) {
-      const articolo = articoli.find(a => a.id === id);
-      mainContent.innerHTML = `
-        <h2>${articolo.titolo}</h2>
-        <p><em>di ${articolo.autore}</em></p>
-        <p>${articolo.contenuto}</p>
+        </div>
       `;
-    }
+      container.appendChild(div);
+    });
+  }
 
-    // Link home
-    document.getElementById('homeLink').addEventListener('click', (e) => {
+  function showArticolo(id) {
+    const articolo = articoli.find(a => a.id === id);
+    mainContent.innerHTML = `
+      <a href="#" class="back" id="backLink">&laquo; Torna alla Home</a>
+      <h2>${articolo.titolo}</h2>
+      <small>${articolo.autore} - ${articolo.data} | <span class="categoria">${articolo.categoria}</span></small>
+      <img src="${articolo.immagine}" alt="${articolo.titolo}" style="width:100%; max-width:600px; margin:1rem 0; border-radius:8px;">
+      <p>${articolo.contenuto}</p>
+    `;
+    document.getElementById('backLink').addEventListener('click', (e)=>{
       e.preventDefault();
       showHome();
     });
+  }
 
-    // Avvio pagina
+  document.getElementById('homeLink').addEventListener('click', (e)=>{
+    e.preventDefault();
     showHome();
-  </script>
+  });
+
+  showHome();
+</script>
 </body>
 </html>
