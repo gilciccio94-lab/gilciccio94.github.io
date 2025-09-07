@@ -1,397 +1,142 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Notizie in Evidenza</title>
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
-<style>
-body {
-    font-family: 'Lato', sans-serif;
-    margin: 0;
-    background-color: #111;
-    color: #fff;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spiel Style Gaming Site</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    /* Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Press Start 2P', cursive; }
 
-header {
-    background-color: #111;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: flex-start; /* logo a sinistra */
-    align-items: center;
-}
+    body { background: #121212; color: #fff; line-height: 1.6; }
 
-header .logo img {
-    height: 50px; /* regola secondo le dimensioni del logo */
-    width: auto;
-}
+    header {
+      background: #0f0f0f;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 3px solid #00ff00;
+    }
 
-main {
-    padding: 2rem;
-    max-width: 1200px;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    background-color: #222; /* tema scuro */
-    color: #fff;
-}
+    header h1 { color: #00ff00; font-size: 1.5rem; }
 
-.top-row {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
+    nav a {
+      color: #fff;
+      margin-left: 1.5rem;
+      text-decoration: none;
+      transition: 0.3s;
+    }
 
-.highlight-card {
-    flex: 2;
-    min-height: 300px;
-    border-radius: 10px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-}
+    nav a:hover { color: #00ff00; }
 
-.slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-start;
-    color: white;
-    background-size: cover;
-    background-position: center;
-}
+    .container { display: flex; max-width: 1200px; margin: 2rem auto; gap: 2rem; }
 
-.slide.active {
-    opacity: 1;
-}
+    main {
+      flex: 3;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
 
-.slide-text {
-    width: 100%;
-    padding: 10px;
-    font-size: 0.9rem;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    border-radius: 0 0 10px 10px;
-    background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
-}
+    article {
+      background: #1a1a1a;
+      border: 2px solid #00ff00;
+      padding: 1rem;
+      transition: transform 0.3s;
+    }
 
-.slide-text h2, .slide-text p {
-    margin: 0;
-    padding-left: 5px;
-    padding-right: 5px;
-}
+    article:hover { transform: translateY(-5px); }
 
-.right-column {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    flex: 1;
-}
+    article img { width: 100%; height: auto; border-bottom: 2px solid #00ff00; margin-bottom: 0.5rem; }
 
-.side-card {
-    background-size: cover;
-    background-position: center;
-    color: white;
-    border-radius: 10px;
-    position: relative;
-    min-height: 200px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end; 
-    align-items: flex-start;
-    overflow: hidden; 
-}
+    article h2 { font-size: 1rem; margin-bottom: 0.5rem; color: #00ff00; }
 
-.side-card .card-text {
-    width: 100%;
-    padding: 10px;
-    font-size: 0.9rem;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    border-radius: 0 0 10px 10px;
-    background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
-}
+    aside {
+      flex: 1;
+      background: #1a1a1a;
+      padding: 1rem;
+      border: 2px solid #00ff00;
+      height: fit-content;
+    }
 
-.bottom-row {
-    display: flex;
-    gap: 1rem;
-    width: 66.666%;
-}
+    aside h3 { margin-bottom: 1rem; color: #00ff00; font-size: 0.9rem; }
 
-.square-card {
-    flex: 1;
-    min-height: 180px;
-    position: relative;
-    border-radius: 10px;
-    overflow: hidden;
-    background-size: cover;
-    background-position: center;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-start;
-}
+    aside ul { list-style: none; }
 
-.square-card .card-text {
-    width: 100%;
-    padding: 10px;
-    font-size: 0.9rem;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    border-radius: 0 0 10px 10px;
-    background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
-}
+    aside li { margin-bottom: 0.5rem; }
 
-/* Sezione Locandine */
-.latest-posters {
-    margin-top: 2rem;
-    width: 66.666%;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
+    aside li a { color: #fff; text-decoration: none; transition: 0.3s; }
 
-.section-title {
-    margin: 0;
-    font-size: 1.5rem;
-    font-weight: 900; 
-    padding-left: 5px;
-    color: #fff;
-    margin-bottom: 2px;
-}
+    aside li a:hover { color: #00ff00; }
 
-.section-bar {
-    width: 100%;
-    height: 1px; 
-    background-color: #fff;
-    margin-bottom: 10px;
-}
-
-.posters-row {
-    display: flex;
-    gap: 0.5rem;
-    position: relative;
-}
-
-.poster-card {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 5px;
-    position: relative;
-}
-
-.poster-image {
-    width: 170px;   
-    height: 255px;  
-    border-radius: 10px;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-}
-
-.poster-info {
-    width: 100%;
-    text-align: left;
-    padding-left: 5px;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-}
-
-.poster-info h3 {
-    margin: 0;
-    padding: 0;
-    display: block;
-    border-bottom: 1px solid #fff; 
-    padding-bottom: 1px;
-    font-size: 0.72rem; 
-}
-
-.poster-label {
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    background-color: rgba(0,0,0,0.7);
-    color: white;
-    padding: 2px 6px;
-    font-size: 0.7rem;
-    border-radius: 3px;
-    z-index: 2;
-}
-
-/* voto dentro l'immagine, in basso a destra con X trasparente */
-.score-badge {
-    position: absolute;
-    bottom: 5px;
-    right: 5px;
-    width: 28px;
-    height: 28px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    color: white;
-    text-align: center;
-    line-height: 28px;
-    background-color: transparent;
-    border: none;
-    box-shadow: none;
-    font-family: 'Lato', sans-serif;
-    z-index: 1;
-}
-
-.score-badge::before {
-    content: "✕"; 
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: rgba(0,0,0,0.2);
-    text-align: center;
-    line-height: 28px;
-    z-index: -1;
-}
-
-@media (max-width: 800px) {
-    .top-row { flex-direction: column; }
-    .right-column { flex-direction: row; gap: 1rem; }
-    .highlight-card, .side-card, .square-card { flex: 1; min-height: 150px; }
-    .bottom-row, .latest-posters { flex-direction: column; width: 100%; }
-}
-</style>
+    footer {
+      background: #0f0f0f;
+      text-align: center;
+      padding: 1rem;
+      border-top: 3px solid #00ff00;
+      margin-top: 2rem;
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <h1>Spiel</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Notizie</a>
+      <a href="#">Recensioni</a>
+      <a href="#">Guide</a>
+      <a href="#">Video</a>
+    </nav>
+  </header>
 
-<header>
-    <div class="logo">
-        <img src="img/logo.png" alt="Logo">
-    </div>
-</header>
+  <div class="container">
+    <main>
+      <article>
+        <img src="https://via.placeholder.com/400x200" alt="Articolo 1">
+        <h2>Ultime novità su Xbox Series X</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae eros sed.</p>
+      </article>
+      <article>
+        <img src="https://via.placeholder.com/400x200" alt="Articolo 2">
+        <h2>Recensione del nuovo gioco</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae eros sed.</p>
+      </article>
+      <article>
+        <img src="https://via.placeholder.com/400x200" alt="Articolo 3">
+        <h2>Guida ai trucchi più nascosti</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae eros sed.</p>
+      </article>
+      <article>
+        <img src="https://via.placeholder.com/400x200" alt="Articolo 4">
+        <h2>Video gameplay epico</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae eros sed.</p>
+      </article>
+    </main>
 
-<main>
-    <div class="top-row">
-        <div class="highlight-card">
-            <div class="slide" style="background-image:url('https://picsum.photos/800/400?random=1');">
-                <div class="slide-text">
-                    <h2>Notizia Principale 1</h2>
-                    <p>Descrizione breve della notizia principale 1.</p>
-                </div>
-            </div>
-        </div>
-        <div class="right-column">
-            <div class="side-card" style="background-image:url('https://picsum.photos/400/200?random=4');">
-                <div class="card-text"><h3>Notizia 2</h3></div>
-            </div>
-            <div class="side-card" style="background-image:url('https://picsum.photos/400/200?random=5');">
-                <div class="card-text"><h3>Notizia 3</h3></div>
-            </div>
-        </div>
-    </div>
+    <aside>
+      <h3>Categorie</h3>
+      <ul>
+        <li><a href="#">Notizie</a></li>
+        <li><a href="#">Recensioni</a></li>
+        <li><a href="#">Guide</a></li>
+        <li><a href="#">Video</a></li>
+        <li><a href="#">Esclusive</a></li>
+      </ul>
 
-    <div class="bottom-row">
-        <div class="square-card" style="background-image:url('https://picsum.photos/200/200?random=6');">
-            <div class="card-text"><h3>Notizia 4</h3></div>
-        </div>
-        <div class="square-card" style="background-image:url('https://picsum.photos/200/200?random=7');">
-            <div class="card-text"><h3>Notizia 5</h3></div>
-        </div>
-        <div class="square-card" style="background-image:url('https://picsum.photos/200/200?random=8');">
-            <div class="card-text"><h3>Notizia 6</h3></div>
-        </div>
-    </div>
+      <h3>Post popolari</h3>
+      <ul>
+        <li><a href="#">Top giochi del mese</a></li>
+        <li><a href="#">Aggiornamenti Game Pass</a></li>
+        <li><a href="#">Anteprima hardware Xbox</a></li>
+      </ul>
+    </aside>
+  </div>
 
-    <!-- Sezione Locandine -->
-    <section class="latest-posters">
-        <h2 class="section-title">Giochi</h2>
-        <div class="section-bar"></div>
-        <div class="posters-row">
-            <div class="poster-card">
-                <span class="poster-label">Recensione</span>
-                <div class="poster-image" style="background-image:url('https://picsum.photos/170/255?random=12');">
-                    <span class="score-badge">88</span>
-                </div>
-                <div class="poster-info">
-                    <h3>Locandina 1</h3>
-                </div>
-            </div>
-            <div class="poster-card">
-                <span class="poster-label">Guida</span>
-                <div class="poster-image" style="background-image:url('https://picsum.photos/170/255?random=13');">
-                    <span class="score-badge">55</span>
-                </div>
-                <div class="poster-info">
-                    <h3>Locandina 2</h3>
-                </div>
-            </div>
-            <div class="poster-card">
-                <span class="poster-label">Recensione</span>
-                <div class="poster-image" style="background-image:url('https://picsum.photos/170/255?random=14');">
-                    <span class="score-badge">35</span>
-                </div>
-                <div class="poster-info">
-                    <h3>Locandina 3</h3>
-                </div>
-            </div>
-            <div class="poster-card">
-                <span class="poster-label">Guida</span>
-                <div class="poster-image" style="background-image:url('https://picsum.photos/170/255?random=15');">
-                    <span class="score-badge">77</span>
-                </div>
-                <div class="poster-info">
-                    <h3>Locandina 4</h3>
-                </div>
-            </div>
-            <div class="poster-card">
-                <span class="poster-label">Recensione</span>
-                <div class="poster-image" style="background-image:url('https://picsum.photos/170/255?random=16');">
-                    <span class="score-badge">62</span>
-                </div>
-                <div class="poster-info">
-                    <h3>Locandina 5</h3>
-                </div>
-            </div>
-        </div>
-    </section>
-</main>
-
-<script>
-let currentSlide = 0;
-const slides = document.querySelectorAll('.slide');
-
-function showSlide(index) {
-    slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
-    currentSlide = index;
-}
-
-function nextSlide() {
-    currentSlide = (currentSlide + 1) % slides.length;
-    showSlide(currentSlide);
-}
-
-setInterval(nextSlide, 5000);
-showSlide(0);
-</script>
-
+  <footer>
+    &copy; 2025 Spiel Gaming Site. Tutti i diritti riservati.
+  </footer>
 </body>
 </html>
-
-
