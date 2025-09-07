@@ -1,142 +1,71 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spiel Style Gaming Site</title>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <style>
-    /* Reset */
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Press Start 2P', cursive; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Griglia immagini stile Spiel</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 20px;
+  }
 
-    body { background: #121212; color: #fff; line-height: 1.6; }
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
 
-    header {
-      background: #0f0f0f;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 3px solid #00ff00;
-    }
+  .grid-item {
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
 
-    header h1 { color: #00ff00; font-size: 1.5rem; }
+  .grid-item img {
+    width: 100%;
+    height: 200px; /* altezza uniforme */
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+  }
 
-    nav a {
-      color: #fff;
-      margin-left: 1.5rem;
-      text-decoration: none;
-      transition: 0.3s;
-    }
+  .grid-item img:hover {
+    transform: scale(1.05);
+  }
 
-    nav a:hover { color: #00ff00; }
-
-    .container { display: flex; max-width: 1200px; margin: 2rem auto; gap: 2rem; }
-
-    main {
-      flex: 3;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-    }
-
-    article {
-      background: #1a1a1a;
-      border: 2px solid #00ff00;
-      padding: 1rem;
-      transition: transform 0.3s;
-    }
-
-    article:hover { transform: translateY(-5px); }
-
-    article img { width: 100%; height: auto; border-bottom: 2px solid #00ff00; margin-bottom: 0.5rem; }
-
-    article h2 { font-size: 1rem; margin-bottom: 0.5rem; color: #00ff00; }
-
-    aside {
-      flex: 1;
-      background: #1a1a1a;
-      padding: 1rem;
-      border: 2px solid #00ff00;
-      height: fit-content;
-    }
-
-    aside h3 { margin-bottom: 1rem; color: #00ff00; font-size: 0.9rem; }
-
-    aside ul { list-style: none; }
-
-    aside li { margin-bottom: 0.5rem; }
-
-    aside li a { color: #fff; text-decoration: none; transition: 0.3s; }
-
-    aside li a:hover { color: #00ff00; }
-
-    footer {
-      background: #0f0f0f;
-      text-align: center;
-      padding: 1rem;
-      border-top: 3px solid #00ff00;
-      margin-top: 2rem;
-    }
-  </style>
+  .caption {
+    padding: 10px;
+    text-align: center;
+    background-color: #fff;
+    font-weight: bold;
+  }
+</style>
 </head>
 <body>
-  <header>
-    <h1>Spiel</h1>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">Notizie</a>
-      <a href="#">Recensioni</a>
-      <a href="#">Guide</a>
-      <a href="#">Video</a>
-    </nav>
-  </header>
 
-  <div class="container">
-    <main>
-      <article>
-        <img src="https://via.placeholder.com/400x200" alt="Articolo 1">
-        <h2>Ultime novità su Xbox Series X</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae eros sed.</p>
-      </article>
-      <article>
-        <img src="https://via.placeholder.com/400x200" alt="Articolo 2">
-        <h2>Recensione del nuovo gioco</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae eros sed.</p>
-      </article>
-      <article>
-        <img src="https://via.placeholder.com/400x200" alt="Articolo 3">
-        <h2>Guida ai trucchi più nascosti</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae eros sed.</p>
-      </article>
-      <article>
-        <img src="https://via.placeholder.com/400x200" alt="Articolo 4">
-        <h2>Video gameplay epico</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae eros sed.</p>
-      </article>
-    </main>
+<h1>Griglia immagini stile Spiel</h1>
 
-    <aside>
-      <h3>Categorie</h3>
-      <ul>
-        <li><a href="#">Notizie</a></li>
-        <li><a href="#">Recensioni</a></li>
-        <li><a href="#">Guide</a></li>
-        <li><a href="#">Video</a></li>
-        <li><a href="#">Esclusive</a></li>
-      </ul>
-
-      <h3>Post popolari</h3>
-      <ul>
-        <li><a href="#">Top giochi del mese</a></li>
-        <li><a href="#">Aggiornamenti Game Pass</a></li>
-        <li><a href="#">Anteprima hardware Xbox</a></li>
-      </ul>
-    </aside>
+<div class="grid-container">
+  <div class="grid-item">
+    <img src="https://via.placeholder.com/600x400.png?text=Immagine+1" alt="Immagine 1">
+    <div class="caption">Immagine 1</div>
   </div>
+  <div class="grid-item">
+    <img src="https://via.placeholder.com/600x400.png?text=Immagine+2" alt="Immagine 2">
+    <div class="caption">Immagine 2</div>
+  </div>
+  <div class="grid-item">
+    <img src="https://via.placeholder.com/600x400.png?text=Immagine+3" alt="Immagine 3">
+    <div class="caption">Immagine 3</div>
+  </div>
+  <div class="grid-item">
+    <img src="https://via.placeholder.com/600x400.png?text=Immagine+4" alt="Immagine 4">
+    <div class="caption">Immagine 4</div>
+  </div>
+</div>
 
-  <footer>
-    &copy; 2025 Spiel Gaming Site. Tutti i diritti riservati.
-  </footer>
 </body>
 </html>
