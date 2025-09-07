@@ -10,15 +10,9 @@
   header a { color:white; text-decoration:none; margin-left:1rem; font-weight:bold; }
   main { padding:2rem; max-width:1200px; margin:auto; }
   .search input { padding:0.5rem; width:100%; max-width:400px; margin-bottom:1rem; border-radius:5px; border:1px solid #ccc; }
-  .categories { margin-bottom:1rem; }
-  .categories button { padding:0.5rem 1rem; margin-right:0.5rem; border:none; border-radius:5px; cursor:pointer; color:white; font-weight:bold; transition:0.3s; }
-  .categories button:hover { opacity:0.8; }
-  .categories button.Generale { background:#e67e22; }
-  .categories button.Sport { background:#27ae60; }
-  .categories button.Tecnologia { background:#2980b9; }
-  .categories button.active { outline:3px solid #333; }
+
   /* Slider moderno */
-  .slider-container { position: relative; margin-bottom: 2rem; }
+  .slider-container { position: relative; margin-bottom: 1rem; }
   .slider-container::before,
   .slider-container::after {
     content: "";
@@ -48,6 +42,16 @@
   .slider-arrow { position:absolute; top:50%; transform:translateY(-50%); background:rgba(0,0,0,0.5); color:white; border:none; border-radius:50%; width:35px; height:35px; cursor:pointer; font-size:1.5rem; z-index:10; }
   .slider-arrow.left { left:5px; }
   .slider-arrow.right { right:5px; }
+
+  /* Filtri categorie */
+  .categories { margin-bottom:1rem; }
+  .categories button { padding:0.5rem 1rem; margin-right:0.5rem; border:none; border-radius:5px; cursor:pointer; color:white; font-weight:bold; transition:0.3s; }
+  .categories button:hover { opacity:0.8; }
+  .categories button.Generale { background:#e67e22; }
+  .categories button.Sport { background:#27ae60; }
+  .categories button.Tecnologia { background:#2980b9; }
+  .categories button.active { outline:3px solid #333; }
+
   /* Articoli */
   .articolo { background:white; padding:1rem; margin-bottom:1rem; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1); display:flex; flex-wrap:wrap; transition: transform 0.2s; }
   .articolo:hover { transform: translateY(-3px); }
@@ -63,6 +67,7 @@
   .categoria.Tecnologia { background:#2980b9; }
   .back { margin-bottom:1rem; display:inline-block; color:#2980b9; text-decoration:none; }
   .back:hover { text-decoration:underline; }
+
   @media(max-width:768px){
     .articolo { flex-direction:column; }
     .articolo img { width:100%; height:auto; margin-bottom:0.5rem; }
@@ -94,16 +99,19 @@ const mainContent = document.getElementById('main-content');
 function showHome() {
   mainContent.innerHTML = `
     <div class="search"><input type="text" id="search" placeholder="Cerca articoli per titolo o categoria..."></div>
-    <div class="categories" id="categories"></div>
+
     <div class="slider-container">
       <button class="slider-arrow left" id="prevSlide">&#8249;</button>
       <div class="slider" id="slider"></div>
       <button class="slider-arrow right" id="nextSlide">&#8250;</button>
     </div>
+
+    <div class="categories" id="categories"></div> <!-- Filtri sotto lo slider -->
+
     <div id="articoli"></div>
   `;
-  renderCategories();
   renderSlider();
+  renderCategories();
   renderArticoli();
 
   document.getElementById('search').addEventListener('input', () => {
