@@ -3,131 +3,131 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Giornale Stile Reale</title>
+<title>News Portal Avanzato</title>
 <style>
-body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f5f5f5; }
-header { background:#2c3e50; color:white; padding:1rem; text-align:center; position:sticky; top:0; z-index:1000; }
-header a { color:white; text-decoration:none; margin-left:1rem; font-weight:bold; }
-main { padding:2rem; max-width:1400px; margin:auto; display:flex; gap:2rem; flex-wrap:wrap; }
-.login input, .search input { padding:0.5rem; width:100%; margin-bottom:1rem; border-radius:5px; border:1px solid #ccc; }
-.login button { padding:0.5rem 1rem; border:none; border-radius:5px; background:#2980b9; color:white; cursor:pointer; }
-.categories { margin-bottom:1rem; display:flex; flex-wrap:wrap; gap:0.5rem; justify-content:flex-start; }
-.categories button { padding:0.3rem 0.8rem; font-size:0.9rem; border:none; border-radius:5px; cursor:pointer; color:white; font-weight:bold; transition:0.3s; }
-.categories button:hover { opacity:0.8; }
-.categories button.Generale { background:#e67e22; }
-.categories button.Sport { background:#27ae60; }
-.categories button.Tecnologia { background:#2980b9; }
-.categories button.active { outline:3px solid #333; }
-.slider-container { position:relative; margin-bottom:1rem; overflow:hidden; border-radius:10px; width:100%; }
-.slider { display:flex; transition:transform 0.5s ease; }
-.slide { min-width:100%; position:relative; cursor:pointer; }
-.slide img { width:100%; height:300px; object-fit:cover; display:block; }
-.slide .slide-info { position:absolute; bottom:0; left:0; right:0; background:rgba(0,0,0,0.5); color:white; padding:0.5rem; }
-.slide .slide-info h3 { margin:0; font-size:1.2rem; }
-.slide .slide-info small { font-size:0.9rem; color:#ddd; }
-.slider-btn { position:absolute; top:50%; transform:translateY(-50%); background:rgba(0,0,0,0.5); color:white; border:none; font-size:2rem; padding:0.2rem 0.5rem; cursor:pointer; border-radius:5px; }
-.slider-btn.left { left:10px; }
-.slider-btn.right { right:10px; }
-.articoli-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:1.5rem; flex:3; }
-.articolo { background:white; border-radius:10px; overflow:hidden; box-shadow:0 2px 6px rgba(0,0,0,0.1); display:flex; flex-direction:column; }
-.articolo img { width:100%; height:180px; object-fit:cover; }
-.articolo .info { padding:0.5rem 1rem; flex:1; display:flex; flex-direction:column; }
-.articolo h2 { margin:0.5rem 0; font-size:1.2rem; color:#2c3e50; }
-.articolo small { color:#999; }
-.articolo p { color:#555; flex:1; }
-.articolo a { color:#2980b9; text-decoration:none; margin-top:0.5rem; }
-.articolo a:hover { text-decoration:underline; }
-.categoria { font-weight:bold; padding:2px 6px; border-radius:4px; color:white; font-size:0.8rem; }
-.categoria.Generale { background:#e67e22; }
-.categoria.Sport { background:#27ae60; }
-.categoria.Tecnologia { background:#2980b9; }
-.sidebar { flex:1; min-width:250px; }
-.sidebar h3 { margin-top:0; color:#2c3e50; border-bottom:1px solid #ccc; padding-bottom:0.3rem; }
-.sidebar ul { list-style:none; padding-left:0; }
-.sidebar li { margin-bottom:0.5rem; }
-.sidebar li a { text-decoration:none; color:#2980b9; }
-.sidebar li a:hover { text-decoration:underline; }
-.back { margin-bottom:1rem; display:inline-block; color:#2980b9; text-decoration:none; }
-.back:hover { text-decoration:underline; }
-.commenti { margin-top:1rem; }
-.commento { background:#f5f5f5; padding:0.5rem; border-radius:5px; margin-bottom:0.5rem; display:flex; justify-content:space-between; align-items:center; }
-.like-btn { cursor:pointer; color:#2980b9; margin-left:0.5rem; }
-@media(max-width:900px){ .articoli-grid { grid-template-columns:1fr; } .slide img { height:200px; } }
+  body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f0f2f5; }
+  header { background:#2c3e50; color:white; padding:1rem; text-align:center; }
+  header a { color:white; text-decoration:none; margin-left:1rem; font-weight:bold; }
+  main { padding:2rem; max-width:1000px; margin:auto; }
+  .search input { padding:0.5rem; width:100%; max-width:400px; margin-bottom:2rem; border-radius:5px; border:1px solid #ccc; }
+  .slider { display:flex; overflow-x:auto; margin-bottom:2rem; gap:1rem; }
+  .slider .slide { min-width:250px; border-radius:8px; overflow:hidden; box-shadow:0 2px 6px rgba(0,0,0,0.2); background:white; flex-shrink:0; }
+  .slide img { width:100%; height:150px; object-fit:cover; }
+  .slide .slide-info { padding:0.5rem; }
+  .slide .slide-info h3 { margin:0; font-size:1.1rem; color:#2c3e50; }
+  .slide .slide-info small { color:#999; font-size:0.8rem; }
+  .articolo { background:white; padding:1rem; margin-bottom:1rem; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1); display:flex; flex-wrap:wrap; }
+  .articolo img { width:150px; height:100px; object-fit:cover; border-radius:5px; margin-right:1rem; flex-shrink:0; }
+  .articolo h2 { margin:0; color:#2c3e50; }
+  .articolo p { margin:0.5rem 0; color:#555; }
+  .articolo small { color:#999; }
+  .articolo a { display:inline-block; margin-top:0.5rem; color:#2980b9; text-decoration:none; }
+  .articolo a:hover { text-decoration:underline; }
+  .categoria { font-weight:bold; padding:2px 6px; border-radius:4px; color:white; font-size:0.8rem; }
+  .categoria.Generale { background:#e67e22; }
+  .categoria.Sport { background:#27ae60; }
+  .categoria.Tecnologia { background:#2980b9; }
+  .back { margin-bottom:1rem; display:inline-block; color:#2980b9; text-decoration:none; }
+  .back:hover { text-decoration:underline; }
 </style>
 </head>
 <body>
 <header>
-<h1>Giornale Stile Reale</h1>
-<a href="#" id="homeLink">Home</a>
+  <h1>News Portal Avanzato</h1>
+  <a href="#" id="homeLink">Home</a>
 </header>
+
 <main id="main-content"></main>
+
 <script>
 const articoli = [
-{id:1,titolo:"Prima Notizia",autore:"Admin",contenuto:"Contenuto completo della prima notizia.",categoria:"Generale",data:"2025-09-07",immagine:"https://via.placeholder.com/800x400",likes:0},
-{id:2,titolo:"Secondo Articolo",autore:"Redazione",contenuto:"Aggiornamenti sportivi recenti.",categoria:"Sport",data:"2025-09-06",immagine:"https://via.placeholder.com/800x400",likes:0},
-{id:3,titolo:"Terzo Articolo",autore:"Admin",contenuto:"Novità tecnologiche.",categoria:"Tecnologia",data:"2025-09-05",immagine:"https://via.placeholder.com/800x400",likes:0},
-{id:4,titolo:"Quarto Articolo",autore:"Redazione",contenuto:"Partite recenti.",categoria:"Sport",data:"2025-09-04",immagine:"https://via.placeholder.com/800x400",likes:0},
-{id:5,titolo:"Quinto Articolo",autore:"Admin",contenuto:"Aggiornamenti generali.",categoria:"Generale",data:"2025-09-03",immagine:"https://via.placeholder.com/800x400",likes:0}
+  { id:1, titolo:"Primo articolo", autore:"Admin", contenuto:"Contenuto completo del primo articolo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.", categoria:"Generale", data:"2025-09-07", immagine:"https://via.placeholder.com/400x200" },
+  { id:2, titolo:"Secondo articolo", autore:"Redazione", contenuto:"Contenuto completo del secondo articolo. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", categoria:"Sport", data:"2025-09-06", immagine:"https://via.placeholder.com/400x200" },
+  { id:3, titolo:"Terzo articolo", autore:"Admin", contenuto:"Contenuto completo del terzo articolo. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.", categoria:"Tecnologia", data:"2025-09-05", immagine:"https://via.placeholder.com/400x200" },
+  { id:4, titolo:"Quarto articolo", autore:"Redazione", contenuto:"Articolo extra per testare lo slider e le categorie. Duis aute irure dolor in reprehenderit.", categoria:"Sport", data:"2025-09-04", immagine:"https://via.placeholder.com/400x200" },
+  { id:5, titolo:"Quinto articolo", autore:"Admin", contenuto:"Ultimo articolo per il test. Excepteur sint occaecat cupidatat non proident.", categoria:"Tecnologia", data:"2025-09-03", immagine:"https://via.placeholder.com/400x200" }
 ];
 
-let categoriaSelezionata=''; let commenti={}; let utenteLoggato=null;
-let currentSlide=0; let slideInterval;
-const mainContent=document.getElementById('main-content');
+const mainContent = document.getElementById('main-content');
 
-function showHome(){
-mainContent.innerHTML=`
-<div class="login" id="loginSection"></div>
-<div class="search"><input type="text" id="search" placeholder="Cerca articoli per titolo o categoria..."></div>
-<div class="slider-container">
-  <div class="slider" id="slider"></div>
-  <button class="slider-btn left" onclick="prevSlide()">&#10094;</button>
-  <button class="slider-btn right" onclick="nextSlide()">&#10095;</button>
-</div>
-<!-- FILTRI SOTTO LO SLIDER -->
-<div class="categories" id="categories"></div>
-<div style="display:flex; gap:2rem; flex-wrap:wrap;">
-  <div class="articoli-grid" id="articoli" style="flex:3;"></div>
-  <div class="sidebar">
-    <h3>Notizie Recenti</h3><ul id="recenti"></ul>
-    <h3>Più Letti</h3><ul id="piuLetti"></ul>
-  </div>
-</div>
-`;
-renderLogin(); renderCategories(); renderSlider(); renderArticoli(); renderSidebar();
-document.getElementById('search').addEventListener('input',()=>{renderArticoli(document.getElementById('search').value);});
+function showHome() {
+  mainContent.innerHTML = `
+    <div class="search"><input type="text" id="search" placeholder="Cerca articoli per titolo o categoria..."></div>
+    <div class="slider" id="slider"></div>
+    <div id="articoli"></div>
+  `;
+
+  renderSlider();
+  renderArticoli();
+
+  const searchInput = document.getElementById('search');
+  searchInput.addEventListener('input', () => {
+    renderArticoli(searchInput.value);
+  });
 }
 
-function renderLogin(){ const loginSection=document.getElementById('loginSection'); if(utenteLoggato){ loginSection.innerHTML=`<p>Benvenuto, <strong>${utenteLoggato}</strong>! <button onclick="logout()">Logout</button></p>`;} else{ loginSection.innerHTML=`<input type="text" id="username" placeholder="Nome utente"><button onclick="login()">Login</button>`;}}
+function renderSlider() {
+  const slider = document.getElementById('slider');
+  slider.innerHTML = '';
+  articoli.slice(0,3).forEach(a => {
+    const div = document.createElement('div');
+    div.className = 'slide';
+    div.innerHTML = `
+      <img src="${a.immagine}" alt="${a.titolo}">
+      <div class="slide-info">
+        <h3>${a.titolo}</h3>
+        <small>${a.autore} - ${a.data}</small>
+      </div>
+    `;
+    div.addEventListener('click', () => showArticolo(a.id));
+    slider.appendChild(div);
+  });
+}
 
-function login(){ const input=document.getElementById('username'); if(input.value.trim()){ utenteLoggato=input.value.trim(); renderLogin();}}
-function logout(){ utenteLoggato=null; renderLogin();}
+function renderArticoli(filtro = '') {
+  const container = document.getElementById('articoli');
+  container.innerHTML = '';
+  const filtrati = articoli.filter(a => 
+    a.titolo.toLowerCase().includes(filtro.toLowerCase()) || 
+    a.categoria.toLowerCase().includes(filtro.toLowerCase())
+  );
+  filtrati.forEach(a => {
+    const div = document.createElement('div');
+    div.className = 'articolo';
+    div.innerHTML = `
+      <img src="${a.immagine}" alt="${a.titolo}">
+      <div>
+        <h2>${a.titolo}</h2>
+        <small>${a.autore} - ${a.data} | <span class="categoria ${a.categoria}">${a.categoria}</span></small>
+        <p>${a.contenuto.substring(0,100)}...</p>
+        <a href="#" onclick="showArticolo(${a.id})">Leggi di più</a>
+      </div>
+    `;
+    container.appendChild(div);
+  });
+}
 
-function renderCategories(){ const container=document.getElementById('categories'); const categorieUniche=[...new Set(articoli.map(a=>a.categoria))]; container.innerHTML=''; categorieUniche.forEach(cat=>{ const btn=document.createElement('button'); btn.textContent=cat; btn.className=cat; if(categoriaSelezionata===cat) btn.classList.add('active'); btn.addEventListener('click',()=>{ categoriaSelezionata=(categoriaSelezionata===cat)?'':cat; renderCategories(); renderArticoli(document.getElementById('search').value); }); container.appendChild(btn); });}
+function showArticolo(id) {
+  const articolo = articoli.find(a => a.id === id);
+  mainContent.innerHTML = `
+    <a href="#" class="back" id="backLink">&laquo; Torna alla Home</a>
+    <h2>${articolo.titolo}</h2>
+    <small>${articolo.autore} - ${articolo.data} | <span class="categoria ${articolo.categoria}">${articolo.categoria}</span></small>
+    <img src="${articolo.immagine}" alt="${articolo.titolo}" style="width:100%; max-width:600px; margin:1rem 0; border-radius:8px;">
+    <p>${articolo.contenuto}</p>
+  `;
+  document.getElementById('backLink').addEventListener('click', (e)=>{
+    e.preventDefault();
+    showHome();
+  });
+}
 
-function renderSlider(){ const slider=document.getElementById('slider'); slider.innerHTML=''; articoli.slice(0,3).forEach(a=>{ const div=document.createElement('div'); div.className='slide'; div.innerHTML=`<img src="${a.immagine}" alt="${a.titolo}"><div class="slide-info"><h3>${a.titolo}</h3><small>${a.autore} - ${a.data}</small></div>`; div.addEventListener('click',()=>showArticolo(a.id)); slider.appendChild(div);}); currentSlide=0; updateSlider(); clearInterval(slideInterval); slideInterval=setInterval(nextSlide,5000); }
-
-function updateSlider(){ const slider=document.getElementById('slider'); slider.style.transform=`translateX(-${currentSlide*100}%)`; }
-function nextSlide(){ currentSlide=(currentSlide+1)%3; updateSlider(); }
-function prevSlide(){ currentSlide=(currentSlide+2)%3; updateSlider(); }
-
-function renderArticoli(filtro=''){ const container=document.getElementById('articoli'); container.innerHTML=''; let filtrati=articoli.filter(a=>a.titolo.toLowerCase().includes(filtro.toLowerCase())||a.categoria.toLowerCase().includes(filtro.toLowerCase())); if(categoriaSelezionata) filtrati=filtrati.filter(a=>a.categoria===categoriaSelezionata); filtrati.forEach(a=>{ const div=document.createElement('div'); div.className='articolo'; div.innerHTML=`<img src="${a.immagine}" alt="${a.titolo}"><div class="info"><h2>${a.titolo}</h2><small>${a.autore} - ${a.data} | <span class="categoria ${a.categoria}">${a.categoria}</span></small><p>${a.contenuto.substring(0,120)}...</p><a href="#" onclick="showArticolo(${a.id})">Leggi di più</a><span class="like-btn" onclick="likeArticolo(${a.id})"> 👍 ${a.likes}</span></div>`; container.appendChild(div);});}
-
-function likeArticolo(id){ const art=articoli.find(a=>a.id===id); art.likes++; renderArticoli(document.getElementById('search').value); renderSidebar();}
-
-function renderSidebar(){ const recenti=document.getElementById('recenti'); recenti.innerHTML=''; articoli.slice(0,5).forEach(a=>{ const li=document.createElement('li'); li.innerHTML=`<a href="#" onclick="showArticolo(${a.id})">${a.titolo}</a>`; recenti.appendChild(li);}); const piuLetti=document.getElementById('piuLetti'); piuLetti.innerHTML=''; articoli.sort((a,b)=>b.likes-a.likes).slice(0,5).forEach(a=>{ const li=document.createElement('li'); li.innerHTML=`<a href="#" onclick="showArticolo(${a.id})">${a.titolo} (${a.likes}👍)</a>`; piuLetti.appendChild(li);});}
-
-function showArticolo(id){ const articolo=articoli.find(a=>a.id===id); mainContent.innerHTML=`<a href="#" class="back" id="backLink">&laquo; Torna alla Home</a><div style="display:flex; gap:2rem; flex-wrap:wrap;"><div class="content" style="flex:3"><div class="articolo"><img src="${articolo.immagine}"><div class="info"><h2>${articolo.titolo}</h2><small>${articolo.autore} - ${articolo.data} | <span class="categoria ${articolo.categoria}">${articolo.categoria}</span></small><p>${articolo.contenuto}</p><span class="like-btn" onclick="likeArticolo(${articolo.id})"> 👍 ${articolo.likes}</span><div class="commenti"><h3>Commenti</h3><div id="listaCommenti"></div><div id="aggiungiCommento"></div></div></div></div></div><div class="sidebar"><h3>Notizie Recenti</h3><ul id="recenti"></ul><h3>Più Letti</h3><ul id="piuLetti"></ul></div></div>`; renderSidebar(); renderCommenti(id); document.getElementById('backLink').addEventListener('click',(e)=>{ e.preventDefault(); showHome(); });}
-
-function renderCommenti(idArticolo){ const lista=document.getElementById('listaCommenti'); lista.innerHTML=''; const comm=commenti[idArticolo]||[]; if(comm.length===0) lista.innerHTML='<p>Nessun commento.</p>'; else comm.forEach((c,i)=>{ const div=document.createElement('div'); div.className='commento'; div.innerHTML=`<span>${c.utente}: ${c.text}</span><span class="like-btn" onclick="likeCommento(${idArticolo},${i})">👍 ${c.likes||0}</span>`; lista.appendChild(div);}); const aggiungi=document.getElementById('aggiungiCommento'); if(utenteLoggato){ aggiungi.innerHTML=`<input type="text" id="nuovoCommento" placeholder="Scrivi un commento..."><button onclick="inviaCommento(${idArticolo})">Invia</button>`;} else{aggiungi.innerHTML='<p>Effettua il login per commentare.</p>'; }}
-
-function inviaCommento(idArticolo){ const input=document.getElementById('nuovoCommento'); if(input.value.trim()){ if(!commenti[idArticolo]) commenti[idArticolo]=[]; commenti[idArticolo].push({utente:utenteLoggato,text:input.value.trim(),likes:0}); input.value=''; renderCommenti(idArticolo); }}
-
-function likeCommento(idArticolo,index){ commenti[idArticolo][index].likes++; renderCommenti(idArticolo); }
-
-document.getElementById('homeLink').addEventListener('click',(e)=>{ e.preventDefault(); showHome(); });
+document.getElementById('homeLink').addEventListener('click', (e)=>{
+  e.preventDefault();
+  showHome();
+});
 
 showHome();
 </script>
 </body>
 </html>
- 
