@@ -3,21 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>News Portal Avanzato</title>
+<title>News Portal Pro</title>
 <style>
   body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f0f2f5; }
-  header { background:#2c3e50; color:white; padding:1rem; text-align:center; }
+  header { background:#2c3e50; color:white; padding:1rem; text-align:center; position:sticky; top:0; z-index:1000; }
   header a { color:white; text-decoration:none; margin-left:1rem; font-weight:bold; }
-  main { padding:2rem; max-width:1000px; margin:auto; }
-  .search input { padding:0.5rem; width:100%; max-width:400px; margin-bottom:2rem; border-radius:5px; border:1px solid #ccc; }
-  .slider { display:flex; overflow-x:auto; margin-bottom:2rem; gap:1rem; }
-  .slider .slide { min-width:250px; border-radius:8px; overflow:hidden; box-shadow:0 2px 6px rgba(0,0,0,0.2); background:white; flex-shrink:0; }
-  .slide img { width:100%; height:150px; object-fit:cover; }
-  .slide .slide-info { padding:0.5rem; }
-  .slide .slide-info h3 { margin:0; font-size:1.1rem; color:#2c3e50; }
-  .slide .slide-info small { color:#999; font-size:0.8rem; }
-  .articolo { background:white; padding:1rem; margin-bottom:1rem; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1); display:flex; flex-wrap:wrap; }
-  .articolo img { width:150px; height:100px; object-fit:cover; border-radius:5px; margin-right:1rem; flex-shrink:0; }
+  main { padding:2rem; max-width:1200px; margin:auto; }
+  .search input { padding:0.5rem; width:100%; max-width:400px; margin-bottom:1rem; border-radius:5px; border:1px solid #ccc; }
+  .categories { margin-bottom:1rem; }
+  .categories button { padding:0.5rem 1rem; margin-right:0.5rem; border:none; border-radius:5px; cursor:pointer; color:white; font-weight:bold; transition:0.3s; }
+  .categories button:hover { opacity:0.8; }
+  .categories button.Generale { background:#e67e22; }
+  .categories button.Sport { background:#27ae60; }
+  .categories button.Tecnologia { background:#2980b9; }
+  .categories button.active { outline:3px solid #333; }
+  .slider { display:flex; overflow-x:auto; margin-bottom:2rem; gap:1rem; scroll-behavior: smooth; }
+  .slider::-webkit-scrollbar { display:none; }
+  .slide { min-width:300px; border-radius:10px; overflow:hidden; position:relative; cursor:pointer; flex-shrink:0; transition: transform 0.3s; }
+  .slide:hover { transform: scale(1.05); }
+  .slide img { width:100%; height:180px; object-fit:cover; display:block; }
+  .slide .slide-info { position:absolute; bottom:0; left:0; right:0; background:rgba(0,0,0,0.5); color:white; padding:0.5rem; }
+  .slide .slide-info h3 { margin:0; font-size:1.1rem; }
+  .slide .slide-info small { font-size:0.8rem; color:#ddd; }
+  .articolo { background:white; padding:1rem; margin-bottom:1rem; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1); display:flex; flex-wrap:wrap; transition: transform 0.2s; }
+  .articolo:hover { transform: translateY(-3px); }
+  .articolo img { width:180px; height:120px; object-fit:cover; border-radius:5px; margin-right:1rem; flex-shrink:0; }
   .articolo h2 { margin:0; color:#2c3e50; }
   .articolo p { margin:0.5rem 0; color:#555; }
   .articolo small { color:#999; }
@@ -29,11 +39,16 @@
   .categoria.Tecnologia { background:#2980b9; }
   .back { margin-bottom:1rem; display:inline-block; color:#2980b9; text-decoration:none; }
   .back:hover { text-decoration:underline; }
+  @media(max-width:768px){
+    .articolo { flex-direction:column; }
+    .articolo img { width:100%; height:auto; margin-bottom:0.5rem; }
+    .slide { min-width:250px; }
+  }
 </style>
 </head>
 <body>
 <header>
-  <h1>News Portal Avanzato</h1>
+  <h1>News Portal Pro</h1>
   <a href="#" id="homeLink">Home</a>
 </header>
 
@@ -41,28 +56,48 @@
 
 <script>
 const articoli = [
-  { id:1, titolo:"Primo articolo", autore:"Admin", contenuto:"Contenuto completo del primo articolo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.", categoria:"Generale", data:"2025-09-07", immagine:"https://via.placeholder.com/400x200" },
-  { id:2, titolo:"Secondo articolo", autore:"Redazione", contenuto:"Contenuto completo del secondo articolo. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", categoria:"Sport", data:"2025-09-06", immagine:"https://via.placeholder.com/400x200" },
-  { id:3, titolo:"Terzo articolo", autore:"Admin", contenuto:"Contenuto completo del terzo articolo. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.", categoria:"Tecnologia", data:"2025-09-05", immagine:"https://via.placeholder.com/400x200" },
-  { id:4, titolo:"Quarto articolo", autore:"Redazione", contenuto:"Articolo extra per testare lo slider e le categorie. Duis aute irure dolor in reprehenderit.", categoria:"Sport", data:"2025-09-04", immagine:"https://via.placeholder.com/400x200" },
-  { id:5, titolo:"Quinto articolo", autore:"Admin", contenuto:"Ultimo articolo per il test. Excepteur sint occaecat cupidatat non proident.", categoria:"Tecnologia", data:"2025-09-03", immagine:"https://via.placeholder.com/400x200" }
+  { id:1, titolo:"Primo articolo", autore:"Admin", contenuto:"Contenuto completo del primo articolo con dettagli e informazioni importanti.", categoria:"Generale", data:"2025-09-07", immagine:"https://via.placeholder.com/600x300" },
+  { id:2, titolo:"Secondo articolo", autore:"Redazione", contenuto:"Contenuto completo del secondo articolo su eventi sportivi recenti.", categoria:"Sport", data:"2025-09-06", immagine:"https://via.placeholder.com/600x300" },
+  { id:3, titolo:"Terzo articolo", autore:"Admin", contenuto:"Contenuto completo del terzo articolo su tecnologia e innovazioni.", categoria:"Tecnologia", data:"2025-09-05", immagine:"https://via.placeholder.com/600x300" },
+  { id:4, titolo:"Quarto articolo", autore:"Redazione", contenuto:"Altro articolo sportivo con approfondimenti.", categoria:"Sport", data:"2025-09-04", immagine:"https://via.placeholder.com/600x300" },
+  { id:5, titolo:"Quinto articolo", autore:"Admin", contenuto:"Ultimo articolo di tecnologia con focus su nuove tendenze.", categoria:"Tecnologia", data:"2025-09-03", immagine:"https://via.placeholder.com/600x300" },
+  { id:6, titolo:"Sesto articolo", autore:"Redazione", contenuto:"Articolo generale con notizie di interesse comune.", categoria:"Generale", data:"2025-09-02", immagine:"https://via.placeholder.com/600x300" }
 ];
 
+let categoriaSelezionata = '';
 const mainContent = document.getElementById('main-content');
 
 function showHome() {
   mainContent.innerHTML = `
     <div class="search"><input type="text" id="search" placeholder="Cerca articoli per titolo o categoria..."></div>
+    <div class="categories" id="categories"></div>
     <div class="slider" id="slider"></div>
     <div id="articoli"></div>
   `;
-
+  renderCategories();
   renderSlider();
   renderArticoli();
 
-  const searchInput = document.getElementById('search');
-  searchInput.addEventListener('input', () => {
-    renderArticoli(searchInput.value);
+  document.getElementById('search').addEventListener('input', () => {
+    renderArticoli(document.getElementById('search').value);
+  });
+}
+
+function renderCategories() {
+  const container = document.getElementById('categories');
+  const categorieUniche = [...new Set(articoli.map(a => a.categoria))];
+  container.innerHTML = '';
+  categorieUniche.forEach(cat => {
+    const btn = document.createElement('button');
+    btn.textContent = cat;
+    btn.className = cat;
+    if(categoriaSelezionata === cat) btn.classList.add('active');
+    btn.addEventListener('click', () => {
+      categoriaSelezionata = (categoriaSelezionata === cat) ? '' : cat;
+      renderCategories();
+      renderArticoli(document.getElementById('search').value);
+    });
+    container.appendChild(btn);
   });
 }
 
@@ -84,13 +119,14 @@ function renderSlider() {
   });
 }
 
-function renderArticoli(filtro = '') {
+function renderArticoli(filtro='') {
   const container = document.getElementById('articoli');
   container.innerHTML = '';
-  const filtrati = articoli.filter(a => 
-    a.titolo.toLowerCase().includes(filtro.toLowerCase()) || 
+  let filtrati = articoli.filter(a =>
+    a.titolo.toLowerCase().includes(filtro.toLowerCase()) ||
     a.categoria.toLowerCase().includes(filtro.toLowerCase())
   );
+  if(categoriaSelezionata) filtrati = filtrati.filter(a => a.categoria === categoriaSelezionata);
   filtrati.forEach(a => {
     const div = document.createElement('div');
     div.className = 'articolo';
@@ -99,7 +135,7 @@ function renderArticoli(filtro = '') {
       <div>
         <h2>${a.titolo}</h2>
         <small>${a.autore} - ${a.data} | <span class="categoria ${a.categoria}">${a.categoria}</span></small>
-        <p>${a.contenuto.substring(0,100)}...</p>
+        <p>${a.contenuto.substring(0,120)}...</p>
         <a href="#" onclick="showArticolo(${a.id})">Leggi di più</a>
       </div>
     `;
@@ -113,16 +149,16 @@ function showArticolo(id) {
     <a href="#" class="back" id="backLink">&laquo; Torna alla Home</a>
     <h2>${articolo.titolo}</h2>
     <small>${articolo.autore} - ${articolo.data} | <span class="categoria ${articolo.categoria}">${articolo.categoria}</span></small>
-    <img src="${articolo.immagine}" alt="${articolo.titolo}" style="width:100%; max-width:600px; margin:1rem 0; border-radius:8px;">
+    <img src="${articolo.immagine}" alt="${articolo.titolo}" style="width:100%; max-width:700px; margin:1rem 0; border-radius:10px;">
     <p>${articolo.contenuto}</p>
   `;
-  document.getElementById('backLink').addEventListener('click', (e)=>{
+  document.getElementById('backLink').addEventListener('click',(e)=>{
     e.preventDefault();
     showHome();
   });
 }
 
-document.getElementById('homeLink').addEventListener('click', (e)=>{
+document.getElementById('homeLink').addEventListener('click',(e)=>{
   e.preventDefault();
   showHome();
 });
