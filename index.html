@@ -9,7 +9,13 @@
   header { background:#2c3e50; color:white; padding:1rem; text-align:center; }
   header a { color:white; text-decoration:none; margin-left:1rem; font-weight:bold; }
   main { padding:2rem; max-width:1000px; margin:auto; }
-  .search input { padding:0.5rem; width:100%; max-width:400px; margin-bottom:2rem; border-radius:5px; border:1px solid #ccc; }
+  .search input { padding:0.5rem; width:100%; max-width:400px; margin-bottom:1rem; border-radius:5px; border:1px solid #ccc; }
+  .categories { margin-bottom:1rem; }
+  .categories button { padding:0.5rem 1rem; margin-right:0.5rem; border:none; border-radius:5px; cursor:pointer; color:white; font-weight:bold; }
+  .categories button.Generale { background:#e67e22; }
+  .categories button.Sport { background:#27ae60; }
+  .categories button.Tecnologia { background:#2980b9; }
+  .categories button.active { outline:3px solid #333; }
   .slider { display:flex; overflow-x:auto; margin-bottom:2rem; gap:1rem; }
   .slider .slide { min-width:250px; border-radius:8px; overflow:hidden; box-shadow:0 2px 6px rgba(0,0,0,0.2); background:white; flex-shrink:0; }
   .slide img { width:100%; height:150px; object-fit:cover; }
@@ -48,21 +54,41 @@ const articoli = [
   { id:5, titolo:"Quinto articolo", autore:"Admin", contenuto:"Ultimo articolo per il test. Excepteur sint occaecat cupidatat non proident.", categoria:"Tecnologia", data:"2025-09-03", immagine:"https://via.placeholder.com/400x200" }
 ];
 
+let categoriaSelezionata = '';
+
 const mainContent = document.getElementById('main-content');
 
 function showHome() {
   mainContent.innerHTML = `
     <div class="search"><input type="text" id="search" placeholder="Cerca articoli per titolo o categoria..."></div>
+    <div class="categories" id="categories"></div>
     <div class="slider" id="slider"></div>
     <div id="articoli"></div>
   `;
-
+  renderCategories();
   renderSlider();
   renderArticoli();
 
-  const searchInput = document.getElementById('search');
-  searchInput.addEventListener('input', () => {
-    renderArticoli(searchInput.value);
+  document.getElementById('search').addEventListener('input', () => {
+    renderArticoli(document.getElementById('search').value);
+  });
+}
+
+function renderCategories() {
+  const container = document.getElementById('categories');
+  const categorieUniche = [...new Set(articoli.map(a => a.categoria))];
+  container.innerHTML = '';
+  categorieUniche.forEach(cat => {
+    const btn = document.createElement('button');
+    btn.textContent = cat;
+    btn.className = cat;
+    if(categoriaSelezionata === cat) btn.classList.add('active');
+    btn.addEventListener('click', () => {
+      categoriaSelezionata = (categoriaSelezionata === cat) ? '' : cat;
+      renderCategories();
+      renderArticoli(document.getElementById('search').value);
+    });
+    container.appendChild(btn);
   });
 }
 
@@ -87,10 +113,13 @@ function renderSlider() {
 function renderArticoli(filtro = '') {
   const container = document.getElementById('articoli');
   container.innerHTML = '';
-  const filtrati = articoli.filter(a => 
+  let filtrati = articoli.filter(a => 
     a.titolo.toLowerCase().includes(filtro.toLowerCase()) || 
     a.categoria.toLowerCase().includes(filtro.toLowerCase())
   );
+  if(categoriaSelezionata) {
+    filtrati = filtrati.filter(a => a.categoria === categoriaSelezionata);
+  }
   filtrati.forEach(a => {
     const div = document.createElement('div');
     div.className = 'articolo';
@@ -116,13 +145,13 @@ function showArticolo(id) {
     <img src="${articolo.immagine}" alt="${articolo.titolo}" style="width:100%; max-width:600px; margin:1rem 0; border-radius:8px;">
     <p>${articolo.contenuto}</p>
   `;
-  document.getElementById('backLink').addEventListener('click', (e)=>{
+  document.getElementById('backLink').addEventListener('click',(e)=>{
     e.preventDefault();
     showHome();
   });
 }
 
-document.getElementById('homeLink').addEventListener('click', (e)=>{
+document.getElementById('homeLink').addEventListener('click',(e)=>{
   e.preventDefault();
   showHome();
 });
