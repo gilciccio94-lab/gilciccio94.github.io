@@ -17,12 +17,12 @@ header {
     background-color: #111;
     padding: 1rem 2rem;
     display: flex;
-    justify-content: flex-end; /* logo a destra */
+    justify-content: flex-start; /* logo a sinistra */
     align-items: center;
 }
 
 header .logo img {
-    height: 50px;
+    height: 50px; /* regola secondo le dimensioni del logo */
     width: auto;
 }
 
@@ -246,7 +246,7 @@ main {
     height: 28px;
     font-size: 0.8rem;
     font-weight: bold;
-    color: white; /* voto in bianco */
+    color: white;
     text-align: center;
     line-height: 28px;
     background-color: transparent;
@@ -265,7 +265,7 @@ main {
     height: 100%;
     font-size: 1.4rem;
     font-weight: bold;
-    color: rgba(0,0,0,0.2); /* X grigia trasparente */
+    color: rgba(0,0,0,0.2);
     text-align: center;
     line-height: 28px;
     z-index: -1;
@@ -283,7 +283,7 @@ main {
 
 <header>
     <div class="logo">
-        <img src="https://picsum.photos/100/50?random=99" alt="Logo">
+        <img src="images/logo.png" alt="Logo">
     </div>
 </header>
 
