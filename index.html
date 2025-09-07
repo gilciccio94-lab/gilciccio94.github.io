@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News Portal</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    header { background: #333; color: #fff; padding: 1rem; text-align: center; }
+    header a { color: #fff; margin-left: 1rem; text-decoration: none; }
+    main { padding: 1rem; }
+    .articolo { border-bottom: 1px solid #ccc; padding: 1rem 0; }
+    .articolo h2 { margin: 0; }
+    .search { margin-bottom: 1rem; }
+    input { padding: 0.5rem; width: 100%; max-width: 400px; margin-bottom: 1rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>News Portal</h1>
+    <a href="#" id="homeLink">Home</a>
+  </header>
+
+  <main id="main-content">
+    <!-- Contenuto generato da JS -->
+  </main>
+
+  <script>
+    // Simuliamo dati articoli
+    const articoli = [
+      { id: 1, titolo: "Primo articolo", autore: "Admin", contenuto: "Contenuto completo del primo articolo." },
+      { id: 2, titolo: "Secondo articolo", autore: "Redazione", contenuto: "Contenuto completo del secondo articolo." },
+      { id: 3, titolo: "Terzo articolo", autore: "Admin", contenuto: "Contenuto completo del terzo articolo." }
+    ];
+
+    const mainContent = document.getElementById('main-content');
+
+    // Funzione per mostrare la home page con articoli
+    function showHome() {
+      mainContent.innerHTML = '<input type="text" id="search" placeholder="Cerca articoli...">';
+      const container = document.createElement('div');
+      container.id = 'articoli';
+      mainContent.appendChild(container);
+
+      const searchInput = document.getElementById('search');
+      searchInput.addEventListener('input', () => {
+        renderArticoli(searchInput.value);
+      });
+
+      renderArticoli();
+    }
+
+    function renderArticoli(filtro = '') {
+      const container = document.getElementById('articoli');
+      container.innerHTML = '';
+      const filtrati = articoli.filter(a => a.titolo.toLowerCase().includes(filtro.toLowerCase()));
+      filtrati.forEach(a => {
+        const div = document.createElement('div');
+        div.className = 'articolo';
+        div.innerHTML = `
+          <h2>${a.titolo}</h2>
+          <p>${a.contenuto.substring(0, 100)}...</p>
+          <a href="#" onclick="showArticolo(${a.id})">Leggi di più</a>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    // Funzione per mostrare articolo singolo
+    function showArticolo(id) {
+      const articolo = articoli.find(a => a.id === id);
+      mainContent.innerHTML = `
+        <h2>${articolo.titolo}</h2>
+        <p><em>di ${articolo.autore}</em></p>
+        <p>${articolo.contenuto}</p>
+      `;
+    }
+
+    // Link home
+    document.getElementById('homeLink').addEventListener('click', (e) => {
+      e.preventDefault();
+      showHome();
+    });
+
+    // Avvio pagina
+    showHome();
+  </script>
+</body>
+</html>
