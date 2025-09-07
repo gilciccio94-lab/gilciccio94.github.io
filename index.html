@@ -12,7 +12,7 @@ main { padding:2rem; max-width:1400px; margin:auto; display:flex; gap:2rem; flex
 .login input, .search input { padding:0.5rem; width:100%; margin-bottom:1rem; border-radius:5px; border:1px solid #ccc; }
 .login button { padding:0.5rem 1rem; border:none; border-radius:5px; background:#2980b9; color:white; cursor:pointer; }
 .categories { margin-bottom:1rem; display:flex; flex-wrap:wrap; gap:0.5rem; justify-content:flex-start; }
-.categories button { padding:0.5rem 1rem; border:none; border-radius:5px; cursor:pointer; color:white; font-weight:bold; transition:0.3s; }
+.categories button { padding:0.5rem 1rem; font-size:1rem; border:none; border-radius:5px; cursor:pointer; color:white; font-weight:bold; transition:0.3s; }
 .categories button:hover { opacity:0.8; }
 .categories button.Generale { background:#e67e22; }
 .categories button.Sport { background:#27ae60; }
@@ -78,12 +78,12 @@ function showHome(){
 mainContent.innerHTML=`
 <div class="login" id="loginSection"></div>
 <div class="search"><input type="text" id="search" placeholder="Cerca articoli per titolo o categoria..."></div>
+<div class="categories" id="categories"></div> <!-- FILTRI RIPRISTINATI POSIZIONE ORIGINALE -->
 <div class="slider-container">
 <div class="slider" id="slider"></div>
 <button class="slider-btn left" onclick="prevSlide()">&#10094;</button>
 <button class="slider-btn right" onclick="nextSlide()">&#10095;</button>
 </div>
-<div class="categories" id="categories"></div> <!-- FILTRI SOPRA LA GRIGLIA -->
 <div class="articoli-grid" id="articoli"></div>
 <div class="sidebar">
 <h3>Notizie Recenti</h3><ul id="recenti"></ul>
